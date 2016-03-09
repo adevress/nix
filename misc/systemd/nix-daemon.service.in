@@ -1,10 +1,8 @@
 [Unit]
 Description=Nix Daemon
-RequiresMountsFor=@storedir@
-RequiresMountsFor=@localstatedir@
-ConditionPathIsReadWrite=@localstatedir@/nix/daemon-socket
 
 [Service]
 User=nix-daemon
+EnvironmentFile=/etc/sysconfig/nix-daemon
 ExecStart=@@bindir@/nix-daemon nix-daemon --daemon
 KillMode=process

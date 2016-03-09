@@ -36,13 +36,13 @@ function create_user_profile {
 
     # Create per-user default profile if not existing
     if [ ! -e ${NIX_USER_PROFILE_DIR}/default ]; then
-	ln -s ${NIX_SYSTEM_PROFILE} ${NIX_USER_PROFILE_DIR}/default
+	ln-s ${NIX_SYSTEM_PROFILE} ${NIX_USER_PROFILE_DIR}/default &> /dev/null
     fi 
 
     # Create home directory PROFILE if needed
     if [ ! -e  ${NIX_PROFILE} ]; then
         echo "creating $NIX_PROFILE" >&2 
-        ln -s ${NIX_USER_PROFILE_DIR}/default ${NIX_PROFILE}
+        ln -s ${NIX_USER_PROFILE_DIR}/default ${NIX_PROFILE} &> /dev/null
     fi
 
 }
