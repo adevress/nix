@@ -147,7 +147,10 @@ AC_MSG_RESULT(yes)
 AC_MSG_CHECKING([for the Perl installation prefix])
 perlversion=$($perl -e 'use Config; print $Config{version};')
 perlarchname=$($perl -e 'use Config; print $Config{archname};')
-AC_SUBST(perllibdir, [${libdir}/perl5/site_perl/$perlversion/$perlarchname])
+AC_ARG_WITH(perl-libdir, AC_HELP_STRING([--with-perl-libdir=PATH],
+  [install path of the perl module]),
+  perllibdir=$withval, perllibdir="${libdir}/perl5/site_perl/$perlversion/$perlarchname")
+AC_SUBST(perllibdir)
 AC_MSG_RESULT($perllibdir)
 
 
