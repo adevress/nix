@@ -5,5 +5,6 @@ RequiresMountsFor=@localstatedir@
 ConditionPathIsReadWrite=@localstatedir@/nix/daemon-socket
 
 [Service]
+User=nix-daemon
 ExecStart=@@bindir@/nix-daemon nix-daemon --daemon
 KillMode=process

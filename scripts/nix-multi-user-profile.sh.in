@@ -1,0 +1,137 @@
+##
+# Nix multi-user initialization script
+# setup user profile for nix usage
+#
+
+
+
+# do not export environment variable when setup to default value
+# for any override, export these variables
+NIX_DAEMON_USER="nix-daemon"
+NIX_PREFIX="/nix"
+NIX_CONF_DIR="/etc/nix"
+NIX_STORE_DIR="${NIX_PREFIX}/store"
+NIX_STATE_DIR="${NIX_PREFIX}/var"
+NIX_SYSTEM_PROFILE="${NIX_STATE_DIR}/default-profile"
+
+# prefix nix dir with hostname for shared home directory
+NIX_HOME_DIR="${HOME}"
+
+NIX_PROFILE_DIR="${NIX_HOME_DIR}/"
+NIX_PROFILE="${NIX_PROFILE_DIR}/.nix-profile"
+NIX_USER_PROFILE_DIR="${NIX_STATE_DIR}/nix/profiles/per-user/${USER}"
+NIX_USER_GCROOTS_DIR="${NIX_STATE_DIR}/nix/gcroots/per-user/${USER}"
+NIX_CHANNELS="${NIX_HOME_DIR}/.nix-channels"
+NIX_DEFEXPR="${NIX_HOME_DIR}/.nix-defexpr"
+
+
+function create_user_profile {
+
+    mkdir -m 0755 -p ${NIX_USER_PROFILE_DIR}/
+    mkdir -m 0755 -p ${NIX_PROFILE_DIR}/
+
+    if test "$(stat --printf '%u' ${NIX_USER_PROFILE_DIR})" != "$(id -u)"; then
+        echo "WARNING: bad ownership on ${NIX_USER_PROFILE_DIR}, please report to system administrators" >&2
+    fi
+
+    # Create per-user default profile if not existing
+    if [ ! -e ${NIX_USER_PROFILE_DIR}/default ]; then
+	ln -s ${NIX_SYSTEM_PROFILE} ${NIX_USER_PROFILE_DIR}/default
+    fi 
+
+    # Create home directory PROFILE if needed
+    if [ ! -e  ${NIX_PROFILE} ]; then
+        echo "creating $NIX_PROFILE" >&2 
+        ln -s ${NIX_USER_PROFILE_DIR}/default ${NIX_PROFILE}
+    fi
+
+}
+
+
+function create_user_collector {
+
+    # Create the per-user garbage collector roots directory.
+    NIX_USER_GCROOTS_DIR=${NIX_STATE_DIR}/nix/gcroots/per-user/${USER}
+    
+    mkdir -m 0755 -p ${NIX_USER_GCROOTS_DIR}
+    if test "$(stat --printf '%u' ${NIX_USER_GCROOTS_DIR})" != "$(id -u)"; then
+        echo "WARNING: bad ownership on $NIX_USER_GCROOTS_DIR" >&2
+    fi
+
+}
+
+function create_user_channels {
+    # Subscribe the root user to the NixOS channel by default.
+    NIX_DEFAULT_CHANNEL_LIST="${NIX_CONF_DIR}/user-channels.list"
+    
+    if [ ! -e ${NIX_CHANNELS} ] && [ -e ${NIX_DEFAULT_CHANNEL_LIST} ]; then
+        cp ${NIX_DEFAULT_CHANNEL_LIST} ${NIX_CHANNELS}
+    fi
+
+}
+
+
+function create_user_default_expr {
+    NIX_DAEMON_DEFEXPR="${NIX_STATE_DIR}/nix/profiles/per-user/${NIX_DAEMON_USER}"
+    
+    # Set up a default Nix expression 
+    if [ ! -e ${NIX_DEFEXPR} -o -L ${NIX_DEFEXPR} ]; then
+        echo "creating ${NIX_DEFEXPR}" >&2;
+        rm -f ${NIX_DEFEXPR};
+        mkdir ${NIX_DEFEXPR};
+        if [ -f ${NIX_DAEMON_DEFEXPR} ]; then
+            ln -s ${NIX_DAEMON_DEFEXPR} ${NIX_DEFEXPR}/channels_daemon
+        fi
+    fi  
+
+}
+
+function setup_user_environment {
+    
+    # export PATH for binary access
+    NIX_PROFILES_LIST="${NIX_STATE_DIR}/nix/profiles/default ${NIX_PROFILE}"
+    for i in ${NIX_PROFILES_LIST}; do
+        # setup PATH
+        export PATH=$i/bin:$PATH
+    
+        # setup MANPATH
+        if ! [[ $MANPATH =~ (^|:)$NIX_LINK/share/man($|:) ]]; then
+            export MANPATH=$NIX_LINK/share/man${MANPATH:+:$MANPATH}
+        fi 
+    done
+    
+    # forward OS SSL ca bundle so that Nixpkgs applications have SSL support
+    if [ -e /etc/ssl/certs/ca-certificates.crt ]; then # NixOS, Ubuntu, Debian, Gentoo, Arch
+        export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+    elif [ -e /etc/ssl/ca-bundle.pem ]; then # openSUSE Tumbleweed
+        export SSL_CERT_FILE=/etc/ssl/ca-bundle.pem
+    elif [ -e /etc/ssl/certs/ca-bundle.crt ]; then # Old NixOS
+        export SSL_CERT_FILE=/etc/ssl/certs/ca-bundle.crt
+    elif [ -e /etc/pki/tls/certs/ca-bundle.crt ]; then # Fedora, CentOS
+        export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
+    elif [ -e "${NIX_PREFIX}/etc/ssl/certs/ca-bundle.crt" ]; then # fall back to cacert in Nix profile
+        export SSL_CERT_FILE="${NIX_PREFIX}/etc/ssl/certs/ca-bundle.crt"
+    fi    
+    
+}
+    
+
+function export_nix_daemon_vars {
+    export NIX_REMOTE=daemon
+}
+
+
+
+if [ -n "$HOME" ] && [ -d "$HOME" ] && [ "$EUID" != "0" ]; then
+
+	create_user_profile
+	create_user_collector
+	create_user_channels
+
+	#let the user choose their own expressions
+	#create_user_default_expr
+
+	# finally setup user environment and daemon
+	setup_user_environment
+	export_nix_daemon_vars	
+fi
