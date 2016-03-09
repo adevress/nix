@@ -1,4 +1,4 @@
-XSLTPROC = $(xsltproc) --nonet $(xmlflags) \
+XSLTPROC = $(xsltproc)  $(xmlflags) \
   --param section.autolabel 1 \
   --param section.label.includes.component.label 1 \
   --param html.stylesheet \'style.css\' \
@@ -18,7 +18,7 @@ MANUAL_SRCS := $(call rwildcard, $(d), *.xml)
 
 # Do XInclude processing / RelaxNG validation
 $(d)/manual.xmli: $(d)/manual.xml $(MANUAL_SRCS) $(d)/version.txt
-	$(trace-gen) $(xmllint) --nonet --xinclude $< -o $@.tmp
+	$(trace-gen) $(xmllint) --xinclude $< -o $@.tmp
 	@mv $@.tmp $@
 
 $(d)/version.txt:
@@ -28,7 +28,7 @@ $(d)/version.txt:
 $(d)/manual.is-valid: $(d)/manual.xmli
 	$(trace-gen) $(XSLTPROC) --novalid --stringparam profile.condition manual \
 	  $(docbookxsl)/profiling/profile.xsl $< 2> /dev/null | \
-	  $(xmllint) --nonet --noout --relaxng $(docbookrng) -
+	  $(xmllint) --noout --relaxng $(docbookrng) -
 	@touch $@
 
 clean-files += $(d)/manual.xmli $(d)/version.txt $(d)/manual.is-valid
