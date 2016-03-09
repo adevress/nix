@@ -19,8 +19,8 @@ nix_noinst_scripts := \
   $(d)/find-runtime-roots.pl \
   $(d)/resolve-system-dependencies.pl \
   $(d)/nix-http-export.cgi \
+  $(d)/nix-multi-user-profile.sh \
   $(d)/nix-profile.sh \
-  $(d)/nix-multi-user-profile.sh.in \
   $(d)/nix-reduce-build \
   $(nix_substituters)
 
