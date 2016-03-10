@@ -36,7 +36,7 @@ function create_user_profile {
 
     # Create per-user default profile if not existing
     if [ ! -e ${NIX_USER_PROFILE_DIR}/default ]; then
-	ln-s ${NIX_SYSTEM_PROFILE} ${NIX_USER_PROFILE_DIR}/default &> /dev/null
+	ln -s ${NIX_SYSTEM_PROFILE} ${NIX_USER_PROFILE_DIR}/default &> /dev/null
     fi 
 
     # Create home directory PROFILE if needed
@@ -65,7 +65,7 @@ function create_user_channels {
     NIX_DEFAULT_CHANNEL_LIST="${NIX_CONF_DIR}/user-channels.list"
     
     if [ ! -e ${NIX_CHANNELS} ] && [ -e ${NIX_DEFAULT_CHANNEL_LIST} ]; then
-        cp ${NIX_DEFAULT_CHANNEL_LIST} ${NIX_CHANNELS}
+        cp ${NIX_DEFAULT_CHANNEL_LIST} ${NIX_CHANNELS} &> /dev/null
     fi
 
 }
