@@ -1,9 +1,14 @@
 # unversionned doc dir F20 change https://fedoraproject.org/wiki/Changes/UnversionedDocdirs
 %{!?_pkgdocdir: %global _pkgdocdir %{_docdir}/%{name}-%{version}}
 
+%global nix_daemon_user nix-daemon
+%global nix_daemon_uid  601
+
+%global nix_admins_grp nix-admins
+
 Name:				nix
 Version:			1.11.2
-Release:			2%{?dist}
+Release:			3%{?dist}
 Summary:			Nix package manager
 Group:				Applications/Internet
 License:			LGPLv3
@@ -163,8 +168,8 @@ mkdir -m 0777 -p %{buildroot}/nix/var/nix/gcroots/per-user
 mkdir -p %{buildroot}/nix/var/nix/empty
 
 %pre daemon
-useradd --system nix-daemon &> /dev/null || true
-groupadd --system nix-admins &> /dev/null || true
+useradd --system %{nix_daemon_user} %{!?nix_daemon_uid: --uid %{nix_daemon_uid} } || true
+groupadd --system %{nix_admins_grp} &> /dev/null || true
 
 %post libs -p /sbin/ldconfig
 
@@ -220,9 +225,9 @@ fi
 %{_mandir}/man5/*.5*
 %{_mandir}/man8/*.8*
 %config(noreplace) %{_sysconfdir}/*
-%attr(-, nix-daemon, nix-daemon) /nix
-%attr(0777, nix-daemon, nix-daemon) /nix/var/nix/profiles/per-user
-%attr(0777, nix-daemon, nix-daemon) /nix/var/nix/gcroots/per-user
+%attr(-, %{nix_daemon_user}, %{nix_daemon_user}) /nix
+%attr(0777, %{nix_daemon_user}, %{nix_daemon_user}) /nix/var/nix/profiles/per-user
+%attr(0777, %{nix_daemon_user}, %{nix_daemon_user}) /nix/var/nix/gcroots/per-user
 
 
 %if 0%{?el6}
@@ -243,7 +248,10 @@ fi
 
 
 %changelog
-* Thu Mar 10 2016 Adrien Devresse <adevress at cern.ch> - 1.11-2.2
+* Thu Mar 10 2016 Adrien Devresse <adevress at epfl.ch> - 1.11.2-3
+ - add static uid for nix-daemon, 601 by default
+
+* Thu Mar 10 2016 Adrien Devresse <adevress at epfl.ch> - 1.11-2.2
  - add nix-admins group by default
 
 * Wed Mar 09 2016 Adrien Devresse <adevress at epfl.ch> - 1.11.2-1
