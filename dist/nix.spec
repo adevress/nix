@@ -3,7 +3,7 @@
 
 Name:				nix
 Version:			1.11.2
-Release:			1%{?dist}
+Release:			2%{?dist}
 Summary:			Nix package manager
 Group:				Applications/Internet
 License:			LGPLv3
@@ -164,6 +164,7 @@ mkdir -p %{buildroot}/nix/var/nix/empty
 
 %pre daemon
 useradd --system nix-daemon &> /dev/null || true
+groupadd --system nix-admins &> /dev/null || true
 
 %post libs -p /sbin/ldconfig
 
@@ -218,7 +219,7 @@ fi
 %{_bindir}/nix-daemon
 %{_mandir}/man5/*.5*
 %{_mandir}/man8/*.8*
-%{_sysconfdir}/*
+%config(noreplace) %{_sysconfdir}/*
 %attr(-, nix-daemon, nix-daemon) /nix
 %attr(0777, nix-daemon, nix-daemon) /nix/var/nix/profiles/per-user
 %attr(0777, nix-daemon, nix-daemon) /nix/var/nix/gcroots/per-user
@@ -242,6 +243,9 @@ fi
 
 
 %changelog
+* Thu Mar 10 2016 Adrien Devresse <adevress at cern.ch> - 1.11-2.2
+ - add nix-admins group by default
+
 * Wed Mar 09 2016 Adrien Devresse <adevress at epfl.ch> - 1.11.2-1
  - Initial version
  - enhanced packaging adapted to multi-user usage as side packager
@@ -251,3 +255,4 @@ fi
  - support improved for systemd
  - reconfigure perl module directory for Fedora/RHEL conformance
  - support admin level configuration for channels
+
