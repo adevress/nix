@@ -8,7 +8,7 @@
 
 Name:				nix
 Version:			1.11.2
-Release:			3%{?dist}
+Release:			4%{?dist}
 Summary:			Nix package manager
 Group:				Applications/Internet
 License:			LGPLv3
@@ -66,6 +66,7 @@ Libraries for %{name}
 %package doc
 Summary:                        Documentation for %{name}
 Group:                          Applications/Internet
+BuildArch:			noarch
 
 %description doc
 Documentation for %{name}
@@ -80,6 +81,7 @@ Requires:			pkgconfig
 %description devel
 Development files for %{name}
 
+
 %package daemon
 Summary:                        Multi-user daemon for %{name}
 Group:                          Applications/Internet
@@ -87,17 +89,39 @@ Requires:                       %{name}%{?_isa} = %{version}-%{release}
 Requires(pre):			shadow-utils
 
 %description daemon
-Multi-user daemon and configuration for %{name}
+Multi-user daemon for %{name}
+
 
 %package -n emacs-nix
 Summary:                        Emacs add-on package for nix
 Group:                          Applications/Internet
 BuildArch: noarch
 
-
 %description -n emacs-nix
 Emacs add-on package for nix
 
+
+%package single-user-config
+Summary:                        single user configuration for %{name}
+Group:                          Applications/Internet
+Requires:                       %{name} = %{version}-%{release}
+Conflicts:			%{name}-multi-user-config
+Conflicts:			%{name}-daemon 
+BuildArch: noarch
+
+%description single-user-config
+single user configuration for %{name}
+
+
+%package multi-user-config
+Summary:                        multi user configuration for %{name}
+Group:                          Applications/Internet
+Requires:                       %{name}-daemon = %{version}-%{release}
+Conflicts:			%{name}-single-user-config
+BuildArch: noarch
+
+%description multi-user-config
+multi user configuration for %{name}
 
 
 %clean
@@ -137,7 +161,6 @@ install -m 0755 -D misc/conf/nix.conf %{buildroot}/%{_sysconfdir}/nix/nix.conf
  
 ## remove upstart file 
 rm %{buildroot}/%{_sysconfdir}/init/nix-daemon.conf
-rm %{buildroot}/%{_sysconfdir}/profile.d/nix.sh
 
 ## remove the systemd files in case of RHEL6
 ## and install systemv files
@@ -168,8 +191,8 @@ mkdir -m 0777 -p %{buildroot}/nix/var/nix/gcroots/per-user
 mkdir -p %{buildroot}/nix/var/nix/empty
 
 %pre daemon
-useradd --system %{nix_daemon_user} %{!?nix_daemon_uid: --uid %{nix_daemon_uid} } || true
-groupadd --system %{nix_admins_grp} &> /dev/null || true
+useradd --system %{?nix_daemon_uid: --uid %{nix_daemon_uid} } %{nix_daemon_user} || true
+groupadd --system %{nix_admins_grp}  || true
 
 %post libs -p /sbin/ldconfig
 
@@ -224,10 +247,17 @@ fi
 %{_bindir}/nix-daemon
 %{_mandir}/man5/*.5*
 %{_mandir}/man8/*.8*
-%config(noreplace) %{_sysconfdir}/*
-%attr(-, %{nix_daemon_user}, %{nix_daemon_user}) /nix
+%config(noreplace) %{_sysconfdir}/nix/*
+%config(noreplace) %{_sysconfdir}/sysconfig/*
 %attr(0777, %{nix_daemon_user}, %{nix_daemon_user}) /nix/var/nix/profiles/per-user
 %attr(0777, %{nix_daemon_user}, %{nix_daemon_user}) /nix/var/nix/gcroots/per-user
+%attr(-, %{nix_daemon_user}, %{nix_daemon_user}) /nix
+
+%files single-user-config
+%config(noreplace) %{_sysconfdir}/profile.d/nix.sh
+
+%files multi-user-config
+%config(noreplace) %{_sysconfdir}/profile.d/nix-multi-user-profile.sh
 
 
 %if 0%{?el6}
@@ -248,6 +278,10 @@ fi
 
 
 %changelog
+* Fri Mar 11 2016 Adrien Devresse <adevress at cern.ch> - 1.11.2-4
+ - Separate single user and multi user configuration
+ - fix issue with nix-daemon uid setup
+
 * Thu Mar 10 2016 Adrien Devresse <adevress at epfl.ch> - 1.11.2-3
  - add static uid for nix-daemon, 601 by default
 
@@ -263,4 +297,6 @@ fi
  - support improved for systemd
  - reconfigure perl module directory for Fedora/RHEL conformance
  - support admin level configuration for channels
+
+
 
