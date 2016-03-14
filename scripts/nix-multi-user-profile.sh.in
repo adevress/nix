@@ -27,8 +27,8 @@ NIX_DEFEXPR="${NIX_HOME_DIR}/.nix-defexpr"
 
 function create_user_profile {
 
-    mkdir -m 0755 -p ${NIX_USER_PROFILE_DIR}/
-    mkdir -m 0755 -p ${NIX_PROFILE_DIR}/
+    mkdir -m 0755 -p ${NIX_USER_PROFILE_DIR}/ &> /dev/null
+    mkdir -m 0755 -p ${NIX_PROFILE_DIR}/ &> /dev/null
 
     if test "$(stat --printf '%u' ${NIX_USER_PROFILE_DIR})" != "$(id -u)"; then
         echo "WARNING: bad ownership on ${NIX_USER_PROFILE_DIR}, please report to system administrators" >&2
@@ -53,7 +53,7 @@ function create_user_collector {
     # Create the per-user garbage collector roots directory.
     NIX_USER_GCROOTS_DIR=${NIX_STATE_DIR}/nix/gcroots/per-user/${USER}
     
-    mkdir -m 0755 -p ${NIX_USER_GCROOTS_DIR}
+    mkdir -m 0755 -p ${NIX_USER_GCROOTS_DIR} &> /dev/null
     if test "$(stat --printf '%u' ${NIX_USER_GCROOTS_DIR})" != "$(id -u)"; then
         echo "WARNING: bad ownership on $NIX_USER_GCROOTS_DIR" >&2
     fi

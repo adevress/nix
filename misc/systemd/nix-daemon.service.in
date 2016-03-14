@@ -6,3 +6,6 @@ User=nix-daemon
 EnvironmentFile=/etc/sysconfig/nix-daemon
 ExecStart=@@bindir@/nix-daemon nix-daemon --daemon
 KillMode=process
+
+[Install]
+WantedBy=multi-user.target 
