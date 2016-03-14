@@ -1,4 +1,4 @@
-if [ -n "$HOME" ]; then
+if [ -n "$HOME" ] && [ -d "$HOME" ] && [ "$EUID" != "0" ]; then
     NIX_LINK="$HOME/.nix-profile"
 
     # Set the default profile.

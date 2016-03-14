@@ -253,19 +253,18 @@ fi
 %attr(0777, %{nix_daemon_user}, %{nix_daemon_user}) /nix/var/nix/gcroots/per-user
 %attr(-, %{nix_daemon_user}, %{nix_daemon_user}) /nix
 
-%files single-user-config
-%config(noreplace) %{_sysconfdir}/profile.d/nix.sh
-
-%files multi-user-config
-%config(noreplace) %{_sysconfdir}/profile.d/nix-multi-user-profile.sh
-
-
 %if 0%{?el6}
 %{_sysconfdir}/init.d/*
 %else
 ## unit file are useless under RHEL6
 %{_unitdir}/*
 %endif
+
+%files single-user-config
+%config(noreplace) %{_sysconfdir}/profile.d/nix.sh
+
+%files multi-user-config
+%config(noreplace) %{_sysconfdir}/profile.d/nix-multi-user-profile.sh
 
 %files -n emacs-nix
 %defattr (-,root,root)
