@@ -59,7 +59,7 @@ Unix systems that makes package management reliable and reproducible
 %package libs
 Summary:			Libraries for %{name}
 Group:				Applications/Internet
-Requires:			perl-WWW-Curl >= 4.17
+Requires:			perl-WWW-Curl >= 4.15
 
 %description libs
 Libraries for %{name}
