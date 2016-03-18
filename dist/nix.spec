@@ -50,6 +50,7 @@ BuildRequires:			devtoolset-3-binutils
 BuildRequires:			devtoolset-3-gcc-c++
 %endif
 
+
 %description
 Nix is a powerful package manager for Linux and other 
 Unix systems that makes package management reliable and reproducible
@@ -58,6 +59,7 @@ Unix systems that makes package management reliable and reproducible
 %package libs
 Summary:			Libraries for %{name}
 Group:				Applications/Internet
+Requires:			perl-WWW-Curl >= 4.17
 
 %description libs
 Libraries for %{name}
@@ -166,15 +168,15 @@ rm %{buildroot}/%{_sysconfdir}/init/nix-daemon.conf
 ## and install systemv files
 %if 0%{?el6}
 rm -rf %{buildroot}/usr/lib/systemd
-install -m 0755 -D misc/systemv/nix-daemon /etc/init.d/nix-daemon
+install -m 0755 -D misc/systemv/nix-daemon %{buildroot}/%{_sysconfdir}/init.d/nix-daemon
 %else
 rm -rf %{buildroot}/%{_unitdir}/nix-daemon.socket*
 %endif
 
 ## install nix config in daemon mode
 ##
-install -m 0755 -D misc/conf/nix.conf %{buildroot}/etc/nix/nix.conf
-install -m 0755 -D misc/conf/user-channels.list %{buildroot}/etc/nix/user-channels.list
+install -m 0755 -D misc/conf/nix.conf %{buildroot}/%{_sysconfdir}/nix/nix.conf
+install -m 0755 -D misc/conf/user-channels.list %{buildroot}/%{_sysconfdir}/nix/user-channels.list
 
 ## sysconfig
 mkdir -p %{buildroot}/etc/sysconfig
