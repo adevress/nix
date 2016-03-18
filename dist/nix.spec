@@ -8,7 +8,7 @@
 
 Name:				nix
 Version:			1.11.2
-Release:			4%{?dist}
+Release:			6%{?dist}
 Summary:			Nix package manager
 Group:				Applications/Internet
 License:			LGPLv3
@@ -277,6 +277,13 @@ fi
 
 
 %changelog
+* Mon Mar 14 2016 Adrien Devresse <adevress at cern.ch> - 1.11.2-6
+ - Minor fix in profile and systemd scripts 
+
+* Fri Mar 11 2016 Adrien Devresse <adevress at cern.ch> - 1.11.2-5
+ - Empty default channel definitions
+ - move systemd file back to daemon
+
 * Fri Mar 11 2016 Adrien Devresse <adevress at cern.ch> - 1.11.2-4
  - Separate single user and multi user configuration
  - fix issue with nix-daemon uid setup
