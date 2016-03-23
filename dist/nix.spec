@@ -88,6 +88,9 @@ Development files for %{name}
 Summary:                        Multi-user daemon for %{name}
 Group:                          Applications/Internet
 Requires:                       %{name}%{?_isa} = %{version}-%{release}
+%if 0%{?el6}
+Requires:			daemonize
+%endif		
 Requires(pre):			shadow-utils
 
 %description daemon
