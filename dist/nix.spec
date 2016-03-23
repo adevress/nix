@@ -8,7 +8,7 @@
 
 Name:				nix
 Version:			1.11.2
-Release:			6%{?dist}
+Release:			7%{?dist}
 Summary:			Nix package manager
 Group:				Applications/Internet
 License:			LGPLv3
@@ -282,6 +282,9 @@ fi
 
 
 %changelog
+* Wed Mar 23 2016 Adrien Devresse <adevress at cern.ch> - 1.11.2-7
+ - Update nix-daemon script for systemV on rhel6
+
 * Mon Mar 14 2016 Adrien Devresse <adevress at cern.ch> - 1.11.2-6
  - Minor fix in profile and systemd scripts 
 
