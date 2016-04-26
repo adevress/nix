@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Nix Package Manager Guide</title><link rel="stylesheet" type="text/css" href="style.css" /><meta name="generator" content="DocBook XSL-NS Stylesheets V1.78.1" /></head><body><div class="book"><div class="titlepage"><div><div><h1 class="title"><a id="idm47706445601760"></a>Nix Package Manager Guide</h1></div><div><h2 class="subtitle">Version 1.12</h2></div><div><div class="author"><h3 class="author"><span class="firstname">Eelco</span> <span class="surname">Dolstra</span></h3><div class="affiliation"><span class="orgname">LogicBlox<br /></span></div></div></div><div><p class="copyright">Copyright © 2004-2014 Eelco Dolstra</p></div></div><hr /></div><div class="toc"><dl class="toc"><dt><span class="part"><a href="#chap-introduction">I. Introduction</a></span></dt><dd><dl><dt><span class="chapter"><a href="#ch-about-nix">1. About Nix</a></span></dt><dt><span class="chapter"><a href="#chap-quick-start">2. Quick Start</a></span></dt></dl></dd><dt><span class="part"><a href="#chap-installation">II. Installation</a></span></dt><dd><dl><dt><span class="chapter"><a href="#ch-supported-platforms">3. Supported Platforms</a></span></dt><dt><span class="chapter"><a href="#ch-installing-binary">4. Installing a Binary Distribution</a></span></dt><dt><span class="chapter"><a href="#ch-installing-source">5. Installing Nix from Source</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-prerequisites-source">5.1. Prerequisites</a></span></dt><dt><span class="section"><a href="#sec-obtaining-source">5.2. Obtaining a Source Distribution</a></span></dt><dt><span class="section"><a href="#sec-building-source">5.3. Building Nix from Source</a></span></dt></dl></dd><dt><span class="chapter"><a href="#ch-nix-security">6. Security</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-single-user">6.1. Single-User Mode</a></span></dt><dt><span class="section"><a href="#ssec-multi-user">6.2. Multi-User Mode</a></span></dt></dl></dd><dt><span class="chapter"><a href="#ch-env-variables">7. Environment Variables</a></span></dt></dl></dd><dt><span class="part"><a href="#chap-package-management">III. Package Management</a></span></dt><dd><dl><dt><span class="chapter"><a href="#ch-basic-package-mgmt">8. Basic Package Management</a></span></dt><dt><span class="chapter"><a href="#sec-profiles">9. Profiles</a></span></dt><dt><span class="chapter"><a href="#sec-garbage-collection">10. Garbage Collection</a></span></dt><dd><dl><dt><span class="section"><a href="#ssec-gc-roots">10.1. Garbage Collector Roots</a></span></dt></dl></dd><dt><span class="chapter"><a href="#sec-channels">11. Channels</a></span></dt><dt><span class="chapter"><a href="#sec-one-click">12. One-Click Installation</a></span></dt><dt><span class="chapter"><a href="#sec-sharing-packages">13. Sharing Packages Between Machines</a></span></dt><dd><dl><dt><span class="section"><a href="#ssec-binary-cache-substituter">13.1. Serving a Nix store via HTTP</a></span></dt><dt><span class="section"><a href="#ssec-copy-closure">13.2. Copying Closures Via SSH</a></span></dt><dt><span class="section"><a href="#ssec-ssh-substituter">13.3. Serving a Nix store via SSH</a></span></dt></dl></dd></dl></dd><dt><span class="part"><a href="#chap-writing-nix-expressions">IV. Writing Nix Expressions</a></span></dt><dd><dl><dt><span class="chapter"><a href="#ch-simple-expression">14. A Simple Nix Expression</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-expression-syntax">14.1. Expression Syntax</a></span></dt><dt><span class="section"><a href="#sec-build-script">14.2. Build Script</a></span></dt><dt><span class="section"><a href="#sec-arguments">14.3. Arguments and Variables</a></span></dt><dt><span class="section"><a href="#sec-building-simple">14.4. Building and Testing</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-debug-build">14.4.1. Debugging Build Failures</a></span></dt></dl></dd><dt><span class="section"><a href="#sec-generic-builder">14.5. Generic Builder Syntax</a></span></dt></dl></dd><dt><span class="chapter"><a href="#ch-expression-language">15. Nix Expression Language</a></span></dt><dd><dl><dt><span class="section"><a href="#ssec-values">15.1. Values</a></span></dt><dt><span class="section"><a href="#sec-constructs">15.2. Language Constructs</a></span></dt><dt><span class="section"><a href="#sec-language-operators">15.3. Operators</a></span></dt><dt><span class="section"><a href="#ssec-derivation">15.4. Derivations</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-advanced-attributes">15.4.1. Advanced Attributes</a></span></dt></dl></dd><dt><span class="section"><a href="#ssec-builtins">15.5. Built-in Functions</a></span></dt></dl></dd></dl></dd><dt><span class="part"><a href="#idm47706418645584">V. Advanced Topics</a></span></dt><dd><dl><dt><span class="chapter"><a href="#chap-distributed-builds">16. Distributed Builds</a></span></dt></dl></dd><dt><span class="part"><a href="#part-command-ref">VI. Command Reference</a></span></dt><dd><dl><dt><span class="chapter"><a href="#sec-common-options">17. Common Options</a></span></dt><dt><span class="chapter"><a href="#sec-common-env">18. Common Environment Variables</a></span></dt><dt><span class="chapter"><a href="#ch-main-commands">19. Main Commands</a></span></dt><dd><dl><dt><span class="refentrytitle"><a href="#sec-nix-env">nix-env</a></span><span class="refpurpose"> — manipulate or query Nix user environments</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-build">nix-build</a></span><span class="refpurpose"> — build a Nix expression</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-shell">nix-shell</a></span><span class="refpurpose"> — start an interactive shell based on a Nix expression</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-store">nix-store</a></span><span class="refpurpose"> — manipulate or query the Nix store</span></dt></dl></dd><dt><span class="chapter"><a href="#ch-utilities">20. Utilities</a></span></dt><dd><dl><dt><span class="refentrytitle"><a href="#sec-nix-channel">nix-channel</a></span><span class="refpurpose"> — manage Nix channels</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-collect-garbage">nix-collect-garbage</a></span><span class="refpurpose"> — delete unreachable store paths</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-copy-closure">nix-copy-closure</a></span><span class="refpurpose"> — copy a closure to or from a remote machine via SSH</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-daemon">nix-daemon</a></span><span class="refpurpose"> — Nix multi-user support daemon</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-hash">nix-hash</a></span><span class="refpurpose"> — compute the cryptographic hash of a path</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-install-package">nix-install-package</a></span><span class="refpurpose"> — install a Nix Package file</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-instantiate">nix-instantiate</a></span><span class="refpurpose"> — instantiate store derivations from Nix expressions</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-prefetch-url">nix-prefetch-url</a></span><span class="refpurpose"> — copy a file from a URL into the store and print its hash</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-pull">nix-pull</a></span><span class="refpurpose"> — register availability of pre-built binaries (deprecated)</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-push">nix-push</a></span><span class="refpurpose"> — generate a binary cache</span></dt></dl></dd><dt><span class="chapter"><a href="#ch-files">21. Files</a></span></dt><dd><dl><dt><span class="refentrytitle"><a href="#sec-conf-file">nix.conf</a></span><span class="refpurpose"> — Nix configuration file</span></dt></dl></dd></dl></dd><dt><span class="appendix"><a href="#ch-troubleshooting">A. Troubleshooting</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-collisions-nixenv">A.1. Collisions in <span class="command"><strong>nix-env</strong></span></a></span></dt><dt><span class="section"><a href="#sec-links-nix-store">A.2. <span class="quote">“<span class="quote">Too many links</span>”</span> Error in the Nix store</a></span></dt></dl></dd><dt><span class="appendix"><a href="#idm47706416979056">B. Glossary</a></span></dt><dt><span class="appendix"><a href="#chap-hacking">C. Hacking</a></span></dt><dt><span class="appendix"><a href="#sec-relnotes">D. Nix Release Notes</a></span></dt><dd><dl><dt><span class="section"><a href="#ssec-relnotes-1.12">D.1. Release 1.12 (TBA)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.11">D.2. Release 1.11 (2016-01-19)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.10">D.3. Release 1.10 (2015-09-03)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.9">D.4. Release 1.9 (2015-06-12)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.8">D.5. Release 1.8 (2014-12-14)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.7">D.6. Release 1.7 (2014-04-11)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.6.1">D.7. Release 1.6.1 (2013-10-28)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.6.0">D.8. Release 1.6 (2013-09-10)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.5.2">D.9. Release 1.5.2 (2013-05-13)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.5">D.10. Release 1.5 (2013-02-27)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.4">D.11. Release 1.4 (2013-02-26)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.3">D.12. Release 1.3 (2013-01-04)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.2">D.13. Release 1.2 (2012-12-06)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.1">D.14. Release 1.1 (2012-07-18)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.0">D.15. Release 1.0 (2012-05-11)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-0.16">D.16. Release 0.16 (2010-08-17)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-0.15">D.17. Release 0.15 (2010-03-17)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-0.14">D.18. Release 0.14 (2010-02-04)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-0.13">D.19. Release 0.13 (2009-11-05)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-0.12">D.20. Release 0.12 (2008-11-20)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-0.11">D.21. Release 0.11 (2007-12-31)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.10.1">D.22. Release 0.10.1 (2006-10-11)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.10">D.23. Release 0.10 (2006-10-06)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.9.2">D.24. Release 0.9.2 (2005-09-21)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.9.1">D.25. Release 0.9.1 (2005-09-20)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.9">D.26. Release 0.9 (2005-09-16)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.8.1">D.27. Release 0.8.1 (2005-04-13)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.8">D.28. Release 0.8 (2005-04-11)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.7">D.29. Release 0.7 (2005-01-12)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.6">D.30. Release 0.6 (2004-11-14)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.5">D.31. Release 0.5 and earlier</a></span></dt></dl></dd></dl></div><div class="part"><div class="titlepage"><div><div><h1 class="title"><a id="chap-introduction"></a>Part I. Introduction</h1></div></div></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="ch-about-nix"></a>Chapter 1. About Nix</h2></div></div></div><p>Nix is a <span class="emphasis"><em>purely functional package manager</em></span>.
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Nix Package Manager Guide</title><link rel="stylesheet" type="text/css" href="style.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.78.1" /></head><body><div class="book"><div class="titlepage"><div><div><h1 class="title"><a id="idm6144848"></a>Nix Package Manager Guide</h1></div><div><h2 class="subtitle">Version 1.12</h2></div><div><div class="author"><h3 class="author"><span class="firstname">Eelco</span> <span class="surname">Dolstra</span></h3><div class="affiliation"><span class="orgname">LogicBlox<br /></span></div></div></div><div><p class="copyright">Copyright © 2004-2014 Eelco Dolstra</p></div></div><hr /></div><div class="toc"><dl class="toc"><dt><span class="part"><a href="#chap-introduction">I. Introduction</a></span></dt><dd><dl><dt><span class="chapter"><a href="#ch-about-nix">1. About Nix</a></span></dt><dt><span class="chapter"><a href="#chap-quick-start">2. Quick Start</a></span></dt></dl></dd><dt><span class="part"><a href="#chap-installation">II. Installation</a></span></dt><dd><dl><dt><span class="chapter"><a href="#ch-supported-platforms">3. Supported Platforms</a></span></dt><dt><span class="chapter"><a href="#ch-installing-binary">4. Installing a Binary Distribution</a></span></dt><dt><span class="chapter"><a href="#ch-installing-source">5. Installing Nix from Source</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-prerequisites-source">5.1. Prerequisites</a></span></dt><dt><span class="section"><a href="#sec-obtaining-source">5.2. Obtaining a Source Distribution</a></span></dt><dt><span class="section"><a href="#sec-building-source">5.3. Building Nix from Source</a></span></dt></dl></dd><dt><span class="chapter"><a href="#ch-nix-security">6. Security</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-single-user">6.1. Single-User Mode</a></span></dt><dt><span class="section"><a href="#ssec-multi-user">6.2. Multi-User Mode</a></span></dt></dl></dd><dt><span class="chapter"><a href="#ch-env-variables">7. Environment Variables</a></span></dt></dl></dd><dt><span class="part"><a href="#chap-package-management">III. Package Management</a></span></dt><dd><dl><dt><span class="chapter"><a href="#ch-basic-package-mgmt">8. Basic Package Management</a></span></dt><dt><span class="chapter"><a href="#sec-profiles">9. Profiles</a></span></dt><dt><span class="chapter"><a href="#sec-garbage-collection">10. Garbage Collection</a></span></dt><dd><dl><dt><span class="section"><a href="#ssec-gc-roots">10.1. Garbage Collector Roots</a></span></dt></dl></dd><dt><span class="chapter"><a href="#sec-channels">11. Channels</a></span></dt><dt><span class="chapter"><a href="#sec-one-click">12. One-Click Installation</a></span></dt><dt><span class="chapter"><a href="#sec-sharing-packages">13. Sharing Packages Between Machines</a></span></dt><dd><dl><dt><span class="section"><a href="#ssec-binary-cache-substituter">13.1. Serving a Nix store via HTTP</a></span></dt><dt><span class="section"><a href="#ssec-copy-closure">13.2. Copying Closures Via SSH</a></span></dt><dt><span class="section"><a href="#ssec-ssh-substituter">13.3. Serving a Nix store via SSH</a></span></dt></dl></dd></dl></dd><dt><span class="part"><a href="#chap-writing-nix-expressions">IV. Writing Nix Expressions</a></span></dt><dd><dl><dt><span class="chapter"><a href="#ch-simple-expression">14. A Simple Nix Expression</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-expression-syntax">14.1. Expression Syntax</a></span></dt><dt><span class="section"><a href="#sec-build-script">14.2. Build Script</a></span></dt><dt><span class="section"><a href="#sec-arguments">14.3. Arguments and Variables</a></span></dt><dt><span class="section"><a href="#sec-building-simple">14.4. Building and Testing</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-debug-build">14.4.1. Debugging Build Failures</a></span></dt></dl></dd><dt><span class="section"><a href="#sec-generic-builder">14.5. Generic Builder Syntax</a></span></dt></dl></dd><dt><span class="chapter"><a href="#ch-expression-language">15. Nix Expression Language</a></span></dt><dd><dl><dt><span class="section"><a href="#ssec-values">15.1. Values</a></span></dt><dt><span class="section"><a href="#sec-constructs">15.2. Language Constructs</a></span></dt><dt><span class="section"><a href="#sec-language-operators">15.3. Operators</a></span></dt><dt><span class="section"><a href="#ssec-derivation">15.4. Derivations</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-advanced-attributes">15.4.1. Advanced Attributes</a></span></dt></dl></dd><dt><span class="section"><a href="#ssec-builtins">15.5. Built-in Functions</a></span></dt></dl></dd></dl></dd><dt><span class="part"><a href="#idp60268688">V. Advanced Topics</a></span></dt><dd><dl><dt><span class="chapter"><a href="#chap-distributed-builds">16. Distributed Builds</a></span></dt></dl></dd><dt><span class="part"><a href="#part-command-ref">VI. Command Reference</a></span></dt><dd><dl><dt><span class="chapter"><a href="#sec-common-options">17. Common Options</a></span></dt><dt><span class="chapter"><a href="#sec-common-env">18. Common Environment Variables</a></span></dt><dt><span class="chapter"><a href="#ch-main-commands">19. Main Commands</a></span></dt><dd><dl><dt><span class="refentrytitle"><a href="#sec-nix-env">nix-env</a></span><span class="refpurpose"> — manipulate or query Nix user environments</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-build">nix-build</a></span><span class="refpurpose"> — build a Nix expression</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-shell">nix-shell</a></span><span class="refpurpose"> — start an interactive shell based on a Nix expression</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-store">nix-store</a></span><span class="refpurpose"> — manipulate or query the Nix store</span></dt></dl></dd><dt><span class="chapter"><a href="#ch-utilities">20. Utilities</a></span></dt><dd><dl><dt><span class="refentrytitle"><a href="#sec-nix-channel">nix-channel</a></span><span class="refpurpose"> — manage Nix channels</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-collect-garbage">nix-collect-garbage</a></span><span class="refpurpose"> — delete unreachable store paths</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-copy-closure">nix-copy-closure</a></span><span class="refpurpose"> — copy a closure to or from a remote machine via SSH</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-daemon">nix-daemon</a></span><span class="refpurpose"> — Nix multi-user support daemon</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-hash">nix-hash</a></span><span class="refpurpose"> — compute the cryptographic hash of a path</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-install-package">nix-install-package</a></span><span class="refpurpose"> — install a Nix Package file</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-instantiate">nix-instantiate</a></span><span class="refpurpose"> — instantiate store derivations from Nix expressions</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-prefetch-url">nix-prefetch-url</a></span><span class="refpurpose"> — copy a file from a URL into the store and print its hash</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-pull">nix-pull</a></span><span class="refpurpose"> — register availability of pre-built binaries (deprecated)</span></dt><dt><span class="refentrytitle"><a href="#sec-nix-push">nix-push</a></span><span class="refpurpose"> — generate a binary cache</span></dt></dl></dd><dt><span class="chapter"><a href="#ch-files">21. Files</a></span></dt><dd><dl><dt><span class="refentrytitle"><a href="#sec-conf-file">nix.conf</a></span><span class="refpurpose"> — Nix configuration file</span></dt></dl></dd></dl></dd><dt><span class="appendix"><a href="#ch-troubleshooting">A. Troubleshooting</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-collisions-nixenv">A.1. Collisions in <span class="command"><strong>nix-env</strong></span></a></span></dt><dt><span class="section"><a href="#sec-links-nix-store">A.2. <span class="quote">“<span class="quote">Too many links</span>”</span> Error in the Nix store</a></span></dt></dl></dd><dt><span class="appendix"><a href="#idp61935472">B. Glossary</a></span></dt><dt><span class="appendix"><a href="#chap-hacking">C. Hacking</a></span></dt><dt><span class="appendix"><a href="#sec-relnotes">D. Nix Release Notes</a></span></dt><dd><dl><dt><span class="section"><a href="#ssec-relnotes-1.12">D.1. Release 1.12 (TBA)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.11">D.2. Release 1.11 (2016-01-19)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.10">D.3. Release 1.10 (2015-09-03)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.9">D.4. Release 1.9 (2015-06-12)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.8">D.5. Release 1.8 (2014-12-14)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.7">D.6. Release 1.7 (2014-04-11)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.6.1">D.7. Release 1.6.1 (2013-10-28)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.6.0">D.8. Release 1.6 (2013-09-10)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.5.2">D.9. Release 1.5.2 (2013-05-13)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.5">D.10. Release 1.5 (2013-02-27)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.4">D.11. Release 1.4 (2013-02-26)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.3">D.12. Release 1.3 (2013-01-04)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.2">D.13. Release 1.2 (2012-12-06)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.1">D.14. Release 1.1 (2012-07-18)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-1.0">D.15. Release 1.0 (2012-05-11)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-0.16">D.16. Release 0.16 (2010-08-17)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-0.15">D.17. Release 0.15 (2010-03-17)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-0.14">D.18. Release 0.14 (2010-02-04)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-0.13">D.19. Release 0.13 (2009-11-05)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-0.12">D.20. Release 0.12 (2008-11-20)</a></span></dt><dt><span class="section"><a href="#ssec-relnotes-0.11">D.21. Release 0.11 (2007-12-31)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.10.1">D.22. Release 0.10.1 (2006-10-11)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.10">D.23. Release 0.10 (2006-10-06)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.9.2">D.24. Release 0.9.2 (2005-09-21)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.9.1">D.25. Release 0.9.1 (2005-09-20)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.9">D.26. Release 0.9 (2005-09-16)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.8.1">D.27. Release 0.8.1 (2005-04-13)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.8">D.28. Release 0.8 (2005-04-11)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.7">D.29. Release 0.7 (2005-01-12)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.6">D.30. Release 0.6 (2004-11-14)</a></span></dt><dt><span class="section"><a href="#ch-relnotes-0.5">D.31. Release 0.5 and earlier</a></span></dt></dl></dd></dl></div><div class="part"><div class="titlepage"><div><div><h1 class="title"><a id="chap-introduction"></a>Part I. Introduction</h1></div></div></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="ch-about-nix"></a>Chapter 1. About Nix</h2></div></div></div><p>Nix is a <span class="emphasis"><em>purely functional package manager</em></span>.
 This means that it treats packages like values in purely functional
 programming languages such as Haskell — they are built by functions
 that don’t have side-effects, and they never change after they have
@@ -15,7 +15,7 @@ subdirectory such as
 where <code class="literal">b6gvzjyb2pg0…</code> is a unique identifier for the
 package that captures all its dependencies (it’s a cryptographic hash
 of the package’s build dependency graph).  This enables many powerful
-features.</p><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm47706419677008"></a>Multiple versions</h2></div></div></div><p>You can have multiple versions or variants of a package
+features.</p><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp59237168"></a>Multiple versions</h2></div></div></div><p>You can have multiple versions or variants of a package
 installed at the same time.  This is especially important when
 different applications have dependencies on different versions of the
 same package — it prevents the “DLL hell”.  Because of the hashing
@@ -23,7 +23,7 @@ scheme, different versions of a package end up in different paths in
 the Nix store, so they don’t interfere with each other.</p><p>An important consequence is that operations like upgrading or
 uninstalling an application cannot break other applications, since
 these operations never “destructively” update or delete files that are
-used by other packages.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm47706419674336"></a>Complete dependencies</h2></div></div></div><p>Nix helps you make sure that package dependency specifications
+used by other packages.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp59239840"></a>Complete dependencies</h2></div></div></div><p>Nix helps you make sure that package dependency specifications
 are complete.  In general, when you’re making a package for a package
 management system like RPM, you have to specify for each package what
 its dependencies are, but there are no guarantees that this
@@ -40,14 +40,14 @@ so if a package builds correctly on your system, this is because you
 specified the dependency explicitly.</p><p>Once a package is built, runtime dependencies are found by
 scanning binaries for the hash parts of Nix store paths (such as
 <code class="literal">r8vvq9kq…</code>).  This sounds risky, but it works
-extremely well.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm47706419669120"></a>Multi-user support</h2></div></div></div><p>Nix has multi-user support.  This means that non-privileged
+extremely well.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp59245056"></a>Multi-user support</h2></div></div></div><p>Nix has multi-user support.  This means that non-privileged
 users can securely install software.  Each user can have a different
 <span class="emphasis"><em>profile</em></span>, a set of packages in the Nix store that
 appear in the user’s <code class="envar">PATH</code>.  If a user installs a
 package that another user has already installed previously, the
 package won’t be built or downloaded a second time.  At the same time,
 it is not possible for one user to inject a Trojan horse into a
-package that might be used by another user.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm47706419666480"></a>Atomic upgrades and rollbacks</h2></div></div></div><p>Since package management operations never overwrite packages in
+package that might be used by another user.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp59247696"></a>Atomic upgrades and rollbacks</h2></div></div></div><p>Since package management operations never overwrite packages in
 the Nix store but just add new versions in different paths, they are
 <span class="emphasis"><em>atomic</em></span>.  So during a package upgrade, there is no
 time window in which the package has some files from the old version
@@ -57,7 +57,7 @@ there after an upgrade.  This means that you can <span class="emphasis"><em>roll
 back</em></span> to the old version:</p><pre class="screen">
 $ nix-env --upgrade <em class="replaceable"><code>some-packages</code></em>
 $ nix-env --rollback
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm47706419662576"></a>Garbage collection</h2></div></div></div><p>When you uninstall a package like this…
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp59251600"></a>Garbage collection</h2></div></div></div><p>When you uninstall a package like this…
 
 </p><pre class="screen">
 $ nix-env --uninstall firefox
@@ -73,7 +73,7 @@ $ nix-collect-garbage
 </pre><p>
 
 This deletes all packages that aren’t in use by any user profile or by
-a currently running program.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm47706419659536"></a>Functional package language</h2></div></div></div><p>Packages are built from <span class="emphasis"><em>Nix expressions</em></span>,
+a currently running program.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp59254640"></a>Functional package language</h2></div></div></div><p>Packages are built from <span class="emphasis"><em>Nix expressions</em></span>,
 which is a simple functional language.  A Nix expression describes
 everything that goes into a package build action (a “derivation”):
 other packages, sources, the build script, environment variables for
@@ -83,7 +83,7 @@ expression twice should yield the same result.</p><p>Because it’s a functional
 building variants of a package: turn the Nix expression into a
 function and call it any number of times with the appropriate
 arguments.  Due to the hashing scheme, variants don’t conflict with
-each other in the Nix store.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm47706419656000"></a>Transparent source/binary deployment</h2></div></div></div><p>Nix expressions generally describe how to build a package from
+each other in the Nix store.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp59258176"></a>Transparent source/binary deployment</h2></div></div></div><p>Nix expressions generally describe how to build a package from
 source, so an installation action like
 
 </p><pre class="screen">
@@ -103,9 +103,9 @@ instance, when asked to build
 Nix would first check if the file
 <code class="uri">https://cache.nixos.org/b6gvzjyb2pg0….narinfo</code> exists, and
 if so, fetch the pre-built binary referenced from there; otherwise, it
-would fall back to building from source.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm47706419651408"></a>Nix Packages collection</h2></div></div></div><p>We provide a large set of Nix expressions containing hundreds of
+would fall back to building from source.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp59262768"></a>Nix Packages collection</h2></div></div></div><p>We provide a large set of Nix expressions containing hundreds of
 existing Unix packages, the <span class="emphasis"><em>Nix Packages
-collection</em></span> (Nixpkgs).</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm47706419649424"></a>Managing build environments</h2></div></div></div><p>Nix is extremely useful for developers as it makes it easy to
+collection</em></span> (Nixpkgs).</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp59264752"></a>Managing build environments</h2></div></div></div><p>Nix is extremely useful for developers as it makes it easy to
 automatically set up the build environment for a package. Given a
 Nix expression that describes the dependencies of your package, the
 command <span class="command"><strong>nix-shell</strong></span> will build or download those
@@ -122,13 +122,13 @@ the package:</p><pre class="screen">
 [nix-shell]$ ./configure
 [nix-shell]$ make
 [nix-shell]$ ./pan/gui/pan
-</pre></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm47706419643936"></a>Portability</h2></div></div></div><p>Nix runs on Linux and Mac OS X.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm47706419642912"></a>NixOS</h2></div></div></div><p>NixOS is a Linux distribution based on Nix.  It uses Nix not
+</pre></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp59270240"></a>Portability</h2></div></div></div><p>Nix runs on Linux and Mac OS X.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp59271264"></a>NixOS</h2></div></div></div><p>NixOS is a Linux distribution based on Nix.  It uses Nix not
 just for package management but also to manage the system
 configuration (e.g., to build configuration files in
 <code class="filename">/etc</code>).  This means, among other things, that it
 is easy to roll back the entire configuration of the system to an
 earlier state.  Also, users can install software without root
-privileges.  For more information and downloads, see the <a class="link" href="http://nixos.org/" target="_top">NixOS homepage</a>.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idm47706419640448"></a>License</h2></div></div></div><p>Nix is released under the terms of the <a class="link" href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html" target="_top">GNU
+privileges.  For more information and downloads, see the <a class="link" href="http://nixos.org/" target="_top">NixOS homepage</a>.</p></div><div class="simplesect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="idp59273728"></a>License</h2></div></div></div><p>Nix is released under the terms of the <a class="link" href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html" target="_top">GNU
 LGPLv2.1 or (at your option) any later version</a>.</p></div></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="chap-quick-start"></a>Chapter 2. Quick Start</h2></div></div></div><p>This chapter is for impatient people who don't like reading
 documentation.  For more in-depth information you are kindly referred
 to subsequent chapters.</p><div class="procedure"><ol class="procedure" type="1"><li class="step"><p>Install single-user Nix by running the following:
@@ -352,7 +352,7 @@ that performs the operation.</p><div class="note"><h3 class="title">Note</h3><p>
 users specified in <code class="filename">nix.conf</code> can specify arbitrary
 binary caches. So while unprivileged users may install packages from
 arbitrary Nix expressions, they may not get pre-built
-binaries.</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idm47706419533264"></a>Setting up the build users</h3></div></div></div><p>The <span class="emphasis"><em>build users</em></span> are the special UIDs under
+binaries.</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idp59380784"></a>Setting up the build users</h3></div></div></div><p>The <span class="emphasis"><em>build users</em></span> are the special UIDs under
 which builds are performed.  They should all be members of the
 <span class="emphasis"><em>build users group</em></span> <code class="literal">nixbld</code>.
 This group should have no other members.  The build users should not
@@ -394,7 +394,7 @@ for i in $(seq 1 10); do
 done
 </pre><p>
 
-</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idm47706419528320"></a>Running the daemon</h3></div></div></div><p>The <a class="link" href="#sec-nix-daemon" title="nix-daemon">Nix daemon</a> should be
+</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idp59385728"></a>Running the daemon</h3></div></div></div><p>The <a class="link" href="#sec-nix-daemon" title="nix-daemon">Nix daemon</a> should be
 started as follows (as <code class="literal">root</code>):
 
 </p><pre class="screen">
@@ -409,7 +409,7 @@ line like
 </p><pre class="programlisting">
 export NIX_REMOTE=daemon</pre><p>
 
-into the users’ login scripts.</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idm47706419523280"></a>Restricting access</h3></div></div></div><p>To limit which users can perform Nix operations, you can use the
+into the users’ login scripts.</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idp59390768"></a>Restricting access</h3></div></div></div><p>To limit which users can perform Nix operations, you can use the
 permissions on the directory
 <code class="filename">/nix/var/nix/daemon-socket</code>.  For instance, if you
 want to restrict the use of Nix to the members of a group called
@@ -605,7 +605,7 @@ of the Subversion package might be stored in a directory
 while another version might be stored in
 <code class="filename">/nix/store/5mq2jcn36ldlmh93yj1n8s9c95pj7c5s-subversion-1.1.2</code>.
 The long strings prefixed to the directory names are cryptographic
-hashes<a href="#ftn.idm47706419470752" class="footnote" id="idm47706419470752"><sup class="footnote">[1]</sup></a> of
+hashes<a href="#ftn.idp59443664" class="footnote" id="idp59443664"><sup class="footnote">[1]</sup></a> of
 <span class="emphasis"><em>all</em></span> inputs involved in building the package —
 sources, dependencies, compiler flags, and so on.  So if two
 packages differ in any way, they end up in different locations in
@@ -717,7 +717,7 @@ this using the <code class="option">--profile</code> option (abbreviation
 $ nix-env -p /nix/var/nix/profiles/other-profile -i subversion</pre><p>
 
 This will <span class="emphasis"><em>not</em></span> change the
-<span class="command"><strong>~/.nix-profile</strong></span> symlink.</p><div class="footnotes"><br /><hr style="width:100; text-align:left;margin-left: 0" /><div id="ftn.idm47706419470752" class="footnote"><p><a href="#idm47706419470752" class="para"><sup class="para">[1] </sup></a>160-bit truncations of SHA-256 hashes encoded in
+<span class="command"><strong>~/.nix-profile</strong></span> symlink.</p><div class="footnotes"><br /><hr style="width:100; text-align:left;margin-left: 0" /><div id="ftn.idp59443664" class="footnote"><p><a href="#idp59443664" class="para"><sup class="para">[1] </sup></a>160-bit truncations of SHA-256 hashes encoded in
 a base-32 notation, to be precise.</p></div></div></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="sec-garbage-collection"></a>Chapter 10. Garbage Collection</h2></div></div></div><p><span class="command"><strong>nix-env</strong></span> operations such as upgrades
 (<code class="option">-u</code>) and uninstall (<code class="option">-e</code>) never
 actually delete packages from the system.  All they do (as shown
@@ -1008,7 +1008,7 @@ need to do three things:
 </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>Write a Nix expression for the package.  This is a
   file that describes all the inputs involved in building the package,
   such as dependencies, sources, and so on.</p></li><li class="listitem"><p>Write a <span class="emphasis"><em>builder</em></span>.  This is a
-  shell script<a href="#ftn.idm47706419353920" class="footnote" id="idm47706419353920"><sup class="footnote">[2]</sup></a> that actually builds the package from
+  shell script<a href="#ftn.idp59560448" class="footnote" id="idp59560448"><sup class="footnote">[2]</sup></a> that actually builds the package from
   the inputs.</p></li><li class="listitem"><p>Add the package to the file
   <code class="filename">pkgs/top-level/all-packages.nix</code>.  The Nix
   expression written in the first step is a
@@ -1131,7 +1131,7 @@ elucidate what a builder does.  It performs the following
 steps:</p><div class="calloutlist"><table border="0" summary="Callout list"><tr><td width="5%" valign="top" align="left"><p><a href="#ex-hello-builder-co-1"><span><img src="images/callouts/1.gif" alt="1" border="0" /></span></a> </p></td><td valign="top" align="left"><p>When Nix runs a builder, it initially completely clears the
     environment (except for the attributes declared in the
     derivation).  For instance, the <code class="envar">PATH</code> variable is
-    empty<a href="#ftn.idm47706419300848" class="footnote" id="idm47706419300848"><sup class="footnote">[3]</sup></a>.  This is done to prevent
+    empty<a href="#ftn.idp59613552" class="footnote" id="idp59613552"><sup class="footnote">[3]</sup></a>.  This is done to prevent
     undeclared inputs from being used in the build process.  If for
     example the <code class="envar">PATH</code> contained
     <code class="filename">/usr/bin</code>, then you might accidentally use
@@ -1364,7 +1364,7 @@ genericBuild <a id="ex-hello-builder2-co-3"></a><span><img src="images/callouts/
     <code class="filename">bin</code> subdirectory, it's added to
     <code class="envar">PATH</code>; if it has a <code class="filename">include</code>
     subdirectory, it's added to GCC's header search path; and so
-    on.<a href="#ftn.idm47706419221056" class="footnote" id="idm47706419221056"><sup class="footnote">[4]</sup></a>
+    on.<a href="#ftn.idp59693488" class="footnote" id="idp59693488"><sup class="footnote">[4]</sup></a>
     </p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#ex-hello-builder2-co-2"><span><img src="images/callouts/2.gif" alt="2" border="0" /></span></a> </p></td><td valign="top" align="left"><p>The function <code class="function">genericBuild</code> is defined in
     the file <code class="literal">$stdenv/setup</code>.</p></td></tr><tr><td width="5%" valign="top" align="left"><p><a href="#ex-hello-builder2-co-3"><span><img src="images/callouts/3.gif" alt="3" border="0" /></span></a> </p></td><td valign="top" align="left"><p>The final step calls the shell function
     <code class="function">genericBuild</code>, which performs the steps that
@@ -1389,11 +1389,11 @@ genericBuild</pre><p>
 
 In fact, <code class="varname">mkDerivation</code> provides a default builder
 that looks exactly like that, so it is actually possible to omit the
-builder for Hello entirely.</p></div><div class="footnotes"><br /><hr style="width:100; text-align:left;margin-left: 0" /><div id="ftn.idm47706419353920" class="footnote"><p><a href="#idm47706419353920" class="para"><sup class="para">[2] </sup></a>In fact, it can be written in any
+builder for Hello entirely.</p></div><div class="footnotes"><br /><hr style="width:100; text-align:left;margin-left: 0" /><div id="ftn.idp59560448" class="footnote"><p><a href="#idp59560448" class="para"><sup class="para">[2] </sup></a>In fact, it can be written in any
   language, but typically it's a <span class="command"><strong>bash</strong></span> shell
-  script.</p></div><div id="ftn.idm47706419300848" class="footnote"><p><a href="#idm47706419300848" class="para"><sup class="para">[3] </sup></a>Actually, it's initialised to
+  script.</p></div><div id="ftn.idp59613552" class="footnote"><p><a href="#idp59613552" class="para"><sup class="para">[3] </sup></a>Actually, it's initialised to
     <code class="filename">/path-not-set</code> to prevent Bash from setting it
-    to a default value.</p></div><div id="ftn.idm47706419221056" class="footnote"><p><a href="#idm47706419221056" class="para"><sup class="para">[4] </sup></a>How does it work? <code class="filename">setup</code>
+    to a default value.</p></div><div id="ftn.idp59693488" class="footnote"><p><a href="#idp59693488" class="para"><sup class="para">[4] </sup></a>How does it work? <code class="filename">setup</code>
     tries to source the file
     <code class="filename"><em class="replaceable"><code>pkg</code></em>/nix-support/setup-hook</code>
     of all dependencies.  These “setup hooks” can then set up whatever
@@ -1410,7 +1410,7 @@ in interesting ways.  The language is not a full-featured, general
 purpose language.  Its main job is to describe packages,
 compositions of packages, and the variability within
 packages.</p><p>This section presents the various features of the
-language.</p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ssec-values"></a>15.1. Values</h2></div></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idm47706419204704"></a>Simple Values</h3></div></div></div><p>Nix has the following basic data types:
+language.</p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="ssec-values"></a>15.1. Values</h2></div></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idp59709824"></a>Simple Values</h3></div></div></div><p>Nix has the following basic data types:
 
 </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><span class="emphasis"><em>Strings</em></span> can be written in three
     ways.</p><p>The most common way is to enclose the string between double
@@ -1523,7 +1523,7 @@ stdenv.mkDerivation {
   <code class="filename">/bin/sh</code> or <code class="filename">./builder.sh</code>.
   A path must contain at least one slash to be recognised as such; for
   instance, <code class="filename">builder.sh</code> is not a
-  path<a href="#ftn.idm47706419170672" class="footnote" id="idm47706419170672"><sup class="footnote">[5]</sup></a>.  If the file name is
+  path<a href="#ftn.idp59743712" class="footnote" id="idp59743712"><sup class="footnote">[5]</sup></a>.  If the file name is
   relative, i.e., if it does not begin with a slash, it is made
   absolute at parse time relative to the directory of the Nix
   expression that contained it.  For instance, if a Nix expression in
@@ -1539,7 +1539,7 @@ stdenv.mkDerivation {
   <code class="literal">false</code>.</p></li><li class="listitem"><p>The null value, denoted as
   <code class="literal">null</code>.</p></li></ul></div><p>
 
-</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idm47706419162192"></a>Lists</h3></div></div></div><p>Lists are formed by enclosing a whitespace-separated list of
+</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idp59752192"></a>Lists</h3></div></div></div><p>Lists are formed by enclosing a whitespace-separated list of
 values between square brackets.  For example,
 
 </p><pre class="programlisting">
@@ -1554,7 +1554,7 @@ to be enclosed in parentheses.  If they had been omitted, e.g.,
 
 the result would be a list of five elements, the fourth one being a
 function and the fifth being a set.</p><p>Note that lists are only lazy in values, and they are strict in length.
-</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idm47706419158944"></a>Sets</h3></div></div></div><p>Sets are really the core of the language, since ultimately the
+</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idp59755440"></a>Sets</h3></div></div></div><p>Sets are really the core of the language, since ultimately the
 Nix language is all about creating derivations, which are really just
 sets of attributes to be passed to build scripts.</p><p>Sets are just a list of name/value pairs (called
 <span class="emphasis"><em>attributes</em></span>) enclosed in curly brackets, where
@@ -1611,7 +1611,7 @@ added to the set:
 { ${if foo then "bar" else null} = true; }</pre><p>
 
 This will evaluate to <code class="literal">{}</code> if <code class="literal">foo</code>
-evaluates to <code class="literal">false</code>.</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec-constructs"></a>15.2. Language Constructs</h2></div></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idm47706419142096"></a>Recursive sets</h3></div></div></div><p>Recursive sets are just normal sets, but the attributes can
+evaluates to <code class="literal">false</code>.</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec-constructs"></a>15.2. Language Constructs</h2></div></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idp59772240"></a>Recursive sets</h3></div></div></div><p>Recursive sets are just normal sets, but the attributes can
 refer to each other.  For example,
 
 </p><pre class="programlisting">
@@ -1635,7 +1635,7 @@ rec {
   y = x;
 }.x</pre><p>
 
-does not terminate<a href="#ftn.idm47706419137872" class="footnote" id="idm47706419137872"><sup class="footnote">[6]</sup></a>.</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idm47706419136592"></a>Let-expressions</h3></div></div></div><p>A let-expression allows you define local variables for an
+does not terminate<a href="#ftn.idp59776464" class="footnote" id="idp59776464"><sup class="footnote">[6]</sup></a>.</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idp59777744"></a>Let-expressions</h3></div></div></div><p>A let-expression allows you define local variables for an
 expression.  For instance,
 
 </p><pre class="programlisting">
@@ -1646,7 +1646,7 @@ in x + y</pre><p>
 
 evaluates to <code class="literal">"foobar"</code>.
 
-</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idm47706419134560"></a>Inheriting attributes</h3></div></div></div><p>When defining a set it is often convenient to copy variables
+</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idp59779824"></a>Inheriting attributes</h3></div></div></div><p>When defining a set it is often convenient to copy variables
 from the surrounding lexical scope (e.g., when you want to propagate
 attributes).  This can be shortened using the
 <code class="literal">inherit</code> keyword.  For instance,
@@ -1770,14 +1770,14 @@ evaluates to <code class="literal">2</code>. This can be used to attach metadata
 function without the caller needing to treat it specially, or to implement
 a form of object-oriented programming, for example.
 
-</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idm47706419107088"></a>Conditionals</h3></div></div></div><p>Conditionals look like this:
+</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idp59807344"></a>Conditionals</h3></div></div></div><p>Conditionals look like this:
 
 </p><pre class="programlisting">
 if <em class="replaceable"><code>e1</code></em> then <em class="replaceable"><code>e2</code></em> else <em class="replaceable"><code>e3</code></em></pre><p>
 
 where <em class="replaceable"><code>e1</code></em> is an expression that should
 evaluate to a Boolean value (<code class="literal">true</code> or
-<code class="literal">false</code>).</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idm47706419103024"></a>Assertions</h3></div></div></div><p>Assertions are generally used to check that certain requirements
+<code class="literal">false</code>).</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idp59811312"></a>Assertions</h3></div></div></div><p>Assertions are generally used to check that certain requirements
 on or between features and dependencies hold.  They look like this:
 
 </p><pre class="programlisting">
@@ -1831,7 +1831,7 @@ used in the Nix expression for Subversion.</p><div class="calloutlist"><table bo
     disabled, then the Subversion derivation is not dependent on
     OpenSSL, even if a non-<code class="literal">null</code> value was passed.
     This prevents an unnecessary rebuild of Subversion if OpenSSL
-    changes.</p></td></tr></table></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idm47706419083472"></a>With-expressions</h3></div></div></div><p>A <span class="emphasis"><em>with-expression</em></span>,
+    changes.</p></td></tr></table></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idp59830768"></a>With-expressions</h3></div></div></div><p>A <span class="emphasis"><em>with-expression</em></span>,
 
 </p><pre class="programlisting">
 with <em class="replaceable"><code>e1</code></em>; <em class="replaceable"><code>e2</code></em></pre><p>
@@ -1855,7 +1855,7 @@ with (import ./definitions.nix); ...</pre><p>
 
 makes all attributes defined in the file
 <code class="filename">definitions.nix</code> available as if they were defined
-locally in a <code class="literal">rec</code>-expression.</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idm47706419074576"></a>Comments</h3></div></div></div><p>Comments can be single-line, started with a <code class="literal">#</code>
+locally in a <code class="literal">rec</code>-expression.</p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a id="idp59839616"></a>Comments</h3></div></div></div><p>Comments can be single-line, started with a <code class="literal">#</code>
 character, or inline/multi-line, enclosed within <code class="literal">/*
 ... */</code>.</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="sec-language-operators"></a>15.3. Operators</h2></div></div></div><p><a class="xref" href="#table-operators" title="Table 15.1. Operators">Table 15.1, “Operators”</a> lists the operators in the
 Nix expression language, in order of precedence (from strongest to
@@ -1890,7 +1890,7 @@ derivation (a build action).  It takes as input a set, the attributes
 of which specify the inputs of the build.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a id="attr-system"></a>There must be an attribute named
   <code class="varname">system</code> whose value must be a string specifying a
   Nix platform identifier, such as <code class="literal">"i686-linux"</code> or
-  <code class="literal">"powerpc-darwin"</code><a href="#ftn.idm47706419024624" class="footnote" id="idm47706419024624"><sup class="footnote">[7]</sup></a> The build
+  <code class="literal">"powerpc-darwin"</code><a href="#ftn.idp59889632" class="footnote" id="idp59889632"><sup class="footnote">[7]</sup></a> The build
   can only be performed on a machine and operating system matching the
   platform identifier.  (Nix can automatically forward builds for
   other platforms by forwarding them to other machines; see <a class="xref" href="#chap-distributed-builds" title="Chapter 16. Distributed Builds">Chapter 16, <em>Distributed Builds</em></a>.)</p></li><li class="listitem"><p>There must be an attribute named
@@ -2803,14 +2803,14 @@ stdenv.mkDerivation (rec {
     <code class="literal">"bool"</code>, <code class="literal">"string"</code>,
     <code class="literal">"path"</code>, <code class="literal">"null"</code>,
     <code class="literal">"set"</code>, <code class="literal">"list"</code> or
-    <code class="literal">"lambda"</code>.</p></dd></dl></div></div><div class="footnotes"><br /><hr style="width:100; text-align:left;margin-left: 0" /><div id="ftn.idm47706419170672" class="footnote"><p><a href="#idm47706419170672" class="para"><sup class="para">[5] </sup></a>It's parsed as an expression that selects the
+    <code class="literal">"lambda"</code>.</p></dd></dl></div></div><div class="footnotes"><br /><hr style="width:100; text-align:left;margin-left: 0" /><div id="ftn.idp59743712" class="footnote"><p><a href="#idp59743712" class="para"><sup class="para">[5] </sup></a>It's parsed as an expression that selects the
   attribute <code class="varname">sh</code> from the variable
-  <code class="varname">builder</code>.</p></div><div id="ftn.idm47706419137872" class="footnote"><p><a href="#idm47706419137872" class="para"><sup class="para">[6] </sup></a>Actually, Nix detects infinite
+  <code class="varname">builder</code>.</p></div><div id="ftn.idp59776464" class="footnote"><p><a href="#idp59776464" class="para"><sup class="para">[6] </sup></a>Actually, Nix detects infinite
 recursion in this case and aborts (<span class="quote">“<span class="quote">infinite recursion
-encountered</span>”</span>).</p></div><div id="ftn.idm47706419024624" class="footnote"><p><a href="#idm47706419024624" class="para"><sup class="para">[7] </sup></a>To figure out
+encountered</span>”</span>).</p></div><div id="ftn.idp59889632" class="footnote"><p><a href="#idp59889632" class="para"><sup class="para">[7] </sup></a>To figure out
   your platform identifier, look at the line <span class="quote">“<span class="quote">Checking for the
   canonical Nix system name</span>”</span> in the output of Nix's
-  <code class="filename">configure</code> script.</p></div></div></div></div><div class="part"><div class="titlepage"><div><div><h1 class="title"><a id="idm47706418645584"></a>Part V. Advanced Topics</h1></div></div></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="chap-distributed-builds"></a>Chapter 16. Distributed Builds</h2></div></div></div><p>Nix supports distributed builds, where a local Nix installation can
+  <code class="filename">configure</code> script.</p></div></div></div></div><div class="part"><div class="titlepage"><div><div><h1 class="title"><a id="idp60268688"></a>Part V. Advanced Topics</h1></div></div></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="chap-distributed-builds"></a>Chapter 16. Distributed Builds</h2></div></div></div><p>Nix supports distributed builds, where a local Nix installation can
 forward Nix builds to other machines over the network.  This allows
 multiple builds to be performed in parallel (thus improving
 performance) and allows Nix to perform multi-platform builds in a
@@ -3148,7 +3148,7 @@ work with Nix.</p><div class="refentry"><a id="sec-nix-env"></a><div class="titl
     ] [
        <code class="option">--system-filter</code> 
       <em class="replaceable"><code>system</code></em>
-    ] [<code class="option">--dry-run</code>]  <em class="replaceable"><code>operation</code></em>  [<em class="replaceable"><code>options</code></em>...] [<em class="replaceable"><code>arguments</code></em>...]</p></div></div><div class="refsection"><a id="idm47706418417648"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-env</strong></span> is used to manipulate Nix
+    ] [<code class="option">--dry-run</code>]  <em class="replaceable"><code>operation</code></em>  [<em class="replaceable"><code>options</code></em>...] [<em class="replaceable"><code>arguments</code></em>...]</p></div></div><div class="refsection"><a id="idp60496976"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-env</strong></span> is used to manipulate Nix
 user environments.  User environments are sets of software packages
 available to a user at some point in time.  In other words, they are a
 synthesised view of the programs available in the Nix store.  There
@@ -3156,7 +3156,7 @@ may be many user environments: different users can have different
 environments, and individual users can switch between different
 environments.</p><p><span class="command"><strong>nix-env</strong></span> takes exactly one
 <span class="emphasis"><em>operation</em></span> flag which indicates the subcommand to
-be performed.  These are documented below.</p></div><div class="refsection"><a id="idm47706418414080"></a><h2>Selectors</h2><p>Several commands, such as <span class="command"><strong>nix-env -q</strong></span> and
+be performed.  These are documented below.</p></div><div class="refsection"><a id="idp60500544"></a><h2>Selectors</h2><p>Several commands, such as <span class="command"><strong>nix-env -q</strong></span> and
 <span class="command"><strong>nix-env -i</strong></span>, take a list of arguments that specify
 the packages on which to operate. These are extended regular
 expressions that must match the entire name of the package. (For
@@ -3183,7 +3183,7 @@ the package will match.  Here are some examples:
     <code class="literal">firefox</code> or
     <code class="literal">chromium</code>.</p></dd></dl></div><p>
 
-</p></div><div class="refsection"><a id="idm47706418396512"></a><h2>Common options</h2><p>This section lists the options that are common to all
+</p></div><div class="refsection"><a id="idp60518160"></a><h2>Common options</h2><p>This section lists the options that are common to all
 operations.  These options are allowed for every subcommand, though
 they may not always have an effect.  <span class="phrase">See
 also <a class="xref" href="#sec-common-options" title="Chapter 17. Common Options">Chapter 17, <em>Common Options</em></a>.</span></p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--file</code>, </span><span class="term"><code class="option">-f</code></span></dt><dd><p>Specifies the Nix expression (designated below as
@@ -3213,7 +3213,7 @@ also <a class="xref" href="#sec-common-options" title="Chapter 17. Common Opti
     substitute is available).</p></dd><dt><span class="term"><code class="option">--system-filter</code> <em class="replaceable"><code>system</code></em></span></dt><dd><p>By default, operations such as <code class="option">--query
     --available</code> show derivations matching any platform.  This
     option allows you to use derivations for the specified platform
-    <em class="replaceable"><code>system</code></em>.</p></dd></dl></div></div><div class="refsection"><a id="idm47706418374656"></a><h2>Files</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="filename">~/.nix-defexpr</code></span></dt><dd><p>A directory that contains the default Nix
+    <em class="replaceable"><code>system</code></em>.</p></dd></dl></div></div><div class="refsection"><a id="idp60540016"></a><h2>Files</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="filename">~/.nix-defexpr</code></span></dt><dd><p>A directory that contains the default Nix
     expressions used by the <code class="option">--install</code>,
     <code class="option">--upgrade</code>, and <code class="option">--query
     --available</code> operations to obtain derivations.  The
@@ -3237,11 +3237,11 @@ also <a class="xref" href="#sec-common-options" title="Chapter 17. Common Opti
     <code class="filename"><em class="replaceable"><code>prefix</code></em>/var/nix/profiles/default</code>.
     The <code class="envar">PATH</code> environment variable should include
     <code class="filename">~/.nix-profile/bin</code> for the user environment
-    to be visible to the user.</p></dd></dl></div></div><div class="refsection"><a id="rsec-nix-env-install"></a><h2>Operation <code class="option">--install</code></h2><div class="refsection"><a id="idm47706418362176"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>  { <code class="option">--install</code>  |   <code class="option">-i</code> } [
+    to be visible to the user.</p></dd></dl></div></div><div class="refsection"><a id="rsec-nix-env-install"></a><h2>Operation <code class="option">--install</code></h2><div class="refsection"><a id="idp60552560"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>  { <code class="option">--install</code>  |   <code class="option">-i</code> } [
     { <code class="option">--prebuilt-only</code>  |   <code class="option">-b</code> }
   ] [
     { <code class="option">--attr</code>  |   <code class="option">-A</code> }
-  ] [<code class="option">--from-expression</code>] [<code class="option">-E</code>] [<code class="option">--from-profile</code> <em class="replaceable"><code>path</code></em>] [ <code class="option">--preserve-installed</code>  |   <code class="option">-P</code> ] [ <code class="option">--remove-all</code>  |   <code class="option">-r</code> ]  <em class="replaceable"><code>args</code></em>... </p></div></div><div class="refsection"><a id="idm47706418346176"></a><h3>Description</h3><p>The install operation creates a new user environment, based on
+  ] [<code class="option">--from-expression</code>] [<code class="option">-E</code>] [<code class="option">--from-profile</code> <em class="replaceable"><code>path</code></em>] [ <code class="option">--preserve-installed</code>  |   <code class="option">-P</code> ] [ <code class="option">--remove-all</code>  |   <code class="option">-r</code> ]  <em class="replaceable"><code>args</code></em>... </p></div></div><div class="refsection"><a id="idp60568656"></a><h3>Description</h3><p>The install operation creates a new user environment, based on
 the current generation of the active profile, to which a set of store
 paths described by <em class="replaceable"><code>args</code></em> is added.  The
 arguments <em class="replaceable"><code>args</code></em> map to store paths in a
@@ -3288,7 +3288,7 @@ number of possible ways:
   that are not store derivations, then these are <a class="link" href="#rsec-nix-store-realise" title="Operation --realise">realised</a> and
   installed.</p></li></ul></div><p>
 
-</p></div><div class="refsection"><a id="idm47706418326016"></a><h3>Flags</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--prebuilt-only</code> / <code class="option">-b</code></span></dt><dd><p>Use only derivations for which a substitute is
+</p></div><div class="refsection"><a id="idp60588864"></a><h3>Flags</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--prebuilt-only</code> / <code class="option">-b</code></span></dt><dd><p>Use only derivations for which a substitute is
     registered, i.e., there is a pre-built binary available that can
     be downloaded in lieu of building the derivation.  Thus, no
     packages will be built from source.</p></dd><dt><span class="term"><code class="option">--preserve-installed</code>, </span><span class="term"><code class="option">-P</code></span></dt><dd><p>Do not remove derivations with a name matching one
@@ -3379,11 +3379,11 @@ $ nix-env -f https://github.com/NixOS/nixpkgs-channels/archive/nixos-14.12.tar.g
 (The GitHub repository <code class="literal">nixpkgs-channels</code> is updated
 automatically from the main <code class="literal">nixpkgs</code> repository
 after certain tests have succeeded and binaries have been built and
-uploaded to the binary cache at <code class="uri">cache.nixos.org</code>.)</p></div></div><div class="refsection"><a id="rsec-nix-env-upgrade"></a><h2>Operation <code class="option">--upgrade</code></h2><div class="refsection"><a id="idm47706418299840"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>  { <code class="option">--upgrade</code>  |   <code class="option">-u</code> } [
+uploaded to the binary cache at <code class="uri">cache.nixos.org</code>.)</p></div></div><div class="refsection"><a id="rsec-nix-env-upgrade"></a><h2>Operation <code class="option">--upgrade</code></h2><div class="refsection"><a id="idp60615040"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>  { <code class="option">--upgrade</code>  |   <code class="option">-u</code> } [
     { <code class="option">--prebuilt-only</code>  |   <code class="option">-b</code> }
   ] [
     { <code class="option">--attr</code>  |   <code class="option">-A</code> }
-  ] [<code class="option">--from-expression</code>] [<code class="option">-E</code>] [<code class="option">--from-profile</code> <em class="replaceable"><code>path</code></em>] [ <code class="option">--lt</code>  |   <code class="option">--leq</code>  |   <code class="option">--eq</code>  |   <code class="option">--always</code> ]  <em class="replaceable"><code>args</code></em>... </p></div></div><div class="refsection"><a id="idm47706418284448"></a><h3>Description</h3><p>The upgrade operation creates a new user environment, based on
+  ] [<code class="option">--from-expression</code>] [<code class="option">-E</code>] [<code class="option">--from-profile</code> <em class="replaceable"><code>path</code></em>] [ <code class="option">--lt</code>  |   <code class="option">--leq</code>  |   <code class="option">--eq</code>  |   <code class="option">--always</code> ]  <em class="replaceable"><code>args</code></em>... </p></div></div><div class="refsection"><a id="idp60630432"></a><h3>Description</h3><p>The upgrade operation creates a new user environment, based on
 the current generation of the active profile, in which all store paths
 are replaced for which there are newer versions in the set of paths
 described by <em class="replaceable"><code>args</code></em>.  Paths for which there
@@ -3393,7 +3393,7 @@ matches no installed derivations.</p><p>For a description of how <em class="repl
 mapped to a set of store paths, see <a class="link" href="#rsec-nix-env-install" title="Operation --install"><code class="option">--install</code></a>.  If
 <em class="replaceable"><code>args</code></em> describes multiple store paths with
 the same symbolic name, only the one with the highest version is
-installed.</p></div><div class="refsection"><a id="idm47706418279840"></a><h3>Flags</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--lt</code></span></dt><dd><p>Only upgrade a derivation to newer versions.  This
+installed.</p></div><div class="refsection"><a id="idp60635040"></a><h3>Flags</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--lt</code></span></dt><dd><p>Only upgrade a derivation to newer versions.  This
     is the default.</p></dd><dt><span class="term"><code class="option">--leq</code></span></dt><dd><p>In addition to upgrading to newer versions, also
     “upgrade” to derivations that have the same version.  Version are
     not a unique identification of a derivation, so there may be many
@@ -3407,7 +3407,7 @@ installed.</p></div><div class="refsection"><a id="idm47706418279840"></a><h3>Fl
     dependencies floating around on your system).</p></dd><dt><span class="term"><code class="option">--always</code></span></dt><dd><p>In addition to upgrading to newer versions, also
     “upgrade” to derivations that have the same or a lower version.
     I.e., derivations may actually be downgraded depending on what is
-    available in the active Nix expression.</p></dd></dl></div><p>For the other flags, see <code class="option"><a class="option" href="#rsec-nix-env-install" title="Operation --install">--install</a></code>.</p></div><div class="refsection"><a id="idm47706418270304"></a><h3>Examples</h3><pre class="screen">
+    available in the active Nix expression.</p></dd></dl></div><p>For the other flags, see <code class="option"><a class="option" href="#rsec-nix-env-install" title="Operation --install">--install</a></code>.</p></div><div class="refsection"><a id="idp60644576"></a><h3>Examples</h3><pre class="screen">
 $ nix-env --upgrade gcc
 upgrading `gcc-3.3.1' to `gcc-3.4'
 
@@ -3457,21 +3457,21 @@ lexicographically (i.e., using case-sensitive string comparison).</p><p>This is 
 2.3pre1 &lt; 2.3c
 2.3pre1 &lt; 2.3q</pre><p>
 
-</p></div></div><div class="refsection"><a id="idm47706418254752"></a><h2>Operation <code class="option">--uninstall</code></h2><div class="refsection"><a id="idm47706418253920"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>  { <code class="option">--uninstall</code>  |   <code class="option">-e</code> }  <em class="replaceable"><code>drvnames</code></em>... </p></div></div><div class="refsection"><a id="idm47706418249136"></a><h3>Description</h3><p>The uninstall operation creates a new user environment, based on
+</p></div></div><div class="refsection"><a id="idp60660176"></a><h2>Operation <code class="option">--uninstall</code></h2><div class="refsection"><a id="idp60661008"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>  { <code class="option">--uninstall</code>  |   <code class="option">-e</code> }  <em class="replaceable"><code>drvnames</code></em>... </p></div></div><div class="refsection"><a id="idp60665792"></a><h3>Description</h3><p>The uninstall operation creates a new user environment, based on
 the current generation of the active profile, from which the store
 paths designated by the symbolic names
-<em class="replaceable"><code>names</code></em> are removed.</p></div><div class="refsection"><a id="idm47706418247440"></a><h3>Examples</h3><pre class="screen">
+<em class="replaceable"><code>names</code></em> are removed.</p></div><div class="refsection"><a id="idp60667488"></a><h3>Examples</h3><pre class="screen">
 $ nix-env --uninstall gcc
-$ nix-env -e '.*' <em class="lineannotation"><span class="lineannotation">(remove everything)</span></em></pre></div></div><div class="refsection"><a id="rsec-nix-env-set"></a><h2>Operation <code class="option">--set</code></h2><div class="refsection"><a id="idm47706418244272"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>   <code class="option">--set</code>   <em class="replaceable"><code>drvname</code></em> </p></div></div><div class="refsection"><a id="idm47706418241168"></a><h3>Description</h3><p>The <code class="option">--set</code> operation modifies the current generation of a
+$ nix-env -e '.*' <em class="lineannotation"><span class="lineannotation">(remove everything)</span></em></pre></div></div><div class="refsection"><a id="rsec-nix-env-set"></a><h2>Operation <code class="option">--set</code></h2><div class="refsection"><a id="idp60670592"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>   <code class="option">--set</code>   <em class="replaceable"><code>drvname</code></em> </p></div></div><div class="refsection"><a id="idp60673696"></a><h3>Description</h3><p>The <code class="option">--set</code> operation modifies the current generation of a
 profile so that it contains exactly the specified derivation, and nothing else.
-</p></div><div class="refsection"><a id="idm47706418239520"></a><h3>Examples</h3><p>
+</p></div><div class="refsection"><a id="idp60675344"></a><h3>Examples</h3><p>
 The following updates a profile such that its current generation will contain
 just Firefox:
 
 </p><pre class="screen">
 $ nix-env -p /nix/var/nix/profiles/browser --set firefox</pre><p>
 
-</p></div></div><div class="refsection"><a id="rsec-nix-env-set-flag"></a><h2>Operation <code class="option">--set-flag</code></h2><div class="refsection"><a id="idm47706418236144"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>   <code class="option">--set-flag</code>   <em class="replaceable"><code>name</code></em>   <em class="replaceable"><code>value</code></em>   <em class="replaceable"><code>drvnames</code></em>... </p></div></div><div class="refsection"><a id="idm47706418231136"></a><h3>Description</h3><p>The <code class="option">--set-flag</code> operation allows meta attributes
+</p></div></div><div class="refsection"><a id="rsec-nix-env-set-flag"></a><h2>Operation <code class="option">--set-flag</code></h2><div class="refsection"><a id="idp60678720"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>   <code class="option">--set-flag</code>   <em class="replaceable"><code>name</code></em>   <em class="replaceable"><code>value</code></em>   <em class="replaceable"><code>drvnames</code></em>... </p></div></div><div class="refsection"><a id="idp60683728"></a><h3>Description</h3><p>The <code class="option">--set-flag</code> operation allows meta attributes
 of installed packages to be modified.  There are several attributes
 that can be usefully modified, because they affect the behaviour of
 <span class="command"><strong>nix-env</strong></span> or the user environment build
@@ -3497,7 +3497,7 @@ script:
   can be set back to <code class="literal">true</code> to re-enable the
   package.</p></li></ul></div><p>
 
-</p></div><div class="refsection"><a id="idm47706418222224"></a><h3>Examples</h3><p>To prevent the currently installed Firefox from being upgraded:
+</p></div><div class="refsection"><a id="idp60692640"></a><h3>Examples</h3><p>To prevent the currently installed Firefox from being upgraded:
 
 </p><pre class="screen">
 $ nix-env --set-flag keep true firefox</pre><p>
@@ -3533,7 +3533,7 @@ over files from <code class="literal">gcc</code>:
 $ nix-env --set-flag priority 5 binutils
 $ nix-env --set-flag priority 10 gcc</pre><p>
 
-</p></div></div><div class="refsection"><a id="idm47706418214048"></a><h2>Operation <code class="option">--query</code></h2><div class="refsection"><a id="idm47706418213216"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>  { <code class="option">--query</code>  |   <code class="option">-q</code> } [ <code class="option">--installed</code>  |   <code class="option">--available</code>  |   <code class="option">-a</code> ]<br /> [
+</p></div></div><div class="refsection"><a id="idp60700816"></a><h2>Operation <code class="option">--query</code></h2><div class="refsection"><a id="idp60701648"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>  { <code class="option">--query</code>  |   <code class="option">-q</code> } [ <code class="option">--installed</code>  |   <code class="option">--available</code>  |   <code class="option">-a</code> ]<br /> [
     { <code class="option">--status</code>  |   <code class="option">-s</code> }
   ] [
     { <code class="option">--attr-path</code>  |   <code class="option">-P</code> }
@@ -3544,18 +3544,18 @@ $ nix-env --set-flag priority 10 gcc</pre><p>
   ] [
     { <code class="option">--attr</code>  |   <code class="option">-A</code> }
     <em class="replaceable"><code>attribute-path</code></em>
-  ]<br />  <em class="replaceable"><code>names</code></em>... </p></div></div><div class="refsection"><a id="idm47706418186768"></a><h3>Description</h3><p>The query operation displays information about either the store
+  ]<br />  <em class="replaceable"><code>names</code></em>... </p></div></div><div class="refsection"><a id="idp60728096"></a><h3>Description</h3><p>The query operation displays information about either the store
 paths that are installed in the current generation of the active
 profile (<code class="option">--installed</code>), or the derivations that are
 available for installation in the active Nix expression
 (<code class="option">--available</code>).  It only prints information about
 derivations whose symbolic name matches one of
 <em class="replaceable"><code>names</code></em>.</p><p>The derivations are sorted by their <code class="literal">name</code>
-attributes.</p></div><div class="refsection"><a id="idm47706418183216"></a><h3>Source selection</h3><p>The following flags specify the set of things on which the query
+attributes.</p></div><div class="refsection"><a id="idp60731648"></a><h3>Source selection</h3><p>The following flags specify the set of things on which the query
 operates.</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--installed</code></span></dt><dd><p>The query operates on the store paths that are
     installed in the current generation of the active profile.  This
     is the default.</p></dd><dt><span class="term"><code class="option">--available</code>, </span><span class="term"><code class="option">-a</code></span></dt><dd><p>The query operates on the derivations that are
-    available in the active Nix expression.</p></dd></dl></div></div><div class="refsection"><a id="idm47706418178288"></a><h3>Queries</h3><p>The following flags specify what information to display about
+    available in the active Nix expression.</p></dd></dl></div></div><div class="refsection"><a id="idp60736576"></a><h3>Queries</h3><p>The following flags specify what information to display about
 the selected derivations.  Multiple flags may be specified, in which
 case the information is shown in the order given here.  Note that the
 name of the derivation is shown unless <code class="option">--no-name</code> is
@@ -3608,7 +3608,7 @@ specified.</p><div class="variablelist"><dl class="variablelist"><dt><span class
     <code class="literal">meta.description</code> attribute of the
     derivation.</p></dd><dt><span class="term"><code class="option">--meta</code></span></dt><dd><p>Print all of the meta-attributes of the
     derivation.  This option is only available with
-    <code class="option">--xml</code>.</p></dd></dl></div></div><div class="refsection"><a id="idm47706418139760"></a><h3>Examples</h3><p>To show installed packages:
+    <code class="option">--xml</code>.</p></dd></dl></div></div><div class="refsection"><a id="idp60775104"></a><h3>Examples</h3><p>To show installed packages:
 
 </p><pre class="screen">
 $ nix-env -q
@@ -3689,32 +3689,32 @@ repository:
 $ nix-env -f https://github.com/NixOS/nixpkgs/archive/master.tar.gz -qa
 </pre><p>
 
-</p></div></div><div class="refsection"><a id="idm47706418123216"></a><h2>Operation <code class="option">--switch-profile</code></h2><div class="refsection"><a id="idm47706418122384"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>  { <code class="option">--switch-profile</code>  |   <code class="option">-S</code> } {<em class="replaceable"><code>path</code></em>}</p></div></div><div class="refsection"><a id="idm47706418117856"></a><h3>Description</h3><p>This operation makes <em class="replaceable"><code>path</code></em> the current
+</p></div></div><div class="refsection"><a id="idp60791648"></a><h2>Operation <code class="option">--switch-profile</code></h2><div class="refsection"><a id="idp60792480"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>  { <code class="option">--switch-profile</code>  |   <code class="option">-S</code> } {<em class="replaceable"><code>path</code></em>}</p></div></div><div class="refsection"><a id="idp60797008"></a><h3>Description</h3><p>This operation makes <em class="replaceable"><code>path</code></em> the current
 profile for the user.  That is, the symlink
 <code class="filename">~/.nix-profile</code> is made to point to
-<em class="replaceable"><code>path</code></em>.</p></div><div class="refsection"><a id="idm47706418115488"></a><h3>Examples</h3><pre class="screen">
-$ nix-env -S ~/my-profile</pre></div></div><div class="refsection"><a id="idm47706418113808"></a><h2>Operation <code class="option">--list-generations</code></h2><div class="refsection"><a id="idm47706418112976"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>   <code class="option">--list-generations</code> </p></div></div><div class="refsection"><a id="idm47706418110688"></a><h3>Description</h3><p>This operation print a list of all the currently existing
+<em class="replaceable"><code>path</code></em>.</p></div><div class="refsection"><a id="idp60799376"></a><h3>Examples</h3><pre class="screen">
+$ nix-env -S ~/my-profile</pre></div></div><div class="refsection"><a id="idp60801056"></a><h2>Operation <code class="option">--list-generations</code></h2><div class="refsection"><a id="idp60801888"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>   <code class="option">--list-generations</code> </p></div></div><div class="refsection"><a id="idp60804176"></a><h3>Description</h3><p>This operation print a list of all the currently existing
 generations for the active profile.  These may be switched to using
 the <code class="option">--switch-generation</code> operation.  It also prints
 the creation date of the generation, and indicates the current
-generation.</p></div><div class="refsection"><a id="idm47706418108960"></a><h3>Examples</h3><pre class="screen">
+generation.</p></div><div class="refsection"><a id="idp60805904"></a><h3>Examples</h3><pre class="screen">
 $ nix-env --list-generations
   95   2004-02-06 11:48:24
   96   2004-02-06 11:49:01
   97   2004-02-06 16:22:45
-  98   2004-02-06 16:24:33   (current)</pre></div></div><div class="refsection"><a id="idm47706418107248"></a><h2>Operation <code class="option">--delete-generations</code></h2><div class="refsection"><a id="idm47706418106416"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>   <code class="option">--delete-generations</code>   <em class="replaceable"><code>generations</code></em>... </p></div></div><div class="refsection"><a id="idm47706418103040"></a><h3>Description</h3><p>This operation deletes the specified generations of the current
+  98   2004-02-06 16:24:33   (current)</pre></div></div><div class="refsection"><a id="idp60807616"></a><h2>Operation <code class="option">--delete-generations</code></h2><div class="refsection"><a id="idp60808448"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>   <code class="option">--delete-generations</code>   <em class="replaceable"><code>generations</code></em>... </p></div></div><div class="refsection"><a id="idp60811824"></a><h3>Description</h3><p>This operation deletes the specified generations of the current
 profile.  The generations can be a list of generation numbers, the
 special value <code class="literal">old</code> to delete all non-current
 generations, or a value such as <code class="literal">30d</code> to delete all
 generations older than the specified number of days (except for the
 generation that was active at that point in time).
 Periodically deleting old generations is important to make garbage
-collection effective.</p></div><div class="refsection"><a id="idm47706418100768"></a><h3>Examples</h3><pre class="screen">
+collection effective.</p></div><div class="refsection"><a id="idp60814048"></a><h3>Examples</h3><pre class="screen">
 $ nix-env --delete-generations 3 4 8
 
 $ nix-env --delete-generations 30d
 
-$ nix-env -p other_profile --delete-generations old</pre></div></div><div class="refsection"><a id="idm47706418098992"></a><h2>Operation <code class="option">--switch-generation</code></h2><div class="refsection"><a id="idm47706418098160"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>  { <code class="option">--switch-generation</code>  |   <code class="option">-G</code> } {<em class="replaceable"><code>generation</code></em>}</p></div></div><div class="refsection"><a id="idm47706418093632"></a><h3>Description</h3><p>This operation makes generation number
+$ nix-env -p other_profile --delete-generations old</pre></div></div><div class="refsection"><a id="idp60815824"></a><h2>Operation <code class="option">--switch-generation</code></h2><div class="refsection"><a id="idp60816656"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>  { <code class="option">--switch-generation</code>  |   <code class="option">-G</code> } {<em class="replaceable"><code>generation</code></em>}</p></div></div><div class="refsection"><a id="idp60821184"></a><h3>Description</h3><p>This operation makes generation number
 <em class="replaceable"><code>generation</code></em> the current generation of the
 active profile.  That is, if the
 <code class="filename"><em class="replaceable"><code>profile</code></em></code> is the path to
@@ -3723,13 +3723,13 @@ the active profile, then the symlink
 point to
 <code class="filename"><em class="replaceable"><code>profile</code></em>-<em class="replaceable"><code>generation</code></em>-link</code>,
 which is in turn a symlink to the actual user environment in the Nix
-store.</p><p>Switching will fail if the specified generation does not exist.</p></div><div class="refsection"><a id="idm47706418089248"></a><h3>Examples</h3><pre class="screen">
+store.</p><p>Switching will fail if the specified generation does not exist.</p></div><div class="refsection"><a id="idp60825568"></a><h3>Examples</h3><pre class="screen">
 $ nix-env -G 42
-switching from generation 50 to 42</pre></div></div><div class="refsection"><a id="idm47706418087552"></a><h2>Operation <code class="option">--rollback</code></h2><div class="refsection"><a id="idm47706418086720"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>   <code class="option">--rollback</code> </p></div></div><div class="refsection"><a id="idm47706418084432"></a><h3>Description</h3><p>This operation switches to the “previous” generation of the
+switching from generation 50 to 42</pre></div></div><div class="refsection"><a id="idp60827264"></a><h2>Operation <code class="option">--rollback</code></h2><div class="refsection"><a id="idp60828096"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-env</code>   <code class="option">--rollback</code> </p></div></div><div class="refsection"><a id="idp60830384"></a><h3>Description</h3><p>This operation switches to the “previous” generation of the
 active profile, that is, the highest numbered generation lower than
 the current generation, if it exists.  It is just a convenience
 wrapper around <code class="option">--list-generations</code> and
-<code class="option">--switch-generation</code>.</p></div><div class="refsection"><a id="idm47706418082080"></a><h3>Examples</h3><pre class="screen">
+<code class="option">--switch-generation</code>.</p></div><div class="refsection"><a id="idp60832736"></a><h3>Examples</h3><pre class="screen">
 $ nix-env --rollback
 switching from generation 92 to 91
 
@@ -3759,7 +3759,7 @@ error: no generation older than the current (91) exists</pre></div></div></div><
     ] [<code class="option">--drv-link</code> <em class="replaceable"><code>drvlink</code></em>] [<code class="option">--add-drv-link</code>] [<code class="option">--no-out-link</code>] [
       { <code class="option">--out-link</code>  |   <code class="option">-o</code> }
       <em class="replaceable"><code>outlink</code></em>
-    ]  <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idm47706418047216"></a><h2>Description</h2><p>The <span class="command"><strong>nix-build</strong></span> command builds the derivations
+    ]  <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idp60867616"></a><h2>Description</h2><p>The <span class="command"><strong>nix-build</strong></span> command builds the derivations
 described by the Nix expressions in <em class="replaceable"><code>paths</code></em>.
 If the build succeeds, it places a symlink to the result in the
 current directory.  The symlink is called <code class="filename">result</code>.
@@ -3780,7 +3780,7 @@ derivation) and <a class="link" href="#rsec-nix-store-realise" title="Operation 
 --realise</strong></span></a> (to build the store derivation).</p><div class="warning"><h3 class="title">Warning</h3><p>The result of the build is automatically registered as
 a root of the Nix garbage collector.  This root disappears
 automatically when the <code class="filename">result</code> symlink is deleted
-or renamed.  So don’t rename the symlink.</p></div></div><div class="refsection"><a id="idm47706418035856"></a><h2>Options</h2><p>All options not listed here are passed to <span class="command"><strong>nix-store
+or renamed.  So don’t rename the symlink.</p></div></div><div class="refsection"><a id="idp60878976"></a><h2>Options</h2><p>All options not listed here are passed to <span class="command"><strong>nix-store
 --realise</strong></span>, except for <code class="option">--arg</code> and
 <code class="option">--attr</code> / <code class="option">-A</code> which are passed to
 <span class="command"><strong>nix-instantiate</strong></span>.  <span class="phrase">See
@@ -3797,7 +3797,7 @@ also <a class="xref" href="#sec-common-options" title="Chapter 17. Common Opti
     --gc</strong></span>.</p></dd><dt><a id="opt-out-link"></a><span class="term"><code class="option">--out-link</code> /
   <code class="option">-o</code> <em class="replaceable"><code>outlink</code></em></span></dt><dd><p>Change the name of the symlink to the output path
     created from <code class="filename">result</code> to
-    <em class="replaceable"><code>outlink</code></em>.</p></dd></dl></div><p>The following common options are supported:</p></div><div class="refsection"><a id="idm47706418019760"></a><h2>Examples</h2><pre class="screen">
+    <em class="replaceable"><code>outlink</code></em>.</p></dd></dl></div><p>The following common options are supported:</p></div><div class="refsection"><a id="idp60895056"></a><h2>Examples</h2><pre class="screen">
 $ nix-build '&lt;nixpkgs&gt;' -A firefox
 store derivation is /nix/store/qybprl8sz2lc...-firefox-1.5.0.7.drv
 /nix/store/d18hyl92g30l...-firefox-1.5.0.7
@@ -3842,7 +3842,7 @@ $ nix-build https://github.com/NixOS/nixpkgs/archive/master.tar.gz -A hello
 </p></div></div><div class="refentry"><div class="refentry.separator"><hr /></div><a id="sec-nix-shell"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-shell — start an interactive shell based on a Nix expression</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-shell</code>  [<code class="option">--arg</code> <em class="replaceable"><code>name</code></em> <em class="replaceable"><code>value</code></em>] [<code class="option">--argstr</code> <em class="replaceable"><code>name</code></em> <em class="replaceable"><code>value</code></em>] [
       { <code class="option">--attr</code>  |   <code class="option">-A</code> }
       <em class="replaceable"><code>attrPath</code></em>
-    ] [<code class="option">--command</code> <em class="replaceable"><code>cmd</code></em>] [<code class="option">--run</code> <em class="replaceable"><code>cmd</code></em>] [<code class="option">--exclude</code> <em class="replaceable"><code>regexp</code></em>] [<code class="option">--pure</code>] { [ <code class="option">--packages</code>  |   <code class="option">-p</code> ]<em class="replaceable"><code>packages</code></em>  |  [<em class="replaceable"><code>path</code></em>]}</p></div></div><div class="refsection"><a id="idm47706417989104"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-shell</strong></span> will build the
+    ] [<code class="option">--command</code> <em class="replaceable"><code>cmd</code></em>] [<code class="option">--run</code> <em class="replaceable"><code>cmd</code></em>] [<code class="option">--exclude</code> <em class="replaceable"><code>regexp</code></em>] [<code class="option">--pure</code>] { [ <code class="option">--packages</code>  |   <code class="option">-p</code> ]<em class="replaceable"><code>packages</code></em>  |  [<em class="replaceable"><code>path</code></em>]}</p></div></div><div class="refsection"><a id="idp60925616"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-shell</strong></span> will build the
 dependencies of the specified derivation, but not the derivation
 itself.  It will then start an interactive shell in which all
 environment variables defined by the derivation
@@ -3871,7 +3871,7 @@ shellHook =
   '';
 </pre><p>
 
-will cause <span class="command"><strong>nix-shell</strong></span> to print <code class="literal">Hello shell</code>.</p></div><div class="refsection"><a id="idm47706417978592"></a><h2>Options</h2><p>All options not listed here are passed to <span class="command"><strong>nix-store
+will cause <span class="command"><strong>nix-shell</strong></span> to print <code class="literal">Hello shell</code>.</p></div><div class="refsection"><a id="idp60936128"></a><h2>Options</h2><p>All options not listed here are passed to <span class="command"><strong>nix-store
 --realise</strong></span>, except for <code class="option">--arg</code> and
 <code class="option">--attr</code> / <code class="option">-A</code> which are passed to
 <span class="command"><strong>nix-instantiate</strong></span>.  <span class="phrase">See
@@ -3906,8 +3906,8 @@ also <a class="xref" href="#sec-common-options" title="Chapter 17. Common Opti
     <code class="varname">libjpeg</code> and <code class="varname">openjdk</code> are
     present.</p></dd><dt><span class="term"><code class="option">-i</code> <em class="replaceable"><code>interpreter</code></em></span></dt><dd><p>The chained script interpreter to be invoked by
     <span class="command"><strong>nix-shell</strong></span>. Only applicable in
-    <code class="literal">#!</code>-scripts (described <a class="link" href="#ssec-nix-shell-shebang" title="Use as a #!-interpreter">below</a>).</p></dd></dl></div><p>The following common options are supported:</p></div><div class="refsection"><a id="idm47706417953168"></a><h2>Environment variables</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="envar">NIX_BUILD_SHELL</code></span></dt><dd><p>Shell used to start the interactive environment. 
-    Defaults to the <span class="command"><strong>bash</strong></span> found in <code class="envar">PATH</code>.</p></dd></dl></div></div><div class="refsection"><a id="idm47706417949856"></a><h2>Examples</h2><p>To build the dependencies of the package Pan, and start an
+    <code class="literal">#!</code>-scripts (described <a class="link" href="#ssec-nix-shell-shebang" title="Use as a #!-interpreter">below</a>).</p></dd></dl></div><p>The following common options are supported:</p></div><div class="refsection"><a id="idp60961504"></a><h2>Environment variables</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="envar">NIX_BUILD_SHELL</code></span></dt><dd><p>Shell used to start the interactive environment. 
+    Defaults to the <span class="command"><strong>bash</strong></span> found in <code class="envar">PATH</code>.</p></dd></dl></div></div><div class="refsection"><a id="idp60964864"></a><h2>Examples</h2><p>To build the dependencies of the package Pan, and start an
 interactive shell in which to build it:
 
 </p><pre class="screen">
@@ -4072,11 +4072,11 @@ runCommand "dummy" { buildInputs = [ python pythonPackages.prettytable ]; } ""
   <code class="option">--option</code>
   <em class="replaceable"><code>name</code></em>
   <em class="replaceable"><code>value</code></em>
-]<br /> [<code class="option">--add-root</code> <em class="replaceable"><code>path</code></em>] [<code class="option">--indirect</code>]  <em class="replaceable"><code>operation</code></em>  [<em class="replaceable"><code>options</code></em>...] [<em class="replaceable"><code>arguments</code></em>...]</p></div></div><div class="refsection"><a id="idm47706417900448"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-store</strong></span> performs primitive
+]<br /> [<code class="option">--add-root</code> <em class="replaceable"><code>path</code></em>] [<code class="option">--indirect</code>]  <em class="replaceable"><code>operation</code></em>  [<em class="replaceable"><code>options</code></em>...] [<em class="replaceable"><code>arguments</code></em>...]</p></div></div><div class="refsection"><a id="idp61014224"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-store</strong></span> performs primitive
 operations on the Nix store.  You generally do not need to run this
 command manually.</p><p><span class="command"><strong>nix-store</strong></span> takes exactly one
 <span class="emphasis"><em>operation</em></span> flag which indicates the subcommand to
-be performed.  These are documented below.</p></div><div class="refsection"><a id="idm47706417897152"></a><h2>Common options</h2><p>This section lists the options that are common to all
+be performed.  These are documented below.</p></div><div class="refsection"><a id="idp61017520"></a><h2>Common options</h2><p>This section lists the options that are common to all
 operations.  These options are allowed for every subcommand, though
 they may not always have an effect.  <span class="phrase">See
 also <a class="xref" href="#sec-common-options" title="Chapter 17. Common Options">Chapter 17, <em>Common Options</em></a> for a list of common
@@ -4114,7 +4114,7 @@ lrwxrwxrwx    1 ... 2005-03-13 21:10 /home/eelco/bla/result -&gt; /nix/store/1r1
     dangling symlink and will be ignored by the collector.</p><div class="warning"><h3 class="title">Warning</h3><p>Note that it is not possible to move or rename
     indirect GC roots, since the symlink in the
     <code class="filename">auto</code> directory will still point to the old
-    location.</p></div></dd></dl></div></div><div class="refsection"><a id="rsec-nix-store-realise"></a><h2>Operation <code class="option">--realise</code></h2><div class="refsection"><a id="idm47706417876144"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>  { <code class="option">--realise</code>  |   <code class="option">-r</code> }  <em class="replaceable"><code>paths</code></em>...  [<code class="option">--dry-run</code>]</p></div></div><div class="refsection"><a id="idm47706417870816"></a><h3>Description</h3><p>The operation <code class="option">--realise</code> essentially “builds”
+    location.</p></div></dd></dl></div></div><div class="refsection"><a id="rsec-nix-store-realise"></a><h2>Operation <code class="option">--realise</code></h2><div class="refsection"><a id="idp61038704"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>  { <code class="option">--realise</code>  |   <code class="option">-r</code> }  <em class="replaceable"><code>paths</code></em>...  [<code class="option">--dry-run</code>]</p></div></div><div class="refsection"><a id="idp61044032"></a><h3>Description</h3><p>The operation <code class="option">--realise</code> essentially “builds”
 the specified store paths.  Realisation is a somewhat overloaded term:
 
 </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>If the store path is a
@@ -4148,7 +4148,7 @@ printed.)</p><p>The following flags are available:</p><div class="variablelist">
     <code class="filename">/nix/store/<em class="replaceable"><code>name</code></em>-check.</code></p><p>See also the <code class="option">build-repeat</code> configuration
     option, which repeats a derivation a number of times and prevents
     its outputs from being registered as “valid” in the Nix store
-    unless they are identical.</p></dd></dl></div></div><div class="refsection"><a id="idm47706417856384"></a><h3>Examples</h3><p>This operation is typically used to build store derivations
+    unless they are identical.</p></dd></dl></div></div><div class="refsection"><a id="idp61058464"></a><h3>Examples</h3><p>This operation is typically used to build store derivations
 produced by <a class="link" href="#sec-nix-instantiate" title="nix-instantiate"><span class="command"><strong>nix-instantiate</strong></span></a>:
 
 </p><pre class="screen">
@@ -4161,7 +4161,7 @@ This is essentially what <a class="link" href="#sec-nix-build" title="nix-build"
 $ nix-build -r '&lt;nixpkgs&gt;' -A hello --check -K
 </pre><p>
 
-</p></div></div><div class="refsection"><a id="rsec-nix-store-gc"></a><h2>Operation <code class="option">--gc</code></h2><div class="refsection"><a id="idm47706417850272"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--gc</code>  [ <code class="option">--print-roots</code>  |   <code class="option">--print-live</code>  |   <code class="option">--print-dead</code>  |   <code class="option">--delete</code> ] [<code class="option">--max-freed</code> <em class="replaceable"><code>bytes</code></em>]</p></div></div><div class="refsection"><a id="idm47706417843376"></a><h3>Description</h3><p>Without additional flags, the operation <code class="option">--gc</code>
+</p></div></div><div class="refsection"><a id="rsec-nix-store-gc"></a><h2>Operation <code class="option">--gc</code></h2><div class="refsection"><a id="idp61064624"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--gc</code>  [ <code class="option">--print-roots</code>  |   <code class="option">--print-live</code>  |   <code class="option">--print-dead</code>  |   <code class="option">--delete</code> ] [<code class="option">--max-freed</code> <em class="replaceable"><code>bytes</code></em>]</p></div></div><div class="refsection"><a id="idp61071520"></a><h3>Description</h3><p>Without additional flags, the operation <code class="option">--gc</code>
 performs a garbage collection on the Nix store.  That is, all paths in
 the Nix store not reachable via file system references from a set of
 “roots”, are deleted.</p><p>The following suboperations may be specified:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--print-roots</code></span></dt><dd><p>This operation prints on standard output the set
@@ -4192,7 +4192,7 @@ and <a class="link" href="#conf-gc-keep-derivations"><code class="literal">gc-ke
 variables in the Nix configuration file.</p><p>With <code class="option">--delete</code>, the collector prints the total
 number of freed bytes when it finishes (or when it is interrupted).
 With <code class="option">--print-dead</code>, it prints the number of bytes that
-would be freed.</p></div><div class="refsection"><a id="idm47706417824448"></a><h3>Examples</h3><p>To delete all unreachable paths, just do:
+would be freed.</p></div><div class="refsection"><a id="idp61090448"></a><h3>Examples</h3><p>To delete all unreachable paths, just do:
 
 </p><pre class="screen">
 $ nix-store --gc
@@ -4205,7 +4205,7 @@ deleting `/nix/store/kq82idx6g0nyzsp2s14gfsc38npai7lf-cairo-1.0.4.tar.gz.drv'
 </p><pre class="screen">
 $ nix-store --gc --max-freed $((100 * 1024 * 1024))</pre><p>
 
-</p></div></div><div class="refsection"><a id="idm47706417820928"></a><h2>Operation <code class="option">--delete</code></h2><div class="refsection"><a id="idm47706417820096"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--delete</code>  [<code class="option">--ignore-liveness</code>]  <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idm47706417816176"></a><h3>Description</h3><p>The operation <code class="option">--delete</code> deletes the store paths
+</p></div></div><div class="refsection"><a id="idp61093968"></a><h2>Operation <code class="option">--delete</code></h2><div class="refsection"><a id="idp61094800"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--delete</code>  [<code class="option">--ignore-liveness</code>]  <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idp61098720"></a><h3>Description</h3><p>The operation <code class="option">--delete</code> deletes the store paths
 <em class="replaceable"><code>paths</code></em> from the Nix store, but only if it is
 safe to do so; that is, when the path is not reachable from a root of
 the garbage collector.  This means that you can only delete paths that
@@ -4214,15 +4214,15 @@ would also be deleted by <code class="literal">nix-store --gc</code>.  Thus,
 <code class="literal">--gc</code>.</p><p>With the option <code class="option">--ignore-liveness</code>, reachability
 from the roots is ignored.  However, the path still won’t be deleted
 if there are other paths in the store that refer to it (i.e., depend
-on it).</p></div><div class="refsection"><a id="idm47706417811488"></a><h3>Example</h3><pre class="screen">
+on it).</p></div><div class="refsection"><a id="idp61103408"></a><h3>Example</h3><pre class="screen">
 $ nix-store --delete /nix/store/zq0h41l75vlb4z45kzgjjmsjxvcv1qk7-mesa-6.4
 0 bytes freed (0.00 MiB)
-error: cannot delete path `/nix/store/zq0h41l75vlb4z45kzgjjmsjxvcv1qk7-mesa-6.4' since it is still alive</pre></div></div><div class="refsection"><a id="refsec-nix-store-query"></a><h2>Operation <code class="option">--query</code></h2><div class="refsection"><a id="idm47706417808400"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>  { <code class="option">--query</code>  |   <code class="option">-q</code> } { <code class="option">--outputs</code>  |   <code class="option">--requisites</code>  |   <code class="option">-R</code>  |   <code class="option">--references</code>  |   <code class="option">--referrers</code>  |   <code class="option">--referrers-closure</code>  |   <code class="option">--deriver</code>  |   <code class="option">--deriver</code>  |   <code class="option">--graph</code>  |   <code class="option">--tree</code>  |   <code class="option">--binding</code> <em class="replaceable"><code>name</code></em>  |   <code class="option">--hash</code>  |   <code class="option">--size</code>  |   <code class="option">--roots</code> } [<code class="option">--use-output</code>] [<code class="option">-u</code>] [<code class="option">--force-realise</code>] [<code class="option">-f</code>]  <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idm47706417789024"></a><h3>Description</h3><p>The operation <code class="option">--query</code> displays various bits of
+error: cannot delete path `/nix/store/zq0h41l75vlb4z45kzgjjmsjxvcv1qk7-mesa-6.4' since it is still alive</pre></div></div><div class="refsection"><a id="refsec-nix-store-query"></a><h2>Operation <code class="option">--query</code></h2><div class="refsection"><a id="idp61106432"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>  { <code class="option">--query</code>  |   <code class="option">-q</code> } { <code class="option">--outputs</code>  |   <code class="option">--requisites</code>  |   <code class="option">-R</code>  |   <code class="option">--references</code>  |   <code class="option">--referrers</code>  |   <code class="option">--referrers-closure</code>  |   <code class="option">--deriver</code>  |   <code class="option">--deriver</code>  |   <code class="option">--graph</code>  |   <code class="option">--tree</code>  |   <code class="option">--binding</code> <em class="replaceable"><code>name</code></em>  |   <code class="option">--hash</code>  |   <code class="option">--size</code>  |   <code class="option">--roots</code> } [<code class="option">--use-output</code>] [<code class="option">-u</code>] [<code class="option">--force-realise</code>] [<code class="option">-f</code>]  <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idp61125808"></a><h3>Description</h3><p>The operation <code class="option">--query</code> displays various bits of
 information about the store paths .  The queries are described below.  At
 most one query can be specified.  The default query is
 <code class="option">--outputs</code>.</p><p>The paths <em class="replaceable"><code>paths</code></em> may also be symlinks
 from outside of the Nix store, to the Nix store.  In that case, the
-query is applied to the target of the symlink.</p></div><div class="refsection"><a id="idm47706417785936"></a><h3>Common query options</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--use-output</code>, </span><span class="term"><code class="option">-u</code></span></dt><dd><p>For each argument to the query that is a store
+query is applied to the target of the symlink.</p></div><div class="refsection"><a id="idp61128896"></a><h3>Common query options</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--use-output</code>, </span><span class="term"><code class="option">-u</code></span></dt><dd><p>For each argument to the query that is a store
     derivation, apply the query to the output path of the derivation
     instead.</p></dd><dt><span class="term"><code class="option">--force-realise</code>, </span><span class="term"><code class="option">-f</code></span></dt><dd><p>Realise each argument to the query first (see
     <a class="link" href="#rsec-nix-store-realise" title="Operation --realise"><span class="command"><strong>nix-store
@@ -4283,7 +4283,7 @@ query is applied to the target of the symlink.</p></div><div class="refsection">
     store paths may be higher, especially on filesystems with large
     cluster sizes.</p></dd><dt><span class="term"><code class="option">--roots</code></span></dt><dd><p>Prints the garbage collector roots that point,
     directly or indirectly, at the store paths
-    <em class="replaceable"><code>paths</code></em>.</p></dd></dl></div></div><div class="refsection"><a id="idm47706417741296"></a><h3>Examples</h3><p>Print the closure (runtime dependencies) of the
+    <em class="replaceable"><code>paths</code></em>.</p></dd></dl></div></div><div class="refsection"><a id="idp61173600"></a><h3>Examples</h3><p>Print the closure (runtime dependencies) of the
 <span class="command"><strong>svn</strong></span> program in the current user environment:
 
 </p><pre class="screen">
@@ -4351,11 +4351,11 @@ $ nix-store -q --roots $(which svn)
 /nix/var/nix/profiles/per-user/eelco/profile-97-link
 </pre><p>
 
-</p></div></div><div class="refsection"><a id="idm47706417726784"></a><h2>Operation <code class="option">--add</code></h2><div class="refsection"><a id="idm47706417725984"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--add</code>   <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idm47706417722608"></a><h3>Description</h3><p>The operation <code class="option">--add</code> adds the specified paths to
+</p></div></div><div class="refsection"><a id="idp61188064"></a><h2>Operation <code class="option">--add</code></h2><div class="refsection"><a id="idp61188864"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--add</code>   <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idp61192240"></a><h3>Description</h3><p>The operation <code class="option">--add</code> adds the specified paths to
 the Nix store.  It prints the resulting paths in the Nix store on
-standard output.</p></div><div class="refsection"><a id="idm47706417721008"></a><h3>Example</h3><pre class="screen">
+standard output.</p></div><div class="refsection"><a id="idp61193872"></a><h3>Example</h3><pre class="screen">
 $ nix-store --add ./foo.c
-/nix/store/m7lrha58ph6rcnv109yzx1nk1cj7k7zf-foo.c</pre></div></div><div class="refsection"><a id="refsec-nix-store-verify"></a><h2>Operation <code class="option">--verify</code></h2><div class="refsection"><a id="idm47706417718064"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--verify</code>  [<code class="option">--check-contents</code>] [<code class="option">--repair</code>]</p></div></div><div class="refsection"><a id="idm47706417714560"></a><h3>Description</h3><p>The operation <code class="option">--verify</code> verifies the internal
+/nix/store/m7lrha58ph6rcnv109yzx1nk1cj7k7zf-foo.c</pre></div></div><div class="refsection"><a id="refsec-nix-store-verify"></a><h2>Operation <code class="option">--verify</code></h2><div class="refsection"><a id="idp61196784"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--verify</code>  [<code class="option">--check-contents</code>] [<code class="option">--repair</code>]</p></div></div><div class="refsection"><a id="idp61200288"></a><h3>Description</h3><p>The operation <code class="option">--verify</code> verifies the internal
 consistency of the Nix database, and the consistency between the Nix
 database and the Nix store.  Any inconsistencies encountered are
 automatically repaired.  Inconsistencies are generally the result of
@@ -4373,24 +4373,24 @@ in Nix itself.</p><p>This operation has the following options:
     redownloading it.  See <span class="command"><strong>nix-store --repair-path</strong></span>
     for details.</p></dd></dl></div><p>
 
-</p></div></div><div class="refsection"><a id="idm47706417706944"></a><h2>Operation <code class="option">--verify-path</code></h2><div class="refsection"><a id="idm47706417706112"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--verify-path</code>   <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idm47706417702608"></a><h3>Description</h3><p>The operation <code class="option">--verify-path</code> compares the
+</p></div></div><div class="refsection"><a id="idp61207904"></a><h2>Operation <code class="option">--verify-path</code></h2><div class="refsection"><a id="idp61208736"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--verify-path</code>   <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idp61212240"></a><h3>Description</h3><p>The operation <code class="option">--verify-path</code> compares the
 contents of the given store paths to their cryptographic hashes stored
 in Nix’s database.  For every changed path, it prints a warning
 message.  The exit status is 0 if no path has changed, and 1
-otherwise.</p></div><div class="refsection"><a id="idm47706417700640"></a><h3>Example</h3><p>To verify the integrity of the <span class="command"><strong>svn</strong></span> command and all its dependencies:
+otherwise.</p></div><div class="refsection"><a id="idp61214208"></a><h3>Example</h3><p>To verify the integrity of the <span class="command"><strong>svn</strong></span> command and all its dependencies:
 
 </p><pre class="screen">
 $ nix-store --verify-path $(nix-store -qR $(which svn))
 </pre><p>
 
-</p></div></div><div class="refsection"><a id="idm47706417698144"></a><h2>Operation <code class="option">--repair-path</code></h2><div class="refsection"><a id="idm47706417697312"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--repair-path</code>   <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idm47706417693808"></a><h3>Description</h3><p>The operation <code class="option">--repair-path</code> attempts to
+</p></div></div><div class="refsection"><a id="idp61216704"></a><h2>Operation <code class="option">--repair-path</code></h2><div class="refsection"><a id="idp61217536"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--repair-path</code>   <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idp61221040"></a><h3>Description</h3><p>The operation <code class="option">--repair-path</code> attempts to
 “repair” the specified paths by redownloading them using the available
 substituters.  If no substitutes are available, then repair is not
 possible.</p><div class="warning"><h3 class="title">Warning</h3><p>During repair, there is a very small time window during
 which the old path (if it exists) is moved out of the way and replaced
 with the new path.  If repair is interrupted in between, then the
 system may be left in a broken state (e.g., if the path contains a
-critical system component like the GNU C Library).</p></div></div><div class="refsection"><a id="idm47706417691120"></a><h3>Example</h3><pre class="screen">
+critical system component like the GNU C Library).</p></div></div><div class="refsection"><a id="idp61223728"></a><h3>Example</h3><pre class="screen">
 $ nix-store --verify-path /nix/store/dj7a81wsm1ijwwpkks3725661h3263p5-glibc-2.13
 path `/nix/store/dj7a81wsm1ijwwpkks3725661h3263p5-glibc-2.13' was modified!
   expected hash `2db57715ae90b7e31ff1f2ecb8c12ec1cc43da920efcbe3b22763f36a1861588',
@@ -4399,7 +4399,7 @@ path `/nix/store/dj7a81wsm1ijwwpkks3725661h3263p5-glibc-2.13' was modified!
 $ nix-store --repair-path /nix/store/dj7a81wsm1ijwwpkks3725661h3263p5-glibc-2.13
 fetching path `/nix/store/d7a81wsm1ijwwpkks3725661h3263p5-glibc-2.13'...
 …
-</pre></div></div><div class="refsection"><a id="refsec-nix-store-dump"></a><h2>Operation <code class="option">--dump</code></h2><div class="refsection"><a id="idm47706417687408"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--dump</code>   <em class="replaceable"><code>path</code></em> </p></div></div><div class="refsection"><a id="idm47706417684176"></a><h3>Description</h3><p>The operation <code class="option">--dump</code> produces a NAR (Nix
+</pre></div></div><div class="refsection"><a id="refsec-nix-store-dump"></a><h2>Operation <code class="option">--dump</code></h2><div class="refsection"><a id="idp61227440"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--dump</code>   <em class="replaceable"><code>path</code></em> </p></div></div><div class="refsection"><a id="idp61230672"></a><h3>Description</h3><p>The operation <code class="option">--dump</code> produces a NAR (Nix
 ARchive) file containing the contents of the file system tree rooted
 at <em class="replaceable"><code>path</code></em>.  The archive is written to
 standard output.</p><p>A NAR archive is like a TAR or Zip archive, but it contains only
@@ -4418,9 +4418,9 @@ the path.  Indeed, the hashes of store paths stored in Nix’s database
 store path.</p><p>NAR archives support filenames of unlimited length and 64-bit
 file sizes.  They can contain regular files, directories, and symbolic
 links, but not other types of files (such as device nodes).</p><p>A Nix archive can be unpacked using <code class="literal">nix-store
---restore</code>.</p></div></div><div class="refsection"><a id="idm47706417677024"></a><h2>Operation <code class="option">--restore</code></h2><div class="refsection"><a id="idm47706417676192"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--restore</code>   <em class="replaceable"><code>path</code></em> </p></div></div><div class="refsection"><a id="idm47706417672960"></a><h3>Description</h3><p>The operation <code class="option">--restore</code> unpacks a NAR archive
+--restore</code>.</p></div></div><div class="refsection"><a id="idp61237824"></a><h2>Operation <code class="option">--restore</code></h2><div class="refsection"><a id="idp61238656"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--restore</code>   <em class="replaceable"><code>path</code></em> </p></div></div><div class="refsection"><a id="idp61241888"></a><h3>Description</h3><p>The operation <code class="option">--restore</code> unpacks a NAR archive
 to <em class="replaceable"><code>path</code></em>, which must not already exist.  The
-archive is read from standard input.</p></div></div><div class="refsection"><a id="refsec-nix-store-export"></a><h2>Operation <code class="option">--export</code></h2><div class="refsection"><a id="idm47706417669136"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--export</code>   <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idm47706417665632"></a><h3>Description</h3><p>The operation <code class="option">--export</code> writes a serialisation
+archive is read from standard input.</p></div></div><div class="refsection"><a id="refsec-nix-store-export"></a><h2>Operation <code class="option">--export</code></h2><div class="refsection"><a id="idp61245712"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--export</code>   <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idp61249216"></a><h3>Description</h3><p>The operation <code class="option">--export</code> writes a serialisation
 of the specified store paths to standard output in a format that can
 be imported into another Nix store with <span class="command"><strong><a class="command" href="#refsec-nix-store-import" title="Operation --import">nix-store --import</a></strong></span>.  This
 is like <span class="command"><strong><a class="command" href="#refsec-nix-store-dump" title="Operation --dump">nix-store
@@ -4437,12 +4437,12 @@ $ nix-store --export $(nix-store -qR <em class="replaceable"><code>paths</code><
 
 </p><p>For an example of how <code class="option">--export</code> and
 <code class="option">--import</code> can be used, see the source of the <span class="command"><strong><a class="command" href="#sec-nix-copy-closure" title="nix-copy-closure">nix-copy-closure</a></strong></span>
-command.</p></div></div><div class="refsection"><a id="refsec-nix-store-import"></a><h2>Operation <code class="option">--import</code></h2><div class="refsection"><a id="idm47706417656448"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--import</code> </p></div></div><div class="refsection"><a id="idm47706417654032"></a><h3>Description</h3><p>The operation <code class="option">--import</code> reads a serialisation of
+command.</p></div></div><div class="refsection"><a id="refsec-nix-store-import"></a><h2>Operation <code class="option">--import</code></h2><div class="refsection"><a id="idp61258400"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--import</code> </p></div></div><div class="refsection"><a id="idp61260816"></a><h3>Description</h3><p>The operation <code class="option">--import</code> reads a serialisation of
 a set of store paths produced by <span class="command"><strong><a class="command" href="#refsec-nix-store-export" title="Operation --export">nix-store --export</a></strong></span> from
 standard input and adds those store paths to the Nix store.  Paths
 that already exist in the Nix store are ignored.  If a path refers to
 another path that doesn’t exist in the Nix store, the import
-fails.</p></div></div><div class="refsection"><a id="idm47706417650816"></a><h2>Operation <code class="option">--optimise</code></h2><div class="refsection"><a id="idm47706417649984"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--optimise</code> </p></div></div><div class="refsection"><a id="idm47706417647568"></a><h3>Description</h3><p>The operation <code class="option">--optimise</code> reduces Nix store disk
+fails.</p></div></div><div class="refsection"><a id="idp61264032"></a><h2>Operation <code class="option">--optimise</code></h2><div class="refsection"><a id="idp61264864"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--optimise</code> </p></div></div><div class="refsection"><a id="idp61267280"></a><h3>Description</h3><p>The operation <code class="option">--optimise</code> reduces Nix store disk
 space usage by finding identical files in the store and hard-linking
 them to each other.  It typically reduces the size of the store by
 something like 25-35%.  Only regular files and symlinks are
@@ -4451,13 +4451,13 @@ have the same NAR archive serialisation: that is, regular files must
 have the same contents and permission (executable or non-executable),
 and symlinks must have the same contents.</p><p>After completion, or when the command is interrupted, a report
 on the achieved savings is printed on standard error.</p><p>Use <code class="option">-vv</code> or <code class="option">-vvv</code> to get some
-progress indication.</p></div><div class="refsection"><a id="idm47706417643776"></a><h3>Example</h3><pre class="screen">
+progress indication.</p></div><div class="refsection"><a id="idp61271072"></a><h3>Example</h3><pre class="screen">
 $ nix-store --optimise
 hashing files in `/nix/store/qhqx7l2f1kmwihc9bnxs7rc159hsxnf3-gcc-4.1.1'
 <em class="replaceable"><code>...</code></em>
 541838819 bytes (516.74 MiB) freed by hard-linking 54143 files;
 there are 114486 files with equal contents out of 215894 files in total
-</pre></div></div><div class="refsection"><a id="idm47706417641568"></a><h2>Operation <code class="option">--read-log</code></h2><div class="refsection"><a id="idm47706417640736"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>  { <code class="option">--read-log</code>  |   <code class="option">-l</code> }  <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idm47706417635776"></a><h3>Description</h3><p>The operation <code class="option">--read-log</code> prints the build log
+</pre></div></div><div class="refsection"><a id="idp61273280"></a><h2>Operation <code class="option">--read-log</code></h2><div class="refsection"><a id="idp61274112"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>  { <code class="option">--read-log</code>  |   <code class="option">-l</code> }  <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idp61279024"></a><h3>Description</h3><p>The operation <code class="option">--read-log</code> prints the build log
 of the specified store paths on standard output.  The build log is
 whatever the builder of a derivation wrote to standard output and
 standard error.  If a store path is not a derivation, the deriver of
@@ -4470,7 +4470,7 @@ locally, then <span class="command"><strong>nix-store</strong></span> will try t
 log from the servers specified in the Nix option
 <code class="option">log-servers</code>. For example, if it’s set to
 <code class="literal">http://hydra.nixos.org/log</code>, then Nix will check
-<code class="literal">http://hydra.nixos.org/log/<em class="replaceable"><code>base-name</code></em></code>.</p></div><div class="refsection"><a id="idm47706417630720"></a><h3>Example</h3><pre class="screen">
+<code class="literal">http://hydra.nixos.org/log/<em class="replaceable"><code>base-name</code></em></code>.</p></div><div class="refsection"><a id="idp61284080"></a><h3>Example</h3><pre class="screen">
 $ nix-store -l $(which ktorrent)
 building /nix/store/dhc73pvzpnzxhdgpimsd9sw39di66ph1-ktorrent-2.2.1
 unpacking sources
@@ -4478,46 +4478,46 @@ unpacking source archive /nix/store/p8n1jpqs27mgkjw07pb5269717nzf5f8-ktorrent-2.
 ktorrent-2.2.1/
 ktorrent-2.2.1/NEWS
 <em class="replaceable"><code>...</code></em>
-</pre></div></div><div class="refsection"><a id="idm47706417628528"></a><h2>Operation <code class="option">--dump-db</code></h2><div class="refsection"><a id="idm47706417627696"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--dump-db</code> </p></div></div><div class="refsection"><a id="idm47706417625280"></a><h3>Description</h3><p>The operation <code class="option">--dump-db</code> writes a dump of the
+</pre></div></div><div class="refsection"><a id="idp61286272"></a><h2>Operation <code class="option">--dump-db</code></h2><div class="refsection"><a id="idp61287104"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--dump-db</code> </p></div></div><div class="refsection"><a id="idp61289520"></a><h3>Description</h3><p>The operation <code class="option">--dump-db</code> writes a dump of the
 Nix database to standard output.  It can be loaded into an empty Nix
 store using <code class="option">--load-db</code>.  This is useful for making
-backups and when migrating to different database schemas.</p></div></div><div class="refsection"><a id="idm47706417622656"></a><h2>Operation <code class="option">--load-db</code></h2><div class="refsection"><a id="idm47706417621824"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--load-db</code> </p></div></div><div class="refsection"><a id="idm47706417619408"></a><h3>Description</h3><p>The operation <code class="option">--load-db</code> reads a dump of the Nix
+backups and when migrating to different database schemas.</p></div></div><div class="refsection"><a id="idp61292144"></a><h2>Operation <code class="option">--load-db</code></h2><div class="refsection"><a id="idp61292976"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--load-db</code> </p></div></div><div class="refsection"><a id="idp61295392"></a><h3>Description</h3><p>The operation <code class="option">--load-db</code> reads a dump of the Nix
 database created by <code class="option">--dump-db</code> from standard input and
-loads it into the Nix database.</p></div></div><div class="refsection"><a id="idm47706417616848"></a><h2>Operation <code class="option">--print-env</code></h2><div class="refsection"><a id="idm47706417616016"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--print-env</code>   <em class="replaceable"><code>drvpath</code></em> </p></div></div><div class="refsection"><a id="idm47706417612784"></a><h3>Description</h3><p>The operation <code class="option">--print-env</code> prints out the
+loads it into the Nix database.</p></div></div><div class="refsection"><a id="idp61297952"></a><h2>Operation <code class="option">--print-env</code></h2><div class="refsection"><a id="idp61298784"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--print-env</code>   <em class="replaceable"><code>drvpath</code></em> </p></div></div><div class="refsection"><a id="idp61302016"></a><h3>Description</h3><p>The operation <code class="option">--print-env</code> prints out the
 environment of a derivation in a format that can be evaluated by a
 shell.  The command line arguments of the builder are placed in the
-variable <code class="envar">_args</code>.</p></div><div class="refsection"><a id="idm47706417610688"></a><h3>Example</h3><pre class="screen">
+variable <code class="envar">_args</code>.</p></div><div class="refsection"><a id="idp61304112"></a><h3>Example</h3><pre class="screen">
 $ nix-store --print-env $(nix-instantiate '&lt;nixpkgs&gt;' -A firefox)
 <em class="replaceable"><code>…</code></em>
 export src; src='/nix/store/plpj7qrwcz94z2psh6fchsi7s8yihc7k-firefox-12.0.source.tar.bz2'
 export stdenv; stdenv='/nix/store/7c8asx3yfrg5dg1gzhzyq2236zfgibnn-stdenv'
 export system; system='x86_64-linux'
 export _args; _args='-e /nix/store/9krlzvny65gdc8s7kpb6lkx8cd02c25c-default-builder.sh'
-</pre></div></div><div class="refsection"><a id="idm47706417608304"></a><h2>Operation <code class="option">--query-failed-paths</code></h2><div class="refsection"><a id="idm47706417607472"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--query-failed-paths</code> </p></div></div><div class="refsection"><a id="idm47706417605056"></a><h3>Description</h3><p>If build failure caching is enabled through the
+</pre></div></div><div class="refsection"><a id="idp61306496"></a><h2>Operation <code class="option">--query-failed-paths</code></h2><div class="refsection"><a id="idp61307328"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--query-failed-paths</code> </p></div></div><div class="refsection"><a id="idp61309744"></a><h3>Description</h3><p>If build failure caching is enabled through the
 <code class="literal">build-cache-failure</code> configuration option, the
 operation <code class="option">--query-failed-paths</code> will print out all
-store paths that have failed to build.</p></div><div class="refsection"><a id="idm47706417603056"></a><h3>Example</h3><pre class="screen">
+store paths that have failed to build.</p></div><div class="refsection"><a id="idp61311744"></a><h3>Example</h3><pre class="screen">
 $ nix-store --query-failed-paths
 /nix/store/000zi5dcla86l92jn1g997jb06sidm7x-perl-PerlMagick-6.59
 /nix/store/0011iy7sfwbc1qj5a1f6ifjnbcdail8a-haskell-gitit-ghc7.0.4-0.8.1
 /nix/store/001c0yn1hkh86gprvrb46cxnz3pki7q3-gamin-0.1.10
 <em class="replaceable"><code>…</code></em>
-</pre></div></div><div class="refsection"><a id="idm47706417600768"></a><h2>Operation <code class="option">--clear-failed-paths</code></h2><div class="refsection"><a id="idm47706417599936"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--clear-failed-paths</code>   <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idm47706417596432"></a><h3>Description</h3><p>If build failure caching is enabled through the
+</pre></div></div><div class="refsection"><a id="idp61314032"></a><h2>Operation <code class="option">--clear-failed-paths</code></h2><div class="refsection"><a id="idp61314864"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   <code class="option">--clear-failed-paths</code>   <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idp61318368"></a><h3>Description</h3><p>If build failure caching is enabled through the
 <code class="literal">build-cache-failure</code> configuration option, the
 operation <code class="option">--clear-failed-paths</code> clears the “failed”
 state of the given store paths, allowing them to be built again.  This
 is useful if the failure was actually transient (e.g. because the disk
 was full).</p><p>If a path denotes a derivation, its output paths are cleared.
 You can provide the argument <code class="literal">*</code> to clear all store
-paths.</p></div><div class="refsection"><a id="idm47706417593136"></a><h3>Example</h3><pre class="screen">
+paths.</p></div><div class="refsection"><a id="idp61321664"></a><h3>Example</h3><pre class="screen">
 $ nix-store --clear-failed-paths /nix/store/000zi5dcla86l92jn1g997jb06sidm7x-perl-PerlMagick-6.59
 $ nix-store --clear-failed-paths *
-</pre></div></div><div class="refsection"><a id="rsec-nix-store-generate-binary-cache-key"></a><h2>Operation <code class="option">--generate-binary-cache-key</code></h2><div class="refsection"><a id="idm47706417590032"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   
+</pre></div></div><div class="refsection"><a id="rsec-nix-store-generate-binary-cache-key"></a><h2>Operation <code class="option">--generate-binary-cache-key</code></h2><div class="refsection"><a id="idp61324704"></a><h3>Synopsis</h3><div class="cmdsynopsis"><p><code class="command">nix-store</code>   
       <code class="option">--generate-binary-cache-key</code>
       <code class="option">key-name</code>
       <code class="option">secret-key-file</code>
       <code class="option">public-key-file</code>
-     </p></div></div><div class="refsection"><a id="idm47706417586096"></a><h3>Description</h3><p>This command generates an <a class="link" href="http://ed25519.cr.yp.to/" target="_top">Ed25519 key pair</a> that can
+     </p></div></div><div class="refsection"><a id="idp61328640"></a><h3>Description</h3><p>This command generates an <a class="link" href="http://ed25519.cr.yp.to/" target="_top">Ed25519 key pair</a> that can
 be used to create a signed binary cache. It takes three mandatory
 parameters:
 
@@ -4532,7 +4532,7 @@ parameters:
   stored.</p></li></ol></div><p>
 
 For an example, see the manual page for <span class="command"><strong><a class="command" href="#sec-nix-push" title="nix-push">nix-push</a></strong></span>.</p></div></div></div></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="ch-utilities"></a>Chapter 20. Utilities</h2></div></div></div><p>This section lists utilities that you can use when you
-work with Nix.</p><div class="refentry"><a id="sec-nix-channel"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-channel — manage Nix channels</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-channel</code>  { <code class="option">--add</code> <em class="replaceable"><code>url</code></em>  [<em class="replaceable"><code>name</code></em>]  |   <code class="option">--remove</code> <em class="replaceable"><code>name</code></em>  |   <code class="option">--list</code>  |   <code class="option">--update</code>  [<em class="replaceable"><code>names</code></em>...]  |   <code class="option">--rollback</code>  [<em class="replaceable"><code>generation</code></em>] }</p></div></div><div class="refsection"><a id="idm47706417563904"></a><h2>Description</h2><p>A Nix channel is mechanism that allows you to automatically stay
+work with Nix.</p><div class="refentry"><a id="sec-nix-channel"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-channel — manage Nix channels</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-channel</code>  { <code class="option">--add</code> <em class="replaceable"><code>url</code></em>  [<em class="replaceable"><code>name</code></em>]  |   <code class="option">--remove</code> <em class="replaceable"><code>name</code></em>  |   <code class="option">--list</code>  |   <code class="option">--update</code>  [<em class="replaceable"><code>names</code></em>...]  |   <code class="option">--rollback</code>  [<em class="replaceable"><code>generation</code></em>] }</p></div></div><div class="refsection"><a id="idp61350896"></a><h2>Description</h2><p>A Nix channel is mechanism that allows you to automatically stay
 up-to-date with a set of pre-built Nix expressions.  A Nix channel is
 just a URL that points to a place containing both a set of Nix
 expressions and a pointer to a binary cache.  <span class="phrase">See also <a class="xref" href="#sec-channels" title="Chapter 11. Channels">Chapter 11, <em>Channels</em></a>.</span></p><p>This command has the following operations:
@@ -4558,7 +4558,7 @@ expressions and a pointer to a binary cache.  <span class="phrase">See also <a c
 
 </p><p>Note that <code class="option">--add</code> does not automatically perform
 an update.</p><p>The list of subscribed channels is stored in
-<code class="filename">~/.nix-channels</code>.</p></div><div class="refsection"><a id="idm47706417543856"></a><h2>Examples</h2><p>To subscribe to the Nixpkgs channel and install the GNU Hello package:</p><pre class="screen">
+<code class="filename">~/.nix-channels</code>.</p></div><div class="refsection"><a id="idp61370896"></a><h2>Examples</h2><p>To subscribe to the Nixpkgs channel and install the GNU Hello package:</p><pre class="screen">
 $ nix-channel --add https://nixos.org/channels/nixpkgs-unstable
 $ nix-channel --update
 $ nix-env -iA nixpkgs.hello</pre><p>You can revert channel updates using <code class="option">--rollback</code>:</p><pre class="screen">
@@ -4570,7 +4570,7 @@ switching from generation 483 to 482
 
 $ nix-instantiate --eval -E '(import &lt;nixpkgs&gt; {}).lib.nixpkgsVersion'
 "14.04.526.dbadfad"
-</pre></div><div class="refsection"><a id="idm47706417540512"></a><h2>Files</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="filename">/nix/var/nix/profiles/per-user/<em class="replaceable"><code>username</code></em>/channels</code></span></dt><dd><p><span class="command"><strong>nix-channel</strong></span> uses a
+</pre></div><div class="refsection"><a id="idp61374240"></a><h2>Files</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="filename">/nix/var/nix/profiles/per-user/<em class="replaceable"><code>username</code></em>/channels</code></span></dt><dd><p><span class="command"><strong>nix-channel</strong></span> uses a
     <span class="command"><strong>nix-env</strong></span> profile to keep track of previous
     versions of the subscribed channels. Every time you run
     <span class="command"><strong>nix-channel --update</strong></span>, a new channel generation
@@ -4581,7 +4581,7 @@ $ nix-instantiate --eval -E '(import &lt;nixpkgs&gt; {}).lib.nixpkgsVersion'
     ensures that <span class="command"><strong>nix-env</strong></span> can find your channels. In
     a multi-user installation, you may also have
     <code class="filename">~/.nix-defexpr/channels_root</code>, which links to
-    the channels of the root user.</p></dd></dl></div></div><div class="refsection"><a id="idm47706417532528"></a><h2>Channel format</h2><p>A channel URL should point to a directory containing the
+    the channels of the root user.</p></dd></dl></div></div><div class="refsection"><a id="idp61382224"></a><h2>Channel format</h2><p>A channel URL should point to a directory containing the
 following files:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="filename">nixexprs.tar.xz</code></span></dt><dd><p>A tarball containing Nix expressions and files
     referenced by them (such as build scripts and patches). At
     top-level, the tarball should contain a single directory. That
@@ -4598,7 +4598,7 @@ following files:</p><div class="variablelist"><dl class="variablelist"><dt><span
     manifest as created by <span class="command"><strong>nix-push</strong></span>. Only used if
     <code class="filename">binary-cache-url</code> is not present or if the
     <code class="filename">nix.conf</code> option
-    <code class="option">force-manifest</code> is set.</p></dd></dl></div></div></div><div class="refentry"><div class="refentry.separator"><hr /></div><a id="sec-nix-collect-garbage"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-collect-garbage — delete unreachable store paths</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-collect-garbage</code>  [<code class="option">--delete-old</code>] [<code class="option">-d</code>] [<code class="option">--delete-older-than</code> <em class="replaceable"><code>period</code></em>] [ <code class="option">--print-roots</code>  |   <code class="option">--print-live</code>  |   <code class="option">--print-dead</code>  |   <code class="option">--delete</code> ] [<code class="option">--max-freed</code> <em class="replaceable"><code>bytes</code></em>] [<code class="option">--dry-run</code>]</p></div></div><div class="refsection"><a id="idm47706417509616"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-collect-garbage</strong></span> is mostly an
+    <code class="option">force-manifest</code> is set.</p></dd></dl></div></div></div><div class="refentry"><div class="refentry.separator"><hr /></div><a id="sec-nix-collect-garbage"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-collect-garbage — delete unreachable store paths</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-collect-garbage</code>  [<code class="option">--delete-old</code>] [<code class="option">-d</code>] [<code class="option">--delete-older-than</code> <em class="replaceable"><code>period</code></em>] [ <code class="option">--print-roots</code>  |   <code class="option">--print-live</code>  |   <code class="option">--print-dead</code>  |   <code class="option">--delete</code> ] [<code class="option">--max-freed</code> <em class="replaceable"><code>bytes</code></em>] [<code class="option">--dry-run</code>]</p></div></div><div class="refsection"><a id="idp61405024"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-collect-garbage</strong></span> is mostly an
 alias of <a class="link" href="#rsec-nix-store-gc" title="Operation --gc"><span class="command"><strong>nix-store
 --gc</strong></span></a>, that is, it deletes all unreachable paths in
 the Nix store to clean up your system.  However, it provides two
@@ -4613,7 +4613,7 @@ where period is a value such as <code class="literal">30d</code>, which deletes
 all generations older than the specified number of days in all profiles
 in <code class="filename">/nix/var/nix/profiles</code> (except for the generations
 that were active at that point in time).
-</p></div><div class="refsection"><a id="idm47706417503376"></a><h2>Example</h2><p>To delete from the Nix store everything that is not used by the
+</p></div><div class="refsection"><a id="idp61411264"></a><h2>Example</h2><p>To delete from the Nix store everything that is not used by the
 current generations of each profile, do
 
 </p><pre class="screen">
@@ -4621,7 +4621,7 @@ $ nix-collect-garbage -d</pre><p>
 
 </p></div></div><div class="refentry"><div class="refentry.separator"><hr /></div><a id="sec-nix-copy-closure"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-copy-closure — copy a closure to or from a remote machine via SSH</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-copy-closure</code>  [ <code class="option">--to</code>  |   <code class="option">--from</code> ] [<code class="option">--sign</code>] [<code class="option">--gzip</code>] [<code class="option">--include-outputs</code>] [<code class="option">--use-substitutes</code>] [<code class="option">-s</code>] [<code class="option">-v</code>]  
       <em class="replaceable"><code>user@</code></em><em class="replaceable"><code>machine</code></em>
-       <em class="replaceable"><code>paths</code></em> </p></div></div><div class="refsection"><a id="idm47706417488304"></a><h2>Description</h2><p><span class="command"><strong>nix-copy-closure</strong></span> gives you an easy and
+       <em class="replaceable"><code>paths</code></em> </p></div></div><div class="refsection"><a id="idp61426384"></a><h2>Description</h2><p><span class="command"><strong>nix-copy-closure</strong></span> gives you an easy and
 efficient way to exchange software between machines.  Given one or
 more Nix store <em class="replaceable"><code>paths</code></em> on the local
 machine, <span class="command"><strong>nix-copy-closure</strong></span> computes the closure of
@@ -4638,7 +4638,7 @@ password or passphrase.  In fact, you may be asked
 currently connects twice to the remote machine, first to get the set
 of paths missing on the target machine, and second to send the dump of
 those paths.  If this bothers you, use
-<span class="command"><strong>ssh-agent</strong></span>.</p><div class="refsection"><a id="idm47706417481200"></a><h3>Options</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--to</code></span></dt><dd><p>Copy the closure of
+<span class="command"><strong>ssh-agent</strong></span>.</p><div class="refsection"><a id="idp61433488"></a><h3>Options</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--to</code></span></dt><dd><p>Copy the closure of
     <em class="replaceable"><code>paths</code></em> from the local Nix store to the
     Nix store on <em class="replaceable"><code>machine</code></em>.  This is the
     default.</p></dd><dt><span class="term"><code class="option">--from</code></span></dt><dd><p>Copy the closure of
@@ -4663,8 +4663,8 @@ those paths.  If this bothers you, use
     source.  This is useful, for instance, if the connection between
     the source and target machine is slow, but the connection between
     the target machine and <code class="literal">nixos.org</code> (the default
-    binary cache server) is fast.</p></dd><dt><span class="term"><code class="option">-v</code></span></dt><dd><p>Show verbose output.</p></dd></dl></div></div><div class="refsection"><a id="idm47706417464672"></a><h3>Environment variables</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="envar">NIX_SSHOPTS</code></span></dt><dd><p>Additional options to be passed to
-    <span class="command"><strong>ssh</strong></span> on the command line.</p></dd></dl></div></div><div class="refsection"><a id="idm47706417461840"></a><h3>Examples</h3><p>Copy Firefox with all its dependencies to a remote machine:
+    binary cache server) is fast.</p></dd><dt><span class="term"><code class="option">-v</code></span></dt><dd><p>Show verbose output.</p></dd></dl></div></div><div class="refsection"><a id="idp61450016"></a><h3>Environment variables</h3><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="envar">NIX_SSHOPTS</code></span></dt><dd><p>Additional options to be passed to
+    <span class="command"><strong>ssh</strong></span> on the command line.</p></dd></dl></div></div><div class="refsection"><a id="idp61452848"></a><h3>Examples</h3><p>Copy Firefox with all its dependencies to a remote machine:
 
 </p><pre class="screen">
 $ nix-copy-closure --to alice@itchy.labs $(type -tP firefox)</pre><p>
@@ -4678,9 +4678,9 @@ $ nix-copy-closure --from alice@itchy.labs \
 $ nix-env -i /nix/store/0dj0503hjxy5mbwlafv1rsbdiyx1gkdy-subversion-1.4.4
 </pre><p>
 
-</p></div></div></div><div class="refentry"><div class="refentry.separator"><hr /></div><a id="sec-nix-daemon"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-daemon — Nix multi-user support daemon</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-daemon</code> </p></div></div><div class="refsection"><a id="idm47706417452992"></a><h2>Description</h2><p>The Nix daemon is necessary in multi-user Nix installations.  It
+</p></div></div></div><div class="refentry"><div class="refentry.separator"><hr /></div><a id="sec-nix-daemon"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-daemon — Nix multi-user support daemon</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-daemon</code> </p></div></div><div class="refsection"><a id="idp61461648"></a><h2>Description</h2><p>The Nix daemon is necessary in multi-user Nix installations.  It
 performs build actions and other operations on the Nix store on behalf
-of unprivileged users.</p></div></div><div class="refentry"><div class="refentry.separator"><hr /></div><a id="sec-nix-hash"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-hash — compute the cryptographic hash of a path</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-hash</code>  [<code class="option">--flat</code>] [<code class="option">--base32</code>] [<code class="option">--truncate</code>] [<code class="option">--type</code> <em class="replaceable"><code>hashAlgo</code></em>]  <em class="replaceable"><code>path</code></em>... </p></div><div class="cmdsynopsis"><p><code class="command">nix-hash</code>   <code class="option">--to-base16</code>   <em class="replaceable"><code>hash</code></em>... </p></div><div class="cmdsynopsis"><p><code class="command">nix-hash</code>   <code class="option">--to-base32</code>   <em class="replaceable"><code>hash</code></em>... </p></div></div><div class="refsection"><a id="idm47706417436352"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-hash</strong></span> computes the
+of unprivileged users.</p></div></div><div class="refentry"><div class="refentry.separator"><hr /></div><a id="sec-nix-hash"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-hash — compute the cryptographic hash of a path</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-hash</code>  [<code class="option">--flat</code>] [<code class="option">--base32</code>] [<code class="option">--truncate</code>] [<code class="option">--type</code> <em class="replaceable"><code>hashAlgo</code></em>]  <em class="replaceable"><code>path</code></em>... </p></div><div class="cmdsynopsis"><p><code class="command">nix-hash</code>   <code class="option">--to-base16</code>   <em class="replaceable"><code>hash</code></em>... </p></div><div class="cmdsynopsis"><p><code class="command">nix-hash</code>   <code class="option">--to-base32</code>   <em class="replaceable"><code>hash</code></em>... </p></div></div><div class="refsection"><a id="idp61478288"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-hash</strong></span> computes the
 cryptographic hash of the contents of each
 <em class="replaceable"><code>path</code></em> and prints it on standard output.  By
 default, it computes an MD5 hash, but other hash algorithms are
@@ -4691,7 +4691,7 @@ The dump is in the <span class="emphasis"><em>NAR format</em></span> produced by
 <code class="option">--dump</code></a>.  Thus, <code class="literal">nix-hash
 <em class="replaceable"><code>path</code></em></code> yields the same
 cryptographic hash as <code class="literal">nix-store --dump
-<em class="replaceable"><code>path</code></em> | md5sum</code>.</p></div><div class="refsection"><a id="idm47706417429824"></a><h2>Options</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--flat</code></span></dt><dd><p>Print the cryptographic hash of the contents of
+<em class="replaceable"><code>path</code></em> | md5sum</code>.</p></div><div class="refsection"><a id="idp61484816"></a><h2>Options</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--flat</code></span></dt><dd><p>Print the cryptographic hash of the contents of
     each regular file <em class="replaceable"><code>path</code></em>.  That is, do
     not compute the hash over the dump of
     <em class="replaceable"><code>path</code></em>.  The result is identical to that
@@ -4707,7 +4707,7 @@ cryptographic hash as <code class="literal">nix-store --dump
     representation <em class="replaceable"><code>hash</code></em> to
     hexadecimal.</p></dd><dt><span class="term"><code class="option">--to-base32</code></span></dt><dd><p>Don’t hash anything, but convert the hexadecimal
     hash representation <em class="replaceable"><code>hash</code></em> to
-    base-32.</p></dd></dl></div></div><div class="refsection"><a id="idm47706417415264"></a><h2>Examples</h2><p>Computing hashes:
+    base-32.</p></dd></dl></div></div><div class="refsection"><a id="idp61499376"></a><h2>Examples</h2><p>Computing hashes:
 
 </p><pre class="screen">
 $ mkdir test
@@ -4748,7 +4748,7 @@ e4fd8ba5f7bbeaea5ace89fe10255536cd60dab6</pre><p>
           <em class="replaceable"><code>url</code></em> 
       } |  {
          <em class="replaceable"><code>file</code></em> 
-      }}</p></div></div><div class="refsection"><a id="idm47706417397040"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-install-package</strong></span> interactively
+      }}</p></div></div><div class="refsection"><a id="idp61517552"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-install-package</strong></span> interactively
 installs a Nix Package file (<code class="filename">*.nixpkg</code>), which is
 a small file that contains a store path to be installed along with the
 URL of a binary cache.  The Nix Package file is either
@@ -4766,10 +4766,10 @@ package, and if so downloads and installs the package into the user’s
 current profile.</p><p>To obtain a window, <span class="command"><strong>nix-install-package</strong></span> tries
 to restart itself with <span class="command"><strong>xterm</strong></span>,
 <span class="command"><strong>konsole</strong></span> and
-<span class="command"><strong>gnome-terminal</strong></span>.</p></div><div class="refsection"><a id="idm47706417387968"></a><h2>Options</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--non-interactive</code></span></dt><dd><p>Do not open a new terminal window and do not ask
+<span class="command"><strong>gnome-terminal</strong></span>.</p></div><div class="refsection"><a id="idp61526624"></a><h2>Options</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--non-interactive</code></span></dt><dd><p>Do not open a new terminal window and do not ask
     for confirmation.</p></dd><dt><span class="term"><code class="option">--profile</code>, </span><span class="term"><code class="option">-p</code></span></dt><dd><p>Install the package into the specified profile
     rather than the user’s current profile.</p></dd><dt><span class="term"><code class="option">--set</code></span></dt><dd><p>Install the package as the profile so that the
-    profile contains exactly the contents of the package.</p></dd></dl></div></div><div class="refsection"><a id="idm47706417382048"></a><h2>Examples</h2><p>To install <code class="filename">subversion-1.4.0.nixpkg</code> into the
+    profile contains exactly the contents of the package.</p></dd></dl></div></div><div class="refsection"><a id="idp61532544"></a><h2>Examples</h2><p>To install <code class="filename">subversion-1.4.0.nixpkg</code> into the
 user’s current profile, without any prompting:
 
 </p><pre class="screen">
@@ -4782,7 +4782,7 @@ profile:
 $ nix-install-package --non-interactive -p /nix/var/nix/profiles/eelco \
     --url http://nix.cs.uu.nl/dist/nix/nixpkgs-0.10pre6622/pkgs/subversion-1.4.0-i686-linux.nixpkg</pre><p>
 
-</p></div><div class="refsection"><a id="idm47706417378896"></a><h2>Format of <code class="literal">nixpkg</code> files</h2><p>A Nix Package file consists of a single line with the following
+</p></div><div class="refsection"><a id="idp61535696"></a><h2>Format of <code class="literal">nixpkg</code> files</h2><p>A Nix Package file consists of a single line with the following
 format:
 
 </p><pre class="screen">
@@ -4818,7 +4818,7 @@ and not part of the actual file.)
        ] [<code class="option">--read-write-mode</code>] [<code class="option">--arg</code> <em class="replaceable"><code>name</code></em> <em class="replaceable"><code>value</code></em>] [
       { <code class="option">--attr</code>  |   <code class="option">-A</code> }
       <em class="replaceable"><code>attrPath</code></em>
-    ] [<code class="option">--add-root</code> <em class="replaceable"><code>path</code></em>] [<code class="option">--indirect</code>] { <code class="option">--expr</code>  |   <code class="option">-E</code> }  <em class="replaceable"><code>files</code></em>... <br /><br /><code class="command">nix-instantiate</code>   <code class="option">--find-file</code>   <em class="replaceable"><code>files</code></em>... </p></div></div><div class="refsection"><a id="idm47706417339920"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-instantiate</strong></span> generates <a class="link" href="#gloss-derivation" title="derivation">store derivations</a> from (high-level)
+    ] [<code class="option">--add-root</code> <em class="replaceable"><code>path</code></em>] [<code class="option">--indirect</code>] { <code class="option">--expr</code>  |   <code class="option">-E</code> }  <em class="replaceable"><code>files</code></em>... <br /><br /><code class="command">nix-instantiate</code>   <code class="option">--find-file</code>   <em class="replaceable"><code>files</code></em>... </p></div></div><div class="refsection"><a id="idp61574672"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-instantiate</strong></span> generates <a class="link" href="#gloss-derivation" title="derivation">store derivations</a> from (high-level)
 Nix expressions.  It evaluates the Nix expressions in each of
 <em class="replaceable"><code>files</code></em> (which defaults to
 <em class="replaceable"><code>./default.nix</code></em>).  Each top-level expression
@@ -4826,7 +4826,7 @@ should evaluate to a derivation, a list of derivations, or a set of
 derivations.  The paths of the resulting store derivations are printed
 on standard output.</p><p>If <em class="replaceable"><code>files</code></em> is the character
 <code class="literal">-</code>, then a Nix expression will be read from standard
-input.</p><p>See also <a class="xref" href="#sec-common-options" title="Chapter 17. Common Options">Chapter 17, <em>Common Options</em></a> for a list of common options.</p></div><div class="refsection"><a id="idm47706417333968"></a><h2>Options</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--add-root</code> <em class="replaceable"><code>path</code></em>, </span><span class="term"><code class="option">--indirect</code></span></dt><dd><p>See the <a class="link" href="#opt-add-root">corresponding
+input.</p><p>See also <a class="xref" href="#sec-common-options" title="Chapter 17. Common Options">Chapter 17, <em>Common Options</em></a> for a list of common options.</p></div><div class="refsection"><a id="idp61580624"></a><h2>Options</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--add-root</code> <em class="replaceable"><code>path</code></em>, </span><span class="term"><code class="option">--indirect</code></span></dt><dd><p>See the <a class="link" href="#opt-add-root">corresponding
     options</a> in <span class="command"><strong>nix-store</strong></span>.</p></dd><dt><span class="term"><code class="option">--parse</code></span></dt><dd><p>Just parse the input files, and print their
     abstract syntax trees on standard output in ATerm
     format.</p></dd><dt><span class="term"><code class="option">--eval</code></span></dt><dd><p>Just parse and evaluate the input files, and print
@@ -4853,7 +4853,7 @@ input.</p><p>See also <a class="xref" href="#sec-common-options" title="Chapter�
     data structures can be infinitely large.</p></div></dd><dt><span class="term"><code class="option">--read-write-mode</code></span></dt><dd><p>When used with <code class="option">--eval</code>, perform
     evaluation in read/write mode so nix language features that
     require it will still work (at the cost of needing to do
-    instantiation of every evaluated derivation).</p></dd></dl></div></div><div class="refsection"><a id="idm47706417311808"></a><h2>Examples</h2><p>Instantiating store derivations from a Nix expression, and
+    instantiation of every evaluated derivation).</p></dd></dl></div></div><div class="refsection"><a id="idp61602784"></a><h2>Examples</h2><p>Instantiating store derivations from a Nix expression, and
 building them using <span class="command"><strong>nix-store</strong></span>:
 
 </p><pre class="screen">
@@ -4923,7 +4923,7 @@ $ nix-instantiate --eval --xml --strict -E 'rec { x = "foo"; y = x; }'
   &lt;/attr&gt;
 <em class="replaceable"><code>...</code></em></pre><p>
 
-</p></div></div><div class="refentry"><div class="refentry.separator"><hr /></div><a id="sec-nix-prefetch-url"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-prefetch-url — copy a file from a URL into the store and print its hash</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-prefetch-url</code>  [<code class="option">--type</code> <em class="replaceable"><code>hashAlgo</code></em>] [<code class="option">--print-path</code>]  <em class="replaceable"><code>url</code></em>  [<em class="replaceable"><code>hash</code></em>]</p></div></div><div class="refsection"><a id="idm47706417292480"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-prefetch-url</strong></span> downloads the
+</p></div></div><div class="refentry"><div class="refentry.separator"><hr /></div><a id="sec-nix-prefetch-url"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-prefetch-url — copy a file from a URL into the store and print its hash</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-prefetch-url</code>  [<code class="option">--type</code> <em class="replaceable"><code>hashAlgo</code></em>] [<code class="option">--print-path</code>]  <em class="replaceable"><code>url</code></em>  [<em class="replaceable"><code>hash</code></em>]</p></div></div><div class="refsection"><a id="idp61622224"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-prefetch-url</strong></span> downloads the
 file referenced by the URL <em class="replaceable"><code>url</code></em>, prints its
 cryptographic hash, and copies it into the Nix store.  The file name
 in the store is
@@ -4944,7 +4944,7 @@ same hash and base name.  Otherwise, the file is downloaded, and an
 error if signaled if the actual hash of the file does not match the
 specified hash.</p><p>This command prints the hash on standard output.  Additionally,
 if the option <code class="option">--print-path</code> is used, the path of the
-downloaded file in the Nix store is also printed.</p></div><div class="refsection"><a id="idm47706417283472"></a><h2>Options</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--type</code> <em class="replaceable"><code>hashAlgo</code></em></span></dt><dd><p>Use the specified cryptographic hash algorithm,
+downloaded file in the Nix store is also printed.</p></div><div class="refsection"><a id="idp61631232"></a><h2>Options</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--type</code> <em class="replaceable"><code>hashAlgo</code></em></span></dt><dd><p>Use the specified cryptographic hash algorithm,
     which can be one of <code class="literal">md5</code>,
     <code class="literal">sha1</code>, and
     <code class="literal">sha256</code>.</p></dd><dt><span class="term"><code class="option">--print-path</code></span></dt><dd><p>Print the store path of the downloaded file on
@@ -4958,7 +4958,7 @@ downloaded file in the Nix store is also printed.</p></div><div class="refsectio
     where <em class="replaceable"><code>basename</code></em> is the last component of
     <em class="replaceable"><code>url</code></em>. Overriding the name is necessary
     when <em class="replaceable"><code>basename</code></em> contains characters that
-    are not allowed in Nix store paths.</p></dd></dl></div></div><div class="refsection"><a id="idm47706417271568"></a><h2>Examples</h2><pre class="screen">
+    are not allowed in Nix store paths.</p></dd></dl></div></div><div class="refsection"><a id="idp61643136"></a><h2>Examples</h2><pre class="screen">
 $ nix-prefetch-url ftp://ftp.gnu.org/pub/gnu/hello/hello-2.10.tar.gz
 0ssi1wpaf7plaswqqjwigppsg5fyh99vdlb9kzl7c9lng89ndq1i
 
@@ -4969,7 +4969,7 @@ $ nix-prefetch-url --print-path mirror://gnu/hello/hello-2.10.tar.gz
 $ nix-prefetch-url --unpack --print-path https://github.com/NixOS/patchelf/archive/0.8.tar.gz
 079agjlv0hrv7fxnx9ngipx14gyncbkllxrp9cccnh3a50fxcmy7
 /nix/store/19zrmhm3m40xxaw81c8cqm6aljgrnwj2-0.8.tar.gz
-</pre></div></div><div class="refentry"><div class="refentry.separator"><hr /></div><a id="sec-nix-pull"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-pull — register availability of pre-built binaries (deprecated)</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-pull</code>   <em class="replaceable"><code>url</code></em> </p></div></div><div class="refsection"><a id="idm47706417263232"></a><h2>Description</h2><div class="note"><h3 class="title">Note</h3><p>This command and the use of manifests is deprecated. It is
+</pre></div></div><div class="refentry"><div class="refentry.separator"><hr /></div><a id="sec-nix-pull"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-pull — register availability of pre-built binaries (deprecated)</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-pull</code>   <em class="replaceable"><code>url</code></em> </p></div></div><div class="refsection"><a id="idp61651520"></a><h2>Description</h2><div class="note"><h3 class="title">Note</h3><p>This command and the use of manifests is deprecated. It is
 better to use binary caches.</p></div><p>The command <span class="command"><strong>nix-pull</strong></span> obtains a list of
 pre-built store paths from the URL <em class="replaceable"><code>url</code></em>, and
 for each of these store paths, registers a substitute derivation that
@@ -4977,8 +4977,8 @@ downloads and unpacks it into the Nix store.  This is used to speed up
 installations: if you attempt to install something that has already
 been built and stored into the network cache, Nix can transparently
 re-use the pre-built store paths.</p><p>The file at <em class="replaceable"><code>url</code></em> must be compatible
-with the files created by <em class="replaceable"><code>nix-push</code></em>.</p></div><div class="refsection"><a id="idm47706417259056"></a><h2>Examples</h2><pre class="screen">
-$ nix-pull https://nixos.org/releases/nixpkgs/nixpkgs-15.05pre54468.69858d7/MANIFEST</pre></div></div><div class="refentry"><div class="refentry.separator"><hr /></div><a id="sec-nix-push"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-push — generate a binary cache</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-push</code>   <code class="option">--dest</code> <em class="replaceable"><code>dest-dir</code></em>  [<code class="option">--bzip2</code>] [<code class="option">--none</code>] [<code class="option">--force</code>] [<code class="option">--link</code>] [<code class="option">--manifest</code>] [<code class="option">--manifest-path</code> <em class="replaceable"><code>filename</code></em>] [<code class="option">--url-prefix</code> <em class="replaceable"><code>url</code></em>] [<code class="option">--key-file</code> <em class="replaceable"><code>path</code></em>]  <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idm47706417244048"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-push</strong></span> produces a
+with the files created by <em class="replaceable"><code>nix-push</code></em>.</p></div><div class="refsection"><a id="idp61655696"></a><h2>Examples</h2><pre class="screen">
+$ nix-pull https://nixos.org/releases/nixpkgs/nixpkgs-15.05pre54468.69858d7/MANIFEST</pre></div></div><div class="refentry"><div class="refentry.separator"><hr /></div><a id="sec-nix-push"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix-push — generate a binary cache</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p><code class="command">nix-push</code>   <code class="option">--dest</code> <em class="replaceable"><code>dest-dir</code></em>  [<code class="option">--bzip2</code>] [<code class="option">--none</code>] [<code class="option">--force</code>] [<code class="option">--link</code>] [<code class="option">--manifest</code>] [<code class="option">--manifest-path</code> <em class="replaceable"><code>filename</code></em>] [<code class="option">--url-prefix</code> <em class="replaceable"><code>url</code></em>] [<code class="option">--key-file</code> <em class="replaceable"><code>path</code></em>]  <em class="replaceable"><code>paths</code></em>... </p></div></div><div class="refsection"><a id="idp61670720"></a><h2>Description</h2><p>The command <span class="command"><strong>nix-push</strong></span> produces a
 <span class="emphasis"><em>binary cache</em></span>, a directory containing compressed
 Nix archives (NARs) plus some metadata of the closure of the specified
 store paths.  This directory can then be made available through a web
@@ -5010,7 +5010,7 @@ automatically.</p><p><span class="command"><strong>nix-push</strong></span> perf
   placed in the destination directory.  The existence of this file
   marks the directory as a binary cache.</p></li></ol></div><p>
 
-</p></div><div class="refsection"><a id="idm47706417229792"></a><h2>Options</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--dest</code> <em class="replaceable"><code>dest-dir</code></em></span></dt><dd><p>Set the destination directory to
+</p></div><div class="refsection"><a id="idp61684976"></a><h2>Options</h2><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="option">--dest</code> <em class="replaceable"><code>dest-dir</code></em></span></dt><dd><p>Set the destination directory to
     <em class="replaceable"><code>dir</code></em>, which is created if it does not
     exist.  This flag is required.</p></dd><dt><span class="term"><code class="option">--bzip2</code></span></dt><dd><p>Compress NARs using <span class="command"><strong>bzip2</strong></span>
     instead of <span class="command"><strong>xz</strong></span>.  The latter compresses about 30%
@@ -5033,7 +5033,7 @@ automatically.</p><p><span class="command"><strong>nix-push</strong></span> perf
     --generate-binary-cache-key</a></strong></span>. Users of this binary cache
     should add the corresponding public key to the option
     <code class="option">binary-cache-public-keys</code> in
-    <code class="filename">nix.conf</code>.</p></dd></dl></div></div><div class="refsection"><a id="idm47706417206384"></a><h2>Examples</h2><p>To add the closure of Thunderbird to a binary cache:
+    <code class="filename">nix.conf</code>.</p></dd></dl></div></div><div class="refsection"><a id="idp61708384"></a><h2>Examples</h2><p>To add the closure of Thunderbird to a binary cache:
 
 </p><pre class="screen">
 $ nix-push --dest /tmp/cache $(nix-build -A thunderbird)
@@ -5100,7 +5100,7 @@ binary-cache-public-keys = cache.example.org-1:7l/B/BTu6ueuPl9xvyQ5aqiKhmq9zl0Uc
 </pre><p>
 
 Nix will then ignore any binary that has a missing, incorrect or
-unrecognised signature.</p></div><div class="refsection"><a id="idm47706417195296"></a><h2>Binary cache format and operation</h2><p>A binary cache with URL <em class="replaceable"><code>url</code></em> only
+unrecognised signature.</p></div><div class="refsection"><a id="idp61719472"></a><h2>Binary cache format and operation</h2><p>A binary cache with URL <em class="replaceable"><code>url</code></em> only
 denotes a valid binary cache if the file
 <code class="uri"><em class="replaceable"><code>url</code></em>/nix-cache-info</code> exists.  If
 this file does not exist (or cannot be downloaded), the cache is
@@ -5208,7 +5208,7 @@ Nix will fetch </p><pre class="screen">
 https://cache.nixos.org/nar/0zzjpdz46mdn74v09m053yczlz4am038g8r74iy8w43gx8801h70.nar.bz2
 </pre><p> and decompress and unpack it to
 <code class="filename">/nix/store/a8922c0h87iilxzzvwn2hmv8x210aqb9-glibc-2.7</code>.</p></div></div></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a id="ch-files"></a>Chapter 21. Files</h2></div></div></div><p>This section lists configuration files that you can use when you
-work with Nix.</p><div class="refentry"><a id="sec-conf-file"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix.conf — Nix configuration file</p></div><div class="refsection"><a id="idm47706417143280"></a><h2>Description</h2><p>A number of persistent settings of Nix are stored in the file
+work with Nix.</p><div class="refentry"><a id="sec-conf-file"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>nix.conf — Nix configuration file</p></div><div class="refsection"><a id="idp61771568"></a><h2>Description</h2><p>A number of persistent settings of Nix are stored in the file
 <code class="filename"><em class="replaceable"><code>sysconfdir</code></em>/nix/nix.conf</code>.
 This file is a list of <code class="literal"><em class="replaceable"><code>name</code></em> =
 <em class="replaceable"><code>value</code></em></code> pairs, one per line.
@@ -5509,7 +5509,7 @@ the <code class="option">--max-links</code> option.</p><p>Real solution: put the
 more than 32,000 subdirectories per directory, such as ext4.  (This
 doesn’t solve the <code class="literal">st_nlink</code> limit, but ext4 lies to
 the kernel by reporting a link count of 1 if it exceeds the
-limit.)</p></div></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a id="idm47706416979056"></a>Appendix B. Glossary</h1></div></div></div><div class="glosslist"><dl><dt><a id="gloss-derivation"></a><span class="glossterm">derivation</span></dt><dd class="glossdef"><p>A description of a build action.  The result of a
+limit.)</p></div></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a id="idp61935472"></a>Appendix B. Glossary</h1></div></div></div><div class="glosslist"><dl><dt><a id="gloss-derivation"></a><span class="glossterm">derivation</span></dt><dd class="glossdef"><p>A description of a build action.  The result of a
   derivation is a store object.  Derivations are typically specified
   in Nix expressions using the <a class="link" href="#ssec-derivation" title="15.4. Derivations"><code class="function">derivation</code>
   primitive</a>.  These are translated into low-level

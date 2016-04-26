@@ -36,14 +36,18 @@ fi
 . /etc/init.d/functions
 
 LOCKFILE=/var/lock/subsys/nix-daemon
-PIDFILE=/var/run/nix-daemon/pid
+RUNDIR=/var/run/nix
+PIDFILE=${RUNDIR}/nix-daemon.pid
 RETVAL=0
 
 base=${0##*/}
 
 start() {
 
-    echo -n $"Starting nix daemon... "
+	mkdir -p ${RUNDIR}
+	chown ${NIX_DAEMON_USER}:${NIX_DAEMON_USER} ${RUNDIR}
+
+    	echo -n $"Starting nix daemon... "
 
 	daemonize -u $NIX_DAEMON_USER -p ${PIDFILE} $NIX_DAEMON_BIN $NIX_DAEMON_OPTS
 	RETVAL=$?
