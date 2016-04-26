@@ -49,6 +49,9 @@ struct Settings {
 
     /* The directory where state is stored. */
     Path nixStateDir;
+    
+    /* The directory where nix create and use sockets */    
+    Path nixRunStateDir;
 
     /* The directory where we keep the SQLite database. */
     Path nixDBPath;

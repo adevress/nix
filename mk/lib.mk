@@ -34,6 +34,7 @@ libexecdir ?= $(prefix)/libexec
 datadir ?= $(prefix)/share
 jardir ?= $(datadir)/java
 localstatedir ?= $(prefix)/var
+runstatedir ?= $(localstatedir)/run
 sysconfdir ?= $(prefix)/etc
 mandir ?= $(prefix)/share/man
 

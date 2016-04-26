@@ -23,6 +23,7 @@ includedir = @includedir@
 libdir = @libdir@
 libexecdir = @libexecdir@
 localstatedir = @localstatedir@
+runstatedir = @runstatedir@
 mandir = @mandir@
 perl = @perl@
 perlbindings = @perlbindings@

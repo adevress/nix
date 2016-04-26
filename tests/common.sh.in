@@ -12,6 +12,7 @@ fi
 export NIX_LOCALSTATE_DIR=$TEST_ROOT/var
 export NIX_LOG_DIR=$TEST_ROOT/var/log/nix
 export NIX_STATE_DIR=$TEST_ROOT/var/nix
+export NIX_RUNTIME_DIR=$TEST_ROOT/var/run
 export NIX_DB_DIR=$TEST_ROOT/db
 export NIX_CONF_DIR=$TEST_ROOT/etc
 export NIX_MANIFESTS_DIR=$TEST_ROOT/var/nix/manifests
@@ -65,10 +66,10 @@ clearCache() {
 startDaemon() {
     # Start the daemon, wait for the socket to appear.  !!!
     # ‘nix-daemon’ should have an option to fork into the background.
-    rm -f $NIX_STATE_DIR/daemon-socket/socket
+    rm -f $NIX_RUNTIME_DIR/daemon-socket/socket
     nix-daemon &
     for ((i = 0; i < 30; i++)); do
-        if [ -e $NIX_STATE_DIR/daemon-socket/socket ]; then break; fi
+        if [ -e $NIX_RUNTIME_DIR/daemon-socket/socket ]; then break; fi
         sleep 1
     done
     pidDaemon=$!

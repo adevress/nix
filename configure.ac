@@ -168,6 +168,12 @@ AC_ARG_WITH(store-dir, AC_HELP_STRING([--with-store-dir=PATH],
 AC_SUBST(storedir)
 
 
+AC_ARG_WITH(runstatedir, AC_HELP_STRING([--runstatedir=PATH],
+  [path of the run-state directory for sockets ]),
+  runstatedir=$withval, runstatedir='${localstatedir}/run')
+AC_SUBST(runstatedir)
+
+
 # Look for OpenSSL, a required dependency.
 AC_PATH_PROG(openssl, openssl, openssl) # if not found, call openssl in $PATH
 AC_SUBST(openssl)
