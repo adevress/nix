@@ -8,7 +8,7 @@
 
 Name:				nix
 Version:			1.11.2
-Release:			7%{?dist}
+Release:			8%{?dist}
 Summary:			Nix package manager
 Group:				Applications/Internet
 License:			LGPLv3

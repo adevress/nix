@@ -3,7 +3,7 @@ Description=Nix Daemon
 
 [Service]
 User=nix-daemon
-RuntimeDirectory=/run/nix
+RuntimeDirectory=@runstatedir@
 EnvironmentFile=/etc/sysconfig/nix-daemon
 ExecStart=@@bindir@/nix-daemon nix-daemon --daemon
 KillMode=process
