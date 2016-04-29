@@ -8,7 +8,7 @@
 
 Name:				nix
 Version:			1.11.2
-Release:			8%{?dist}
+Release:			10%{?dist}
 Summary:			Nix package manager
 Group:				Applications/Internet
 License:			LGPLv3
@@ -146,7 +146,8 @@ export perllibdir=%{_libdir}/perl5/
 %configure \
 	--localstatedir=/nix/var \
         --docdir=%{_defaultdocdir}/%{name}-%{version} \
-	--with-perl-libdir=%{_libdir}/perl5/vendor_perl
+	--with-perl-libdir=%{_libdir}/perl5/vendor_perl \
+	--with-runstatedir=/var/run/nix
 make %{?_smp_mflags}
 
 

@@ -1,19 +1,19 @@
-/* A Bison parser, made by GNU Bison 2.7.  */
+/* A Bison parser, made by GNU Bison 3.0.2.  */
 
 /* Skeleton interface for Bison GLR parsers in C
-   
-      Copyright (C) 2002-2012 Free Software Foundation, Inc.
-   
+
+   Copyright (C) 2002-2013 Free Software Foundation, Inc.
+
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
@@ -26,13 +26,13 @@
    special exception, which will cause the skeleton and the resulting
    Bison output files to be licensed under the GNU General Public
    License without this special exception.
-   
+
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
 #ifndef YY_YY_SRC_LIBEXPR_PARSER_TAB_HH_INCLUDED
 # define YY_YY_SRC_LIBEXPR_PARSER_TAB_HH_INCLUDED
-/* Enabling traces.  */
+/* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
 #endif
@@ -40,8 +40,7 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-/* Line 2579 of glr.c  */
-#line 14 "src/libexpr/parser.y"
+#line 14 "src/libexpr/parser.y" /* glr.c:2555  */
 
 
 #ifndef BISON_HEADER
@@ -80,59 +79,57 @@ namespace nix {
 #endif
 
 
+#line 83 "src/libexpr/parser-tab.hh" /* glr.c:2555  */
 
-/* Line 2579 of glr.c  */
-#line 86 "src/libexpr/parser-tab.hh"
-
-/* Tokens.  */
+/* Token type.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
-   /* Put the tokens into the symbol table, so that GDB and other debuggers
-      know about them.  */
-   enum yytokentype {
-     ID = 258,
-     ATTRPATH = 259,
-     STR = 260,
-     IND_STR = 261,
-     INT = 262,
-     FLOAT = 263,
-     PATH = 264,
-     HPATH = 265,
-     SPATH = 266,
-     URI = 267,
-     IF = 268,
-     THEN = 269,
-     ELSE = 270,
-     ASSERT = 271,
-     WITH = 272,
-     LET = 273,
-     IN = 274,
-     REC = 275,
-     INHERIT = 276,
-     EQ = 277,
-     NEQ = 278,
-     AND = 279,
-     OR = 280,
-     IMPL = 281,
-     OR_KW = 282,
-     DOLLAR_CURLY = 283,
-     IND_STRING_OPEN = 284,
-     IND_STRING_CLOSE = 285,
-     ELLIPSIS = 286,
-     GEQ = 287,
-     LEQ = 288,
-     UPDATE = 289,
-     NOT = 290,
-     CONCAT = 291,
-     NEGATE = 292
-   };
+  enum yytokentype
+  {
+    ID = 258,
+    ATTRPATH = 259,
+    STR = 260,
+    IND_STR = 261,
+    INT = 262,
+    FLOAT = 263,
+    PATH = 264,
+    HPATH = 265,
+    SPATH = 266,
+    URI = 267,
+    IF = 268,
+    THEN = 269,
+    ELSE = 270,
+    ASSERT = 271,
+    WITH = 272,
+    LET = 273,
+    IN = 274,
+    REC = 275,
+    INHERIT = 276,
+    EQ = 277,
+    NEQ = 278,
+    AND = 279,
+    OR = 280,
+    IMPL = 281,
+    OR_KW = 282,
+    DOLLAR_CURLY = 283,
+    IND_STRING_OPEN = 284,
+    IND_STRING_CLOSE = 285,
+    ELLIPSIS = 286,
+    LEQ = 287,
+    GEQ = 288,
+    UPDATE = 289,
+    NOT = 290,
+    CONCAT = 291,
+    NEGATE = 292
+  };
 #endif
 
+/* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE
+typedef union YYSTYPE YYSTYPE;
+union YYSTYPE
 {
-/* Line 2579 of glr.c  */
-#line 241 "src/libexpr/parser.y"
+#line 241 "src/libexpr/parser.y" /* glr.c:2555  */
 
   // !!! We're probably leaking stuff here.
   nix::Expr * e;
@@ -148,27 +145,26 @@ typedef union YYSTYPE
   std::vector<nix::AttrName> * attrNames;
   std::vector<nix::Expr *> * string_parts;
 
-
-/* Line 2579 of glr.c  */
-#line 154 "src/libexpr/parser-tab.hh"
-} YYSTYPE;
+#line 149 "src/libexpr/parser-tab.hh" /* glr.c:2555  */
+};
 # define YYSTYPE_IS_TRIVIAL 1
-# define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 #endif
 
+/* Location type.  */
 #if ! defined YYLTYPE && ! defined YYLTYPE_IS_DECLARED
-typedef struct YYLTYPE
+typedef struct YYLTYPE YYLTYPE;
+struct YYLTYPE
 {
   int first_line;
   int first_column;
   int last_line;
   int last_column;
-} YYLTYPE;
-# define yyltype YYLTYPE /* obsolescent; will be withdrawn */
+};
 # define YYLTYPE_IS_DECLARED 1
 # define YYLTYPE_IS_TRIVIAL 1
 #endif
+
 
 
 int yyparse (void * scanner, nix::ParseData * data);

@@ -1,19 +1,19 @@
-/* A Bison parser, made by GNU Bison 2.7.  */
+/* A Bison parser, made by GNU Bison 3.0.2.  */
 
 /* Skeleton implementation for Bison GLR parsers in C
-   
-      Copyright (C) 2002-2012 Free Software Foundation, Inc.
-   
+
+   Copyright (C) 2002-2013 Free Software Foundation, Inc.
+
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
@@ -26,7 +26,7 @@
    special exception, which will cause the skeleton and the resulting
    Bison output files to be licensed under the GNU General Public
    License without this special exception.
-   
+
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
@@ -36,7 +36,7 @@
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "2.7"
+#define YYBISON_VERSION "3.0.2"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "glr.c"
@@ -49,9 +49,8 @@
 
 
 
-/* Copy the first part of user declarations.  */
-/* Line 207 of glr.c  */
-#line 53 "src/libexpr/parser.y"
+/* First part of user declarations.  */
+#line 53 "src/libexpr/parser.y" /* glr.c:207  */
 
 
 #include "parser-tab.hh"
@@ -239,14 +238,13 @@ void yyerror(YYLTYPE * loc, yyscan_t scanner, ParseData * data, const char * err
 
 
 
-/* Line 207 of glr.c  */
-#line 244 "src/libexpr/parser-tab.cc"
+#line 242 "src/libexpr/parser-tab.cc" /* glr.c:207  */
 
-# ifndef YY_NULL
+# ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
-#   define YY_NULL nullptr
+#   define YY_NULLPTR nullptr
 #  else
-#   define YY_NULL 0
+#   define YY_NULLPTR 0
 #  endif
 # endif
 
@@ -273,8 +271,7 @@ static YYLTYPE yyloc_default
 
 /* Copy the second part of user declarations.  */
 
-/* Line 230 of glr.c  */
-#line 278 "src/libexpr/parser-tab.cc"
+#line 275 "src/libexpr/parser-tab.cc" /* glr.c:230  */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -290,31 +287,6 @@ static YYLTYPE yyloc_default
 # ifndef YY_
 #  define YY_(Msgid) Msgid
 # endif
-#endif
-
-/* Suppress unused-variable warnings by "using" E.  */
-#if ! defined lint || defined __GNUC__
-# define YYUSE(E) ((void) (E))
-#else
-# define YYUSE(E) /* empty */
-#endif
-
-/* Identity function, used to suppress warnings about constant conditions.  */
-#ifndef lint
-# define YYID(N) (N)
-#else
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
-static int
-YYID (int i)
-#else
-static int
-YYID (i)
-    int i;
-#endif
-{
-  return i;
-}
 #endif
 
 #ifndef YYFREE
@@ -345,17 +317,59 @@ YYID (i)
 # define YYLONGJMP(Env, Val) (longjmp (Env, Val), YYASSERT (0))
 #endif
 
-/*-----------------.
-| GCC extensions.  |
-`-----------------*/
-
-#ifndef __attribute__
-/* This feature is available in gcc versions 2.5 and later.  */
-# if (! defined __GNUC__ || __GNUC__ < 2 \
-      || (__GNUC__ == 2 && __GNUC_MINOR__ < 5))
-#  define __attribute__(Spec) /* empty */
+#ifndef YY_ATTRIBUTE
+# if (defined __GNUC__                                               \
+      && (2 < __GNUC__ || (__GNUC__ == 2 && 96 <= __GNUC_MINOR__)))  \
+     || defined __SUNPRO_C && 0x5110 <= __SUNPRO_C
+#  define YY_ATTRIBUTE(Spec) __attribute__(Spec)
+# else
+#  define YY_ATTRIBUTE(Spec) /* empty */
 # endif
 #endif
+
+#ifndef YY_ATTRIBUTE_PURE
+# define YY_ATTRIBUTE_PURE   YY_ATTRIBUTE ((__pure__))
+#endif
+
+#ifndef YY_ATTRIBUTE_UNUSED
+# define YY_ATTRIBUTE_UNUSED YY_ATTRIBUTE ((__unused__))
+#endif
+
+#if !defined _Noreturn \
+     && (!defined __STDC_VERSION__ || __STDC_VERSION__ < 201112)
+# if defined _MSC_VER && 1200 <= _MSC_VER
+#  define _Noreturn __declspec (noreturn)
+# else
+#  define _Noreturn YY_ATTRIBUTE ((__noreturn__))
+# endif
+#endif
+
+/* Suppress unused-variable warnings by "using" E.  */
+#if ! defined lint || defined __GNUC__
+# define YYUSE(E) ((void) (E))
+#else
+# define YYUSE(E) /* empty */
+#endif
+
+#if defined __GNUC__ && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
+/* Suppress an incorrect diagnostic about yylval being uninitialized.  */
+# define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN \
+    _Pragma ("GCC diagnostic push") \
+    _Pragma ("GCC diagnostic ignored \"-Wuninitialized\"")\
+    _Pragma ("GCC diagnostic ignored \"-Wmaybe-uninitialized\"")
+# define YY_IGNORE_MAYBE_UNINITIALIZED_END \
+    _Pragma ("GCC diagnostic pop")
+#else
+# define YY_INITIAL_VALUE(Value) Value
+#endif
+#ifndef YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
+# define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
+# define YY_IGNORE_MAYBE_UNINITIALIZED_END
+#endif
+#ifndef YY_INITIAL_VALUE
+# define YY_INITIAL_VALUE(Value) /* Nothing. */
+#endif
+
 
 #ifndef YYASSERT
 # define YYASSERT(Condition) ((void) ((Condition) || (abort (), 0)))
@@ -423,56 +437,6 @@ static const unsigned char yytranslate[] =
 };
 
 #if YYDEBUG
-/* YYPRHS[YYN] -- Index of the first RHS symbol of rule number YYN in
-   YYRHS.  */
-static const unsigned short int yyprhs[] =
-{
-       0,     0,     3,     5,     7,    11,    17,    25,    33,    38,
-      43,    48,    50,    57,    59,    62,    65,    69,    73,    77,
-      81,    85,    89,    93,    97,   101,   105,   109,   113,   117,
-     121,   125,   129,   131,   134,   136,   140,   146,   149,   151,
-     153,   155,   157,   161,   165,   167,   169,   171,   173,   177,
-     182,   187,   191,   195,   197,   199,   200,   203,   208,   212,
-     217,   220,   225,   226,   232,   237,   245,   246,   249,   252,
-     253,   257,   261,   263,   265,   267,   269,   273,   277,   280,
-     281,   285,   287,   288,   290,   292
-};
-
-/* YYRHS -- A `-1'-separated list of the rules' RHS.  */
-static const signed char yyrhs[] =
-{
-      60,     0,    -1,    61,    -1,    62,    -1,     3,    45,    62,
-      -1,    46,    77,    47,    45,    62,    -1,    46,    77,    47,
-      48,     3,    45,    62,    -1,     3,    48,    46,    77,    47,
-      45,    62,    -1,    16,    61,    49,    62,    -1,    17,    61,
-      49,    62,    -1,    18,    71,    19,    62,    -1,    63,    -1,
-      13,    61,    14,    61,    15,    61,    -1,    64,    -1,    50,
-      64,    -1,    39,    64,    -1,    64,    22,    64,    -1,    64,
-      23,    64,    -1,    64,    32,    64,    -1,    64,    35,    64,
-      -1,    64,    33,    64,    -1,    64,    34,    64,    -1,    64,
-      24,    64,    -1,    64,    25,    64,    -1,    64,    26,    64,
-      -1,    64,    36,    64,    -1,    64,    43,    73,    -1,    64,
-      38,    64,    -1,    64,    39,    64,    -1,    64,    40,    64,
-      -1,    64,    41,    64,    -1,    64,    42,    64,    -1,    65,
-      -1,    65,    66,    -1,    66,    -1,    67,    51,    73,    -1,
-      67,    51,    73,    27,    66,    -1,    67,    27,    -1,    67,
-      -1,     3,    -1,     7,    -1,     8,    -1,    52,    68,    52,
-      -1,    29,    70,    30,    -1,     9,    -1,    10,    -1,    11,
-      -1,    12,    -1,    53,    61,    54,    -1,    18,    46,    71,
-      47,    -1,    20,    46,    71,    47,    -1,    46,    71,    47,
-      -1,    55,    76,    56,    -1,     5,    -1,    69,    -1,    -1,
-      69,     5,    -1,    69,    28,    61,    47,    -1,    28,    61,
-      47,    -1,     5,    28,    61,    47,    -1,    70,     6,    -1,
-      70,    28,    61,    47,    -1,    -1,    71,    73,    57,    61,
-      49,    -1,    71,    21,    72,    49,    -1,    71,    21,    53,
-      61,    54,    72,    49,    -1,    -1,    72,    74,    -1,    72,
-      75,    -1,    -1,    73,    51,    74,    -1,    73,    51,    75,
-      -1,    74,    -1,    75,    -1,     3,    -1,    27,    -1,    52,
-      68,    52,    -1,    28,    61,    47,    -1,    76,    66,    -1,
-      -1,    78,    58,    77,    -1,    78,    -1,    -1,    31,    -1,
-       3,    -1,     3,    43,    61,    -1
-};
-
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const unsigned short int yyrline[] =
 {
@@ -497,107 +461,22 @@ static const char *const yytname[] =
   "INT", "FLOAT", "PATH", "HPATH", "SPATH", "URI", "IF", "THEN", "ELSE",
   "ASSERT", "WITH", "LET", "IN", "REC", "INHERIT", "EQ", "NEQ", "AND",
   "OR", "IMPL", "OR_KW", "DOLLAR_CURLY", "IND_STRING_OPEN",
-  "IND_STRING_CLOSE", "ELLIPSIS", "'<'", "'>'", "GEQ", "LEQ", "UPDATE",
+  "IND_STRING_CLOSE", "ELLIPSIS", "'<'", "'>'", "LEQ", "GEQ", "UPDATE",
   "NOT", "'+'", "'-'", "'*'", "'/'", "CONCAT", "'?'", "NEGATE", "':'",
   "'{'", "'}'", "'@'", "';'", "'!'", "'.'", "'\"'", "'('", "')'", "'['",
   "']'", "'='", "','", "$accept", "start", "expr", "expr_function",
   "expr_if", "expr_op", "expr_app", "expr_select", "expr_simple",
   "string_parts", "string_parts_interpolated", "ind_string_parts", "binds",
   "attrs", "attrpath", "attr", "string_attr", "expr_list", "formals",
-  "formal", YY_NULL
+  "formal", YY_NULLPTR
 };
 #endif
 
-/* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
-static const unsigned char yyr1[] =
-{
-       0,    59,    60,    61,    62,    62,    62,    62,    62,    62,
-      62,    62,    63,    63,    64,    64,    64,    64,    64,    64,
-      64,    64,    64,    64,    64,    64,    64,    64,    64,    64,
-      64,    64,    64,    65,    65,    66,    66,    66,    66,    67,
-      67,    67,    67,    67,    67,    67,    67,    67,    67,    67,
-      67,    67,    67,    68,    68,    68,    69,    69,    69,    69,
-      70,    70,    70,    71,    71,    71,    71,    72,    72,    72,
-      73,    73,    73,    73,    74,    74,    75,    75,    76,    76,
-      77,    77,    77,    77,    78,    78
-};
-
-/* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
-static const unsigned char yyr2[] =
-{
-       0,     2,     1,     1,     3,     5,     7,     7,     4,     4,
-       4,     1,     6,     1,     2,     2,     3,     3,     3,     3,
-       3,     3,     3,     3,     3,     3,     3,     3,     3,     3,
-       3,     3,     1,     2,     1,     3,     5,     2,     1,     1,
-       1,     1,     3,     3,     1,     1,     1,     1,     3,     4,
-       4,     3,     3,     1,     1,     0,     2,     4,     3,     4,
-       2,     4,     0,     5,     4,     7,     0,     2,     2,     0,
-       3,     3,     1,     1,     1,     1,     3,     3,     2,     0,
-       3,     1,     0,     1,     1,     3
-};
-
-/* YYDPREC[RULE-NUM] -- Dynamic precedence of rule #RULE-NUM (0 if none).  */
-static const unsigned char yydprec[] =
-{
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0
-};
-
-/* YYMERGER[RULE-NUM] -- Index of merging function for rule #RULE-NUM.  */
-static const unsigned char yymerger[] =
-{
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0
-};
-
-/* YYDEFACT[S] -- default reduction number in state S.  Performed when
-   YYTABLE doesn't specify something else to do.  Zero means the default
-   is an error.  */
-static const unsigned char yydefact[] =
-{
-       0,    39,    40,    41,    44,    45,    46,    47,     0,     0,
-       0,    66,     0,    62,     0,    66,     0,    55,     0,    79,
-       0,     2,     3,    11,    13,    32,    34,    38,     0,     0,
-       0,     0,     0,    66,     0,    66,     0,    39,     0,    66,
-      15,    84,    83,     0,     0,    81,    14,    53,     0,     0,
-      54,     0,     0,     1,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-      33,    37,     0,     4,    82,     0,     0,     0,     0,    74,
-       0,    69,    75,     0,    55,     0,    72,    73,     0,    60,
-       0,    43,     0,    51,     0,    82,     0,     0,    42,    56,
-       0,    48,    52,    78,    16,    17,    22,    23,    24,    18,
-      20,    21,    19,    25,    27,    28,    29,    30,    31,    26,
-      35,     0,     0,     8,     9,    49,    10,     0,     0,     0,
-       0,     0,     0,    50,     0,    85,     0,     0,    80,     0,
-      58,     0,     0,     0,     0,     0,    64,    67,    68,    77,
-      76,    70,    71,     0,    61,     5,     0,    59,    57,    36,
-       0,    12,    69,    63,     0,     7,     0,     6,    65
-};
-
-/* YYPDEFGOTO[NTERM-NUM].  */
-static const short int yydefgoto[] =
-{
-      -1,    20,    21,    22,    23,    24,    25,    26,    27,    49,
-      50,    36,    43,   128,    85,    86,    87,    52,    44,    45
-};
-
-/* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
-   STATE-NUM.  */
 #define YYPACT_NINF -123
+#define YYTABLE_NINF -67
+
+  /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
+     STATE-NUM.  */
 static const short int yypact[] =
 {
      134,    72,  -123,  -123,  -123,  -123,  -123,  -123,   134,   134,
@@ -619,17 +498,47 @@ static const short int yypact[] =
      134,  -123,  -123,  -123,   134,  -123,   180,  -123,  -123
 };
 
-/* YYPGOTO[NTERM-NUM].  */
+  /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
+     Performed when YYTABLE does not specify something else to do.  Zero
+     means the default is an error.  */
+static const unsigned char yydefact[] =
+{
+       0,    39,    40,    41,    44,    45,    46,    47,     0,     0,
+       0,    66,     0,    62,     0,    66,     0,    55,     0,    79,
+       0,     2,     3,    11,    13,    32,    34,    38,     0,     0,
+       0,     0,     0,    66,     0,    66,     0,    39,     0,    66,
+      15,    84,    83,     0,     0,    81,    14,    53,     0,     0,
+      54,     0,     0,     1,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+      33,    37,     0,     4,    82,     0,     0,     0,     0,    74,
+       0,    69,    75,     0,    55,     0,    72,    73,     0,    60,
+       0,    43,     0,    51,     0,    82,     0,     0,    42,    56,
+       0,    48,    52,    78,    16,    17,    22,    23,    24,    18,
+      20,    19,    21,    25,    27,    28,    29,    30,    31,    26,
+      35,     0,     0,     8,     9,    49,    10,     0,     0,     0,
+       0,     0,     0,    50,     0,    85,     0,     0,    80,     0,
+      58,     0,     0,     0,     0,     0,    64,    67,    68,    77,
+      76,    70,    71,     0,    61,     5,     0,    59,    57,    36,
+       0,    12,    69,    63,     0,     7,     0,     6,    65
+};
+
+  /* YYPGOTO[NTERM-NUM].  */
 static const signed char yypgoto[] =
 {
     -123,  -123,    -8,   -25,  -123,    40,  -123,   -21,  -123,    92,
     -123,  -123,    99,    10,   127,  -122,  -120,  -123,   -15,  -123
 };
 
-/* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
-   positive, shift that token.  If negative, reduce the rule which
-   number is the opposite.  If YYTABLE_NINF, syntax error.  */
-#define YYTABLE_NINF -67
+  /* YYDEFGOTO[NTERM-NUM].  */
+static const short int yydefgoto[] =
+{
+      -1,    20,    21,    22,    23,    24,    25,    26,    27,    49,
+      50,    36,    43,   128,    85,    86,    87,    52,    44,    45
+};
+
+  /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
+     positive, shift that token.  If negative, reduce the rule whose
+     number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const short int yytable[] =
 {
       30,    31,    32,    73,    70,    41,   147,    53,   148,   151,
@@ -667,6 +576,140 @@ static const short int yytable[] =
       67,    68,    69,    54,    55,     0,     0,     0,     0,     0,
        0,     0,     0,    59,    60,    61,    62,    63,     0,    64,
       65,    66,    67,    68,    69
+};
+
+static const short int yycheck[] =
+{
+       8,     9,    10,    28,    25,     3,   128,     0,   128,   131,
+      18,   131,    51,    27,     3,     3,    46,     3,    57,     3,
+      42,    43,    46,     7,     8,     9,    10,    11,    12,    46,
+      19,    52,    21,    31,    18,    21,    20,    51,    27,    28,
+      48,    27,    28,    31,   166,    29,   166,     5,    14,    47,
+      27,    76,    77,     5,    14,    80,    16,     6,    49,    74,
+      43,    47,    46,    52,    49,     3,    52,    75,    52,    53,
+      28,    55,    56,    47,    51,    83,    28,    58,    28,    28,
+      95,    30,    90,    21,    92,    52,    54,    51,    96,    27,
+      28,     3,   100,    47,    54,    55,    56,    57,    58,    59,
+      60,    61,    62,    63,    64,    65,    66,    67,    68,    47,
+      11,   136,    53,    47,    52,    27,    28,    45,    15,   127,
+      48,   142,    47,    36,   132,    38,    39,    40,    41,    42,
+      43,    52,    33,    47,    35,   160,   144,     3,     3,   164,
+      52,     7,     8,     9,    10,    11,    12,    13,    47,    47,
+      16,    17,    18,    45,    20,    45,    48,     3,    40,    41,
+      42,    43,     3,    29,    49,    54,     7,     8,     9,    10,
+      11,    12,   162,    39,    45,    21,    84,    18,     3,    20,
+      46,    27,    28,     3,    50,    -1,    52,    53,    29,    55,
+      38,    39,    40,    41,    42,    43,    69,    -1,    39,    72,
+      -1,    47,    27,    28,    -1,    46,    52,    27,    28,    50,
+      -1,    52,    53,     3,    55,    -1,    -1,     7,     8,     9,
+      10,    11,    12,    -1,    49,    -1,    -1,    52,    18,    49,
+      20,    -1,    52,    22,    23,    24,    25,    26,    -1,    29,
+      -1,    -1,    -1,    32,    33,    34,    35,    36,    -1,    38,
+      39,    40,    41,    42,    43,    -1,    46,    22,    23,    24,
+      25,    26,    52,    53,    -1,    55,    -1,    32,    33,    34,
+      35,    36,    -1,    38,    39,    40,    41,    42,    43,    22,
+      23,    24,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    32,
+      33,    34,    35,    36,    -1,    38,    39,    40,    41,    42,
+      43,    22,    23,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    32,    33,    34,    35,    36,    -1,    38,    39,    40,
+      41,    42,    43,    22,    23,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    32,    33,    34,    35,    36,    -1,    38,
+      39,    40,    41,    42,    43
+};
+
+  /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
+     symbol of state STATE-NUM.  */
+static const unsigned char yystos[] =
+{
+       0,     3,     7,     8,     9,    10,    11,    12,    13,    16,
+      17,    18,    20,    29,    39,    46,    50,    52,    53,    55,
+      60,    61,    62,    63,    64,    65,    66,    67,    45,    48,
+      61,    61,    61,    46,    71,    46,    70,     3,    18,    46,
+      64,     3,    31,    71,    77,    78,    64,     5,    28,    68,
+      69,    61,    76,     0,    22,    23,    24,    25,    26,    32,
+      33,    34,    35,    36,    38,    39,    40,    41,    42,    43,
+      66,    27,    51,    62,    46,    14,    49,    49,    71,     3,
+      19,    21,    27,    28,    52,    73,    74,    75,    71,     6,
+      28,    30,    43,    47,    47,    58,    28,    61,    52,     5,
+      28,    54,    56,    66,    64,    64,    64,    64,    64,    64,
+      64,    64,    64,    64,    64,    64,    64,    64,    64,    73,
+      73,    77,    61,    62,    62,    47,    62,    53,    72,    61,
+      68,    51,    57,    47,    61,    61,    45,    48,    77,    61,
+      47,    61,    27,    47,    15,    61,    49,    74,    75,    47,
+      52,    74,    75,    61,    47,    62,     3,    47,    47,    66,
+      45,    61,    54,    49,    45,    62,    72,    62,    49
+};
+
+  /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
+static const unsigned char yyr1[] =
+{
+       0,    59,    60,    61,    62,    62,    62,    62,    62,    62,
+      62,    62,    63,    63,    64,    64,    64,    64,    64,    64,
+      64,    64,    64,    64,    64,    64,    64,    64,    64,    64,
+      64,    64,    64,    65,    65,    66,    66,    66,    66,    67,
+      67,    67,    67,    67,    67,    67,    67,    67,    67,    67,
+      67,    67,    67,    68,    68,    68,    69,    69,    69,    69,
+      70,    70,    70,    71,    71,    71,    71,    72,    72,    72,
+      73,    73,    73,    73,    74,    74,    75,    75,    76,    76,
+      77,    77,    77,    77,    78,    78
+};
+
+  /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
+static const unsigned char yyr2[] =
+{
+       0,     2,     1,     1,     3,     5,     7,     7,     4,     4,
+       4,     1,     6,     1,     2,     2,     3,     3,     3,     3,
+       3,     3,     3,     3,     3,     3,     3,     3,     3,     3,
+       3,     3,     1,     2,     1,     3,     5,     2,     1,     1,
+       1,     1,     3,     3,     1,     1,     1,     1,     3,     4,
+       4,     3,     3,     1,     1,     0,     2,     4,     3,     4,
+       2,     4,     0,     5,     4,     7,     0,     2,     2,     0,
+       3,     3,     1,     1,     1,     1,     3,     3,     2,     0,
+       3,     1,     0,     1,     1,     3
+};
+
+
+/* YYDPREC[RULE-NUM] -- Dynamic precedence of rule #RULE-NUM (0 if none).  */
+static const unsigned char yydprec[] =
+{
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0
+};
+
+/* YYMERGER[RULE-NUM] -- Index of merging function for rule #RULE-NUM.  */
+static const unsigned char yymerger[] =
+{
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0
+};
+
+/* YYIMMEDIATE[RULE-NUM] -- True iff rule #RULE-NUM is not to be deferred, as
+   in the case of predicates.  */
+static const yybool yyimmediate[] =
+{
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0
 };
 
 /* YYCONFLP[YYPACT[STATE-NUM]] -- Pointer into YYCONFL of start of
@@ -719,68 +762,6 @@ static const short int yyconfl[] =
        0,    66,     0,    82,     0
 };
 
-static const short int yycheck[] =
-{
-       8,     9,    10,    28,    25,     3,   128,     0,   128,   131,
-      18,   131,    51,    27,     3,     3,    46,     3,    57,     3,
-      42,    43,    46,     7,     8,     9,    10,    11,    12,    46,
-      19,    52,    21,    31,    18,    21,    20,    51,    27,    28,
-      48,    27,    28,    31,   166,    29,   166,     5,    14,    47,
-      27,    76,    77,     5,    14,    80,    16,     6,    49,    74,
-      43,    47,    46,    52,    49,     3,    52,    75,    52,    53,
-      28,    55,    56,    47,    51,    83,    28,    58,    28,    28,
-      95,    30,    90,    21,    92,    52,    54,    51,    96,    27,
-      28,     3,   100,    47,    54,    55,    56,    57,    58,    59,
-      60,    61,    62,    63,    64,    65,    66,    67,    68,    47,
-      11,   136,    53,    47,    52,    27,    28,    45,    15,   127,
-      48,   142,    47,    36,   132,    38,    39,    40,    41,    42,
-      43,    52,    33,    47,    35,   160,   144,     3,     3,   164,
-      52,     7,     8,     9,    10,    11,    12,    13,    47,    47,
-      16,    17,    18,    45,    20,    45,    48,     3,    40,    41,
-      42,    43,     3,    29,    49,    54,     7,     8,     9,    10,
-      11,    12,   162,    39,    45,    21,    84,    18,     3,    20,
-      46,    27,    28,     3,    50,    -1,    52,    53,    29,    55,
-      38,    39,    40,    41,    42,    43,    69,    -1,    39,    72,
-      -1,    47,    27,    28,    -1,    46,    52,    27,    28,    50,
-      -1,    52,    53,     3,    55,    -1,    -1,     7,     8,     9,
-      10,    11,    12,    -1,    49,    -1,    -1,    52,    18,    49,
-      20,    -1,    52,    22,    23,    24,    25,    26,    -1,    29,
-      -1,    -1,    -1,    32,    33,    34,    35,    36,    -1,    38,
-      39,    40,    41,    42,    43,    -1,    46,    22,    23,    24,
-      25,    26,    52,    53,    -1,    55,    -1,    32,    33,    34,
-      35,    36,    -1,    38,    39,    40,    41,    42,    43,    22,
-      23,    24,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    32,
-      33,    34,    35,    36,    -1,    38,    39,    40,    41,    42,
-      43,    22,    23,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    32,    33,    34,    35,    36,    -1,    38,    39,    40,
-      41,    42,    43,    22,    23,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    32,    33,    34,    35,    36,    -1,    38,
-      39,    40,    41,    42,    43
-};
-
-/* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
-   symbol of state STATE-NUM.  */
-static const unsigned char yystos[] =
-{
-       0,     3,     7,     8,     9,    10,    11,    12,    13,    16,
-      17,    18,    20,    29,    39,    46,    50,    52,    53,    55,
-      60,    61,    62,    63,    64,    65,    66,    67,    45,    48,
-      61,    61,    61,    46,    71,    46,    70,     3,    18,    46,
-      64,     3,    31,    71,    77,    78,    64,     5,    28,    68,
-      69,    61,    76,     0,    22,    23,    24,    25,    26,    32,
-      33,    34,    35,    36,    38,    39,    40,    41,    42,    43,
-      66,    27,    51,    62,    46,    14,    49,    49,    71,     3,
-      19,    21,    27,    28,    52,    73,    74,    75,    71,     6,
-      28,    30,    43,    47,    47,    58,    28,    61,    52,     5,
-      28,    54,    56,    66,    64,    64,    64,    64,    64,    64,
-      64,    64,    64,    64,    64,    64,    64,    64,    64,    73,
-      73,    77,    61,    62,    62,    47,    62,    53,    72,    61,
-      68,    51,    57,    47,    61,    61,    45,    48,    77,    61,
-      47,    61,    27,    47,    15,    61,    49,    74,    75,    47,
-      52,    74,    75,    61,    47,    62,     3,    47,    47,    66,
-      45,    61,    54,    49,    45,    62,    72,    62,    49
-};
-
 /* Error token number */
 #define YYTERROR 1
 
@@ -792,7 +773,7 @@ static const unsigned char yystos[] =
 #ifndef YYLLOC_DEFAULT
 # define YYLLOC_DEFAULT(Current, Rhs, N)                                \
     do                                                                  \
-      if (YYID (N))                                                     \
+      if (N)                                                            \
         {                                                               \
           (Current).first_line   = YYRHSLOC (Rhs, 1).first_line;        \
           (Current).first_column = YYRHSLOC (Rhs, 1).first_column;      \
@@ -806,66 +787,11 @@ static const unsigned char yystos[] =
           (Current).first_column = (Current).last_column =              \
             YYRHSLOC (Rhs, 0).last_column;                              \
         }                                                               \
-    while (YYID (0))
+    while (0)
 #endif
 
 # define YYRHSLOC(Rhs, K) ((Rhs)[K].yystate.yyloc)
 
-
-/* YY_LOCATION_PRINT -- Print the location on the stream.
-   This macro was not mandated originally: define only if we know
-   we won't break user code: when these are the locations we know.  */
-
-#ifndef YY_LOCATION_PRINT
-# if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
-
-/* Print *YYLOCP on YYO.  Private, do not rely on its existence. */
-
-__attribute__((__unused__))
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
-static unsigned
-yy_location_print_ (FILE *yyo, YYLTYPE const * const yylocp)
-#else
-static unsigned
-yy_location_print_ (yyo, yylocp)
-    FILE *yyo;
-    YYLTYPE const * const yylocp;
-#endif
-{
-  unsigned res = 0;
-  int end_col = 0 != yylocp->last_column ? yylocp->last_column - 1 : 0;
-  if (0 <= yylocp->first_line)
-    {
-      res += fprintf (yyo, "%d", yylocp->first_line);
-      if (0 <= yylocp->first_column)
-        res += fprintf (yyo, ".%d", yylocp->first_column);
-    }
-  if (0 <= yylocp->last_line)
-    {
-      if (yylocp->first_line < yylocp->last_line)
-        {
-          res += fprintf (yyo, "-%d", yylocp->last_line);
-          if (0 <= end_col)
-            res += fprintf (yyo, ".%d", end_col);
-        }
-      else if (0 <= end_col && yylocp->first_column < end_col)
-        res += fprintf (yyo, "-%d", end_col);
-    }
-  return res;
- }
-
-#  define YY_LOCATION_PRINT(File, Loc)          \
-  yy_location_print_ (File, &(Loc))
-
-# else
-#  define YY_LOCATION_PRINT(File, Loc) ((void) 0)
-# endif
-#endif
-
-
-/* YYLEX -- calling `yylex' with the right arguments.  */
-#define YYLEX yylex (&yylval, &yylloc, scanner, data)
 
 
 #undef yynerrs
@@ -883,9 +809,12 @@ static const int YYEMPTY = -2;
 
 typedef enum { yyok, yyaccept, yyabort, yyerr } YYRESULTTAG;
 
-#define YYCHK(YYE)                                                           \
-   do { YYRESULTTAG yyflag = YYE; if (yyflag != yyok) return yyflag; }       \
-   while (YYID (0))
+#define YYCHK(YYE)                              \
+  do {                                          \
+    YYRESULTTAG yychk_flag = YYE;               \
+    if (yychk_flag != yyok)                     \
+      return yychk_flag;                        \
+  } while (0)
 
 #if YYDEBUG
 
@@ -893,39 +822,73 @@ typedef enum { yyok, yyaccept, yyabort, yyerr } YYRESULTTAG;
 #  define YYFPRINTF fprintf
 # endif
 
+
+/* YY_LOCATION_PRINT -- Print the location on the stream.
+   This macro was not mandated originally: define only if we know
+   we won't break user code: when these are the locations we know.  */
+
+#ifndef YY_LOCATION_PRINT
+# if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
+
+/* Print *YYLOCP on YYO.  Private, do not rely on its existence. */
+
+YY_ATTRIBUTE_UNUSED
+static unsigned
+yy_location_print_ (FILE *yyo, YYLTYPE const * const yylocp)
+{
+  unsigned res = 0;
+  int end_col = 0 != yylocp->last_column ? yylocp->last_column - 1 : 0;
+  if (0 <= yylocp->first_line)
+    {
+      res += YYFPRINTF (yyo, "%d", yylocp->first_line);
+      if (0 <= yylocp->first_column)
+        res += YYFPRINTF (yyo, ".%d", yylocp->first_column);
+    }
+  if (0 <= yylocp->last_line)
+    {
+      if (yylocp->first_line < yylocp->last_line)
+        {
+          res += YYFPRINTF (yyo, "-%d", yylocp->last_line);
+          if (0 <= end_col)
+            res += YYFPRINTF (yyo, ".%d", end_col);
+        }
+      else if (0 <= end_col && yylocp->first_column < end_col)
+        res += YYFPRINTF (yyo, "-%d", end_col);
+    }
+  return res;
+ }
+
+#  define YY_LOCATION_PRINT(File, Loc)          \
+  yy_location_print_ (File, &(Loc))
+
+# else
+#  define YY_LOCATION_PRINT(File, Loc) ((void) 0)
+# endif
+#endif
+
+
 # define YYDPRINTF(Args)                        \
-do {                                            \
-  if (yydebug)                                  \
-    YYFPRINTF Args;                             \
-} while (YYID (0))
+  do {                                          \
+    if (yydebug)                                \
+      YYFPRINTF Args;                           \
+  } while (0)
 
 
-/*--------------------------------.
-| Print this symbol on YYOUTPUT.  |
-`--------------------------------*/
+/*----------------------------------------.
+| Print this symbol's value on YYOUTPUT.  |
+`----------------------------------------*/
 
-/*ARGSUSED*/
 static void
 yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, YYLTYPE const * const yylocationp, void * scanner, nix::ParseData * data)
 {
   FILE *yyo = yyoutput;
   YYUSE (yyo);
-  if (!yyvaluep)
-    return;
   YYUSE (yylocationp);
   YYUSE (scanner);
   YYUSE (data);
-# ifdef YYPRINT
-  if (yytype < YYNTOKENS)
-    YYPRINT (yyoutput, yytoknum[yytype], *yyvaluep);
-# else
-  YYUSE (yyoutput);
-# endif
-  switch (yytype)
-    {
-      default:
-        break;
-    }
+  if (!yyvaluep)
+    return;
+  YYUSE (yytype);
 }
 
 
@@ -936,10 +899,8 @@ yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvalue
 static void
 yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, YYLTYPE const * const yylocationp, void * scanner, nix::ParseData * data)
 {
-  if (yytype < YYNTOKENS)
-    YYFPRINTF (yyoutput, "token %s (", yytname[yytype]);
-  else
-    YYFPRINTF (yyoutput, "nterm %s (", yytname[yytype]);
+  YYFPRINTF (yyoutput, "%s %s (",
+             yytype < YYNTOKENS ? "token" : "nterm", yytname[yytype]);
 
   YY_LOCATION_PRINT (yyoutput, *yylocationp);
   YYFPRINTF (yyoutput, ": ");
@@ -947,19 +908,25 @@ yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep, YYL
   YYFPRINTF (yyoutput, ")");
 }
 
-# define YY_SYMBOL_PRINT(Title, Type, Value, Location)          \
-do {                                                            \
-  if (yydebug)                                                  \
-    {                                                           \
-      YYFPRINTF (stderr, "%s ", Title);                         \
-      yy_symbol_print (stderr, Type, Value, Location, scanner, data);        \
-      YYFPRINTF (stderr, "\n");                                 \
-    }                                                           \
-} while (YYID (0))
+# define YY_SYMBOL_PRINT(Title, Type, Value, Location)                  \
+  do {                                                                  \
+    if (yydebug)                                                        \
+      {                                                                 \
+        YYFPRINTF (stderr, "%s ", Title);                               \
+        yy_symbol_print (stderr, Type, Value, Location, scanner, data);        \
+        YYFPRINTF (stderr, "\n");                                       \
+      }                                                                 \
+  } while (0)
 
 /* Nonzero means print parse trace.  It is left uninitialized so that
    multiple parsers can coexist.  */
 int yydebug;
+
+struct yyGLRStack;
+static void yypstack (struct yyGLRStack* yystackp, size_t yyk)
+  YY_ATTRIBUTE_UNUSED;
+static void yypdumpstack (struct yyGLRStack* yystackp)
+  YY_ATTRIBUTE_UNUSED;
 
 #else /* !YYDEBUG */
 
@@ -992,13 +959,7 @@ int yydebug;
 #define YYHEADROOM 2
 
 #ifndef YYSTACKEXPANDABLE
-# if (! defined __cplusplus \
-      || (defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL \
-          && defined YYSTYPE_IS_TRIVIAL && YYSTYPE_IS_TRIVIAL))
 #  define YYSTACKEXPANDABLE 1
-# else
-#  define YYSTACKEXPANDABLE 0
-# endif
 #endif
 
 #if YYSTACKEXPANDABLE
@@ -1006,13 +967,13 @@ int yydebug;
   do {                                                  \
     if (Yystack->yyspaceLeft < YYHEADROOM)              \
       yyexpandGLRStack (Yystack);                       \
-  } while (YYID (0))
+  } while (0)
 #else
 # define YY_RESERVE_GLRSTACK(Yystack)                   \
   do {                                                  \
     if (Yystack->yyspaceLeft < YYHEADROOM)              \
       yyMemoryExhausted (Yystack);                      \
-  } while (YYID (0))
+  } while (0)
 #endif
 
 
@@ -1095,7 +1056,7 @@ typedef int yyStateNum;
 typedef int yyRuleNum;
 
 /** Grammar symbol */
-typedef short int yySymbol;
+typedef int yySymbol;
 
 /** Item references, as in LALR(1) machine */
 typedef short int yyItemNum;
@@ -1116,7 +1077,7 @@ struct yyGLRState {
   yyStateNum yylrState;
   /** Preceding state in this stack */
   yyGLRState* yypred;
-  /** Source position of the first token produced by my symbol */
+  /** Source position of the last token produced by my symbol */
   size_t yyposn;
   union {
     /** First in a chain of alternative reductions producing the
@@ -1186,19 +1147,15 @@ struct yyGLRStack {
 static void yyexpandGLRStack (yyGLRStack* yystackp);
 #endif
 
-static void yyFail (yyGLRStack* yystackp, YYLTYPE *yylocp, void * scanner, nix::ParseData * data, const char* yymsg)
-  __attribute__ ((__noreturn__));
-static void
+static _Noreturn void
 yyFail (yyGLRStack* yystackp, YYLTYPE *yylocp, void * scanner, nix::ParseData * data, const char* yymsg)
 {
-  if (yymsg != YY_NULL)
+  if (yymsg != YY_NULLPTR)
     yyerror (yylocp, scanner, data, yymsg);
   YYLONGJMP (yystackp->yyexception_buffer, 1);
 }
 
-static void yyMemoryExhausted (yyGLRStack* yystackp)
-  __attribute__ ((__noreturn__));
-static void
+static _Noreturn void
 yyMemoryExhausted (yyGLRStack* yystackp)
 {
   YYLONGJMP (yystackp->yyexception_buffer, 2);
@@ -1219,7 +1176,7 @@ yytokenName (yySymbol yytoken)
 /** Fill in YYVSP[YYLOW1 .. YYLOW0-1] from the chain of states starting
  *  at YYVSP[YYLOW0].yystate.yypred.  Leaves YYVSP[YYLOW1].yystate.yypred
  *  containing the pointer to the next state in the chain.  */
-static void yyfillin (yyGLRStackItem *, int, int) __attribute__ ((__unused__));
+static void yyfillin (yyGLRStackItem *, int, int) YY_ATTRIBUTE_UNUSED;
 static void
 yyfillin (yyGLRStackItem *yyvsp, int yylow0, int yylow1)
 {
@@ -1227,9 +1184,16 @@ yyfillin (yyGLRStackItem *yyvsp, int yylow0, int yylow1)
   yyGLRState *s = yyvsp[yylow0].yystate.yypred;
   for (i = yylow0-1; i >= yylow1; i -= 1)
     {
-      YYASSERT (s->yyresolved);
-      yyvsp[i].yystate.yyresolved = yytrue;
-      yyvsp[i].yystate.yysemantics.yysval = s->yysemantics.yysval;
+#if YYDEBUG
+      yyvsp[i].yystate.yylrState = s->yylrState;
+#endif
+      yyvsp[i].yystate.yyresolved = s->yyresolved;
+      if (s->yyresolved)
+        yyvsp[i].yystate.yysemantics.yysval = s->yysemantics.yysval;
+      else
+        /* The effect of using yysval or yyloc (in an immediate rule) is
+         * undefined.  */
+        yyvsp[i].yystate.yysemantics.yyfirstVal = YY_NULLPTR;
       yyvsp[i].yystate.yyloc = s->yyloc;
       s = yyvsp[i].yystate.yypred = s->yypred;
     }
@@ -1239,7 +1203,7 @@ yyfillin (yyGLRStackItem *yyvsp, int yylow0, int yylow1)
  * YYVSP[YYLOW1 .. *YYLOW-1] as in yyfillin and set *YYLOW = YYLOW1.
  * For convenience, always return YYLOW1.  */
 static inline int yyfill (yyGLRStackItem *, int *, int, yybool)
-     __attribute__ ((__unused__));
+     YY_ATTRIBUTE_UNUSED;
 static inline int
 yyfill (yyGLRStackItem *yyvsp, int *yylow, int yylow1, yybool yynormal)
 {
@@ -1256,16 +1220,18 @@ yyfill (yyGLRStackItem *yyvsp, int *yylow, int yylow1, yybool yynormal)
  *  value ($$), and yylocp points to place for location information
  *  (@$).  Returns yyok for normal return, yyaccept for YYACCEPT,
  *  yyerr for YYERROR, yyabort for YYABORT.  */
-/*ARGSUSED*/ static YYRESULTTAG
-yyuserAction (yyRuleNum yyn, int yyrhslen, yyGLRStackItem* yyvsp,
+static YYRESULTTAG
+yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
               yyGLRStack* yystackp,
               YYSTYPE* yyvalp, YYLTYPE *yylocp, void * scanner, nix::ParseData * data)
 {
-  yybool yynormal __attribute__ ((__unused__)) =
-    (yystackp->yysplitPoint == YY_NULL);
+  yybool yynormal YY_ATTRIBUTE_UNUSED = (yystackp->yysplitPoint == YY_NULLPTR);
   int yylow;
+  YYUSE (yyvalp);
+  YYUSE (yylocp);
   YYUSE (scanner);
   YYUSE (data);
+  YYUSE (yyrhslen);
 # undef yyerrok
 # define yyerrok (yystackp->yyerrState = 0)
 # undef YYACCEPT
@@ -1296,539 +1262,538 @@ yyuserAction (yyRuleNum yyn, int yyrhslen, yyGLRStackItem* yyvsp,
   switch (yyn)
     {
         case 2:
-/* Line 868 of glr.c  */
-#line 293 "src/libexpr/parser.y"
-    { data->result = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.e); }
+#line 293 "src/libexpr/parser.y" /* glr.c:783  */
+    { data->result = (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e); }
+#line 1268 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 4:
-/* Line 868 of glr.c  */
-#line 299 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprLambda(CUR_POS, data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.id)), false, 0, (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)); }
+#line 299 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprLambda(CUR_POS, data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.id)), false, 0, (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1274 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 5:
-/* Line 868 of glr.c  */
-#line 301 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprLambda(CUR_POS, data->symbols.create(""), true, (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (5))].yystate.yysemantics.yysval.formals), (((yyGLRStackItem const *)yyvsp)[YYFILL ((5) - (5))].yystate.yysemantics.yysval.e)); }
+#line 301 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprLambda(CUR_POS, data->symbols.create(""), true, (((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.formals), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1280 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 6:
-/* Line 868 of glr.c  */
-#line 303 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprLambda(CUR_POS, data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL ((5) - (7))].yystate.yysemantics.yysval.id)), true, (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (7))].yystate.yysemantics.yysval.formals), (((yyGLRStackItem const *)yyvsp)[YYFILL ((7) - (7))].yystate.yysemantics.yysval.e)); }
+#line 303 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprLambda(CUR_POS, data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.id)), true, (((yyGLRStackItem const *)yyvsp)[YYFILL (-5)].yystate.yysemantics.yysval.formals), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1286 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 7:
-/* Line 868 of glr.c  */
-#line 305 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprLambda(CUR_POS, data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (7))].yystate.yysemantics.yysval.id)), true, (((yyGLRStackItem const *)yyvsp)[YYFILL ((4) - (7))].yystate.yysemantics.yysval.formals), (((yyGLRStackItem const *)yyvsp)[YYFILL ((7) - (7))].yystate.yysemantics.yysval.e)); }
+#line 305 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprLambda(CUR_POS, data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL (-6)].yystate.yysemantics.yysval.id)), true, (((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.formals), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1292 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 8:
-/* Line 868 of glr.c  */
-#line 307 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprAssert(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (4))].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL ((4) - (4))].yystate.yysemantics.yysval.e)); }
+#line 307 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprAssert(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1298 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 9:
-/* Line 868 of glr.c  */
-#line 309 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprWith(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (4))].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL ((4) - (4))].yystate.yysemantics.yysval.e)); }
+#line 309 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprWith(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1304 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 10:
-/* Line 868 of glr.c  */
-#line 311 "src/libexpr/parser.y"
-    { if (!(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (4))].yystate.yysemantics.yysval.attrs)->dynamicAttrs.empty())
+#line 311 "src/libexpr/parser.y" /* glr.c:783  */
+    { if (!(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.attrs)->dynamicAttrs.empty())
         throw ParseError(format("dynamic attributes not allowed in let at %1%")
             % CUR_POS);
-      ((*yyvalp).e) = new ExprLet((((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (4))].yystate.yysemantics.yysval.attrs), (((yyGLRStackItem const *)yyvsp)[YYFILL ((4) - (4))].yystate.yysemantics.yysval.e));
+      ((*yyvalp).e) = new ExprLet((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.attrs), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e));
     }
+#line 1314 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 12:
-/* Line 868 of glr.c  */
-#line 320 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprIf((((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (6))].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL ((4) - (6))].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL ((6) - (6))].yystate.yysemantics.yysval.e)); }
+#line 320 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprIf((((yyGLRStackItem const *)yyvsp)[YYFILL (-4)].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1320 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 14:
-/* Line 868 of glr.c  */
-#line 325 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprOpNot((((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.e)); }
+#line 325 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprOpNot((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1326 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 15:
-/* Line 868 of glr.c  */
-#line 326 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__sub")), new ExprInt(0)), (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.e)); }
+#line 326 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__sub")), new ExprInt(0)), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1332 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 16:
-/* Line 868 of glr.c  */
-#line 327 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprOpEq((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)); }
+#line 327 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprOpEq((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1338 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 17:
-/* Line 868 of glr.c  */
-#line 328 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprOpNEq((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)); }
+#line 328 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprOpNEq((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1344 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 18:
-/* Line 868 of glr.c  */
-#line 329 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__lessThan")), (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e)), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)); }
+#line 329 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__lessThan")), (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e)), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1350 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 19:
-/* Line 868 of glr.c  */
-#line 330 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprOpNot(new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__lessThan")), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)), (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e))); }
+#line 330 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprOpNot(new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__lessThan")), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)), (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e))); }
+#line 1356 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 20:
-/* Line 868 of glr.c  */
-#line 331 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__lessThan")), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)), (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e)); }
+#line 331 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__lessThan")), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)), (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e)); }
+#line 1362 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 21:
-/* Line 868 of glr.c  */
-#line 332 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprOpNot(new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__lessThan")), (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e)), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e))); }
+#line 332 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprOpNot(new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__lessThan")), (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e)), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e))); }
+#line 1368 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 22:
-/* Line 868 of glr.c  */
-#line 333 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprOpAnd(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)); }
+#line 333 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprOpAnd(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1374 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 23:
-/* Line 868 of glr.c  */
-#line 334 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprOpOr(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)); }
+#line 334 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprOpOr(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1380 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 24:
-/* Line 868 of glr.c  */
-#line 335 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprOpImpl(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)); }
+#line 335 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprOpImpl(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1386 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 25:
-/* Line 868 of glr.c  */
-#line 336 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprOpUpdate(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)); }
+#line 336 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprOpUpdate(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1392 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 26:
-/* Line 868 of glr.c  */
-#line 337 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprOpHasAttr((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e), *(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.attrNames)); }
+#line 337 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprOpHasAttr((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e), *(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.attrNames)); }
+#line 1398 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 27:
-/* Line 868 of glr.c  */
-#line 339 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprConcatStrings(CUR_POS, false, new vector<Expr *>({(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)})); }
+#line 339 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprConcatStrings(CUR_POS, false, new vector<Expr *>({(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)})); }
+#line 1404 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 28:
-/* Line 868 of glr.c  */
-#line 340 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__sub")), (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e)), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)); }
+#line 340 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__sub")), (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e)), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1410 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 29:
-/* Line 868 of glr.c  */
-#line 341 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__mul")), (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e)), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)); }
+#line 341 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__mul")), (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e)), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1416 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 30:
-/* Line 868 of glr.c  */
-#line 342 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__div")), (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e)), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)); }
+#line 342 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprApp(CUR_POS, new ExprApp(new ExprVar(data->symbols.create("__div")), (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e)), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1422 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 31:
-/* Line 868 of glr.c  */
-#line 343 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprOpConcatLists(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)); }
+#line 343 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprOpConcatLists(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1428 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 33:
-/* Line 868 of glr.c  */
-#line 349 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprApp(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.e)); }
+#line 349 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprApp(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.e), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1434 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 34:
-/* Line 868 of glr.c  */
-#line 350 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.e); }
+#line 350 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e); }
+#line 1440 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 35:
-/* Line 868 of glr.c  */
-#line 355 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprSelect(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.e), *(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.attrNames), 0); }
+#line 355 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprSelect(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.e), *(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.attrNames), 0); }
+#line 1446 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 36:
-/* Line 868 of glr.c  */
-#line 357 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprSelect(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (5))].yystate.yysemantics.yysval.e), *(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (5))].yystate.yysemantics.yysval.attrNames), (((yyGLRStackItem const *)yyvsp)[YYFILL ((5) - (5))].yystate.yysemantics.yysval.e)); }
+#line 357 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprSelect(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL (-4)].yystate.yysemantics.yysval.e), *(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.attrNames), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1452 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 37:
-/* Line 868 of glr.c  */
-#line 361 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprApp(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.e), new ExprVar(CUR_POS, data->symbols.create("or"))); }
+#line 361 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprApp(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.e), new ExprVar(CUR_POS, data->symbols.create("or"))); }
+#line 1458 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 38:
-/* Line 868 of glr.c  */
-#line 362 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.e); }
+#line 362 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e); }
+#line 1464 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 39:
-/* Line 868 of glr.c  */
-#line 366 "src/libexpr/parser.y"
+#line 366 "src/libexpr/parser.y" /* glr.c:783  */
     {
-      if (strcmp((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.id), "__curPos") == 0)
+      if (strcmp((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.id), "__curPos") == 0)
           ((*yyvalp).e) = new ExprPos(CUR_POS);
       else
-          ((*yyvalp).e) = new ExprVar(CUR_POS, data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.id)));
+          ((*yyvalp).e) = new ExprVar(CUR_POS, data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.id)));
   }
+#line 1475 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 40:
-/* Line 868 of glr.c  */
-#line 372 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprInt((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.n)); }
+#line 372 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprInt((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.n)); }
+#line 1481 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 41:
-/* Line 868 of glr.c  */
-#line 373 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprFloat((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.nf)); }
+#line 373 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprFloat((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.nf)); }
+#line 1487 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 42:
-/* Line 868 of glr.c  */
-#line 374 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.e); }
+#line 374 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.e); }
+#line 1493 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 43:
-/* Line 868 of glr.c  */
-#line 375 "src/libexpr/parser.y"
+#line 375 "src/libexpr/parser.y" /* glr.c:783  */
     {
-      ((*yyvalp).e) = stripIndentation(CUR_POS, data->symbols, *(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.string_parts));
+      ((*yyvalp).e) = stripIndentation(CUR_POS, data->symbols, *(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.string_parts));
   }
+#line 1501 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 44:
-/* Line 868 of glr.c  */
-#line 378 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprPath(absPath((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.path), data->basePath)); }
+#line 378 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprPath(absPath((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.path), data->basePath)); }
+#line 1507 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 45:
-/* Line 868 of glr.c  */
-#line 379 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprPath(getEnv("HOME", "") + string{(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.path) + 1}); }
+#line 379 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprPath(getEnv("HOME", "") + string{(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.path) + 1}); }
+#line 1513 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 46:
-/* Line 868 of glr.c  */
-#line 380 "src/libexpr/parser.y"
+#line 380 "src/libexpr/parser.y" /* glr.c:783  */
     {
-      string path((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.path) + 1, strlen((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.path)) - 2);
+      string path((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.path) + 1, strlen((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.path)) - 2);
       ((*yyvalp).e) = new ExprApp(CUR_POS,
           new ExprApp(new ExprVar(data->symbols.create("__findFile")),
               new ExprVar(data->symbols.create("__nixPath"))),
           new ExprString(data->symbols.create(path)));
   }
+#line 1525 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 47:
-/* Line 868 of glr.c  */
-#line 387 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprString(data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.uri))); }
+#line 387 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprString(data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.uri))); }
+#line 1531 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 48:
-/* Line 868 of glr.c  */
-#line 388 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.e); }
+#line 388 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.e); }
+#line 1537 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 49:
-/* Line 868 of glr.c  */
-#line 392 "src/libexpr/parser.y"
-    { (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (4))].yystate.yysemantics.yysval.attrs)->recursive = true; ((*yyvalp).e) = new ExprSelect(noPos, (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (4))].yystate.yysemantics.yysval.attrs), data->symbols.create("body")); }
+#line 392 "src/libexpr/parser.y" /* glr.c:783  */
+    { (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.attrs)->recursive = true; ((*yyvalp).e) = new ExprSelect(noPos, (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.attrs), data->symbols.create("body")); }
+#line 1543 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 50:
-/* Line 868 of glr.c  */
-#line 394 "src/libexpr/parser.y"
-    { (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (4))].yystate.yysemantics.yysval.attrs)->recursive = true; ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (4))].yystate.yysemantics.yysval.attrs); }
+#line 394 "src/libexpr/parser.y" /* glr.c:783  */
+    { (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.attrs)->recursive = true; ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.attrs); }
+#line 1549 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 51:
-/* Line 868 of glr.c  */
-#line 396 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.attrs); }
+#line 396 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.attrs); }
+#line 1555 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 52:
-/* Line 868 of glr.c  */
-#line 397 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.list); }
+#line 397 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.list); }
+#line 1561 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 54:
-/* Line 868 of glr.c  */
-#line 402 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = new ExprConcatStrings(CUR_POS, true, (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.string_parts)); }
+#line 402 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = new ExprConcatStrings(CUR_POS, true, (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.string_parts)); }
+#line 1567 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 55:
-/* Line 868 of glr.c  */
-#line 403 "src/libexpr/parser.y"
+#line 403 "src/libexpr/parser.y" /* glr.c:783  */
     { ((*yyvalp).e) = new ExprString(data->symbols.create("")); }
+#line 1573 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 56:
-/* Line 868 of glr.c  */
-#line 407 "src/libexpr/parser.y"
-    { ((*yyvalp).string_parts) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.string_parts); (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.string_parts)->push_back((((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.e)); }
+#line 407 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).string_parts) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.string_parts); (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.string_parts)->push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1579 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 57:
-/* Line 868 of glr.c  */
-#line 408 "src/libexpr/parser.y"
-    { ((*yyvalp).string_parts) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (4))].yystate.yysemantics.yysval.string_parts); (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (4))].yystate.yysemantics.yysval.string_parts)->push_back((((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (4))].yystate.yysemantics.yysval.e)); }
+#line 408 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).string_parts) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.string_parts); (((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.string_parts)->push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.e)); }
+#line 1585 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 58:
-/* Line 868 of glr.c  */
-#line 409 "src/libexpr/parser.y"
-    { ((*yyvalp).string_parts) = new vector<Expr *>; ((*yyvalp).string_parts)->push_back((((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.e)); }
+#line 409 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).string_parts) = new vector<Expr *>; ((*yyvalp).string_parts)->push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.e)); }
+#line 1591 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 59:
-/* Line 868 of glr.c  */
-#line 410 "src/libexpr/parser.y"
+#line 410 "src/libexpr/parser.y" /* glr.c:783  */
     {
       ((*yyvalp).string_parts) = new vector<Expr *>;
-      ((*yyvalp).string_parts)->push_back((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (4))].yystate.yysemantics.yysval.e));
-      ((*yyvalp).string_parts)->push_back((((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (4))].yystate.yysemantics.yysval.e));
+      ((*yyvalp).string_parts)->push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.e));
+      ((*yyvalp).string_parts)->push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.e));
     }
+#line 1601 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 60:
-/* Line 868 of glr.c  */
-#line 418 "src/libexpr/parser.y"
-    { ((*yyvalp).string_parts) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.string_parts); (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.string_parts)->push_back((((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.e)); }
+#line 418 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).string_parts) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.string_parts); (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.string_parts)->push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1607 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 61:
-/* Line 868 of glr.c  */
-#line 419 "src/libexpr/parser.y"
-    { ((*yyvalp).string_parts) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (4))].yystate.yysemantics.yysval.string_parts); (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (4))].yystate.yysemantics.yysval.string_parts)->push_back((((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (4))].yystate.yysemantics.yysval.e)); }
+#line 419 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).string_parts) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.string_parts); (((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.string_parts)->push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.e)); }
+#line 1613 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 62:
-/* Line 868 of glr.c  */
-#line 420 "src/libexpr/parser.y"
+#line 420 "src/libexpr/parser.y" /* glr.c:783  */
     { ((*yyvalp).string_parts) = new vector<Expr *>; }
+#line 1619 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 63:
-/* Line 868 of glr.c  */
-#line 424 "src/libexpr/parser.y"
-    { ((*yyvalp).attrs) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (5))].yystate.yysemantics.yysval.attrs); addAttr(((*yyvalp).attrs), *(((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (5))].yystate.yysemantics.yysval.attrNames), (((yyGLRStackItem const *)yyvsp)[YYFILL ((4) - (5))].yystate.yysemantics.yysval.e), makeCurPos((((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (5))].yystate.yyloc), data)); }
+#line 424 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).attrs) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-4)].yystate.yysemantics.yysval.attrs); addAttr(((*yyvalp).attrs), *(((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.attrNames), (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.e), makeCurPos((((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yyloc), data)); }
+#line 1625 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 64:
-/* Line 868 of glr.c  */
-#line 426 "src/libexpr/parser.y"
-    { ((*yyvalp).attrs) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (4))].yystate.yysemantics.yysval.attrs);
-      for (auto & i : *(((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (4))].yystate.yysemantics.yysval.attrNames)) {
+#line 426 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).attrs) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.attrs);
+      for (auto & i : *(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.attrNames)) {
           if (((*yyvalp).attrs)->attrs.find(i.symbol) != ((*yyvalp).attrs)->attrs.end())
-              dupAttr(i.symbol, makeCurPos((((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (4))].yystate.yyloc), data), ((*yyvalp).attrs)->attrs[i.symbol].pos);
-          Pos pos = makeCurPos((((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (4))].yystate.yyloc), data);
+              dupAttr(i.symbol, makeCurPos((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yyloc), data), ((*yyvalp).attrs)->attrs[i.symbol].pos);
+          Pos pos = makeCurPos((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yyloc), data);
           ((*yyvalp).attrs)->attrs[i.symbol] = ExprAttrs::AttrDef(new ExprVar(CUR_POS, i.symbol), pos, true);
       }
     }
+#line 1638 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 65:
-/* Line 868 of glr.c  */
-#line 435 "src/libexpr/parser.y"
-    { ((*yyvalp).attrs) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (7))].yystate.yysemantics.yysval.attrs);
+#line 435 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).attrs) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-6)].yystate.yysemantics.yysval.attrs);
       /* !!! Should ensure sharing of the expression in $4. */
-      for (auto & i : *(((yyGLRStackItem const *)yyvsp)[YYFILL ((6) - (7))].yystate.yysemantics.yysval.attrNames)) {
+      for (auto & i : *(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.attrNames)) {
           if (((*yyvalp).attrs)->attrs.find(i.symbol) != ((*yyvalp).attrs)->attrs.end())
-              dupAttr(i.symbol, makeCurPos((((yyGLRStackItem const *)yyvsp)[YYFILL ((6) - (7))].yystate.yyloc), data), ((*yyvalp).attrs)->attrs[i.symbol].pos);
-          ((*yyvalp).attrs)->attrs[i.symbol] = ExprAttrs::AttrDef(new ExprSelect(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL ((4) - (7))].yystate.yysemantics.yysval.e), i.symbol), makeCurPos((((yyGLRStackItem const *)yyvsp)[YYFILL ((6) - (7))].yystate.yyloc), data));
+              dupAttr(i.symbol, makeCurPos((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yyloc), data), ((*yyvalp).attrs)->attrs[i.symbol].pos);
+          ((*yyvalp).attrs)->attrs[i.symbol] = ExprAttrs::AttrDef(new ExprSelect(CUR_POS, (((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.e), i.symbol), makeCurPos((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yyloc), data));
       }
     }
+#line 1651 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 66:
-/* Line 868 of glr.c  */
-#line 443 "src/libexpr/parser.y"
+#line 443 "src/libexpr/parser.y" /* glr.c:783  */
     { ((*yyvalp).attrs) = new ExprAttrs; }
+#line 1657 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 67:
-/* Line 868 of glr.c  */
-#line 447 "src/libexpr/parser.y"
-    { ((*yyvalp).attrNames) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.attrNames); (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.attrNames)->push_back(AttrName(data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.id)))); }
+#line 447 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).attrNames) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.attrNames); (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.attrNames)->push_back(AttrName(data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.id)))); }
+#line 1663 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 68:
-/* Line 868 of glr.c  */
-#line 449 "src/libexpr/parser.y"
-    { ((*yyvalp).attrNames) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.attrNames);
-      ExprString * str = dynamic_cast<ExprString *>((((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.e));
+#line 449 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).attrNames) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.attrNames);
+      ExprString * str = dynamic_cast<ExprString *>((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e));
       if (str) {
           ((*yyvalp).attrNames)->push_back(AttrName(str->s));
           delete str;
       } else
           throw ParseError(format("dynamic attributes not allowed in inherit at %1%")
-              % makeCurPos((((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yyloc), data));
+              % makeCurPos((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yyloc), data));
     }
+#line 1677 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 69:
-/* Line 868 of glr.c  */
-#line 458 "src/libexpr/parser.y"
+#line 458 "src/libexpr/parser.y" /* glr.c:783  */
     { ((*yyvalp).attrNames) = new AttrPath; }
+#line 1683 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 70:
-/* Line 868 of glr.c  */
-#line 462 "src/libexpr/parser.y"
-    { ((*yyvalp).attrNames) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.attrNames); (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.attrNames)->push_back(AttrName(data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.id)))); }
+#line 462 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).attrNames) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.attrNames); (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.attrNames)->push_back(AttrName(data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.id)))); }
+#line 1689 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 71:
-/* Line 868 of glr.c  */
-#line 464 "src/libexpr/parser.y"
-    { ((*yyvalp).attrNames) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.attrNames);
-      ExprString * str = dynamic_cast<ExprString *>((((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e));
+#line 464 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).attrNames) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.attrNames);
+      ExprString * str = dynamic_cast<ExprString *>((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e));
       if (str) {
           ((*yyvalp).attrNames)->push_back(AttrName(str->s));
           delete str;
       } else
-          ((*yyvalp).attrNames)->push_back(AttrName((((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)));
+          ((*yyvalp).attrNames)->push_back(AttrName((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)));
     }
+#line 1702 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 72:
-/* Line 868 of glr.c  */
-#line 472 "src/libexpr/parser.y"
-    { ((*yyvalp).attrNames) = new vector<AttrName>; ((*yyvalp).attrNames)->push_back(AttrName(data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.id)))); }
+#line 472 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).attrNames) = new vector<AttrName>; ((*yyvalp).attrNames)->push_back(AttrName(data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.id)))); }
+#line 1708 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 73:
-/* Line 868 of glr.c  */
-#line 474 "src/libexpr/parser.y"
+#line 474 "src/libexpr/parser.y" /* glr.c:783  */
     { ((*yyvalp).attrNames) = new vector<AttrName>;
-      ExprString *str = dynamic_cast<ExprString *>((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.e));
+      ExprString *str = dynamic_cast<ExprString *>((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e));
       if (str) {
           ((*yyvalp).attrNames)->push_back(AttrName(str->s));
           delete str;
       } else
-          ((*yyvalp).attrNames)->push_back(AttrName((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.e)));
+          ((*yyvalp).attrNames)->push_back(AttrName((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)));
     }
+#line 1721 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 74:
-/* Line 868 of glr.c  */
-#line 485 "src/libexpr/parser.y"
-    { ((*yyvalp).id) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.id); }
+#line 485 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).id) = (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.id); }
+#line 1727 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 75:
-/* Line 868 of glr.c  */
-#line 486 "src/libexpr/parser.y"
+#line 486 "src/libexpr/parser.y" /* glr.c:783  */
     { ((*yyvalp).id) = "or"; }
+#line 1733 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 76:
-/* Line 868 of glr.c  */
-#line 490 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.e); }
+#line 490 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.e); }
+#line 1739 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 77:
-/* Line 868 of glr.c  */
-#line 491 "src/libexpr/parser.y"
-    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (3))].yystate.yysemantics.yysval.e); }
+#line 491 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).e) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.e); }
+#line 1745 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 78:
-/* Line 868 of glr.c  */
-#line 495 "src/libexpr/parser.y"
-    { ((*yyvalp).list) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.list); (((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (2))].yystate.yysemantics.yysval.list)->elems.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL ((2) - (2))].yystate.yysemantics.yysval.e)); /* !!! dangerous */ }
+#line 495 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).list) = (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.list); (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.list)->elems.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); /* !!! dangerous */ }
+#line 1751 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 79:
-/* Line 868 of glr.c  */
-#line 496 "src/libexpr/parser.y"
+#line 496 "src/libexpr/parser.y" /* glr.c:783  */
     { ((*yyvalp).list) = new ExprList; }
+#line 1757 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 80:
-/* Line 868 of glr.c  */
-#line 501 "src/libexpr/parser.y"
-    { ((*yyvalp).formals) = (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.formals); addFormal(CUR_POS, ((*yyvalp).formals), *(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.formal)); }
+#line 501 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).formals) = (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.formals); addFormal(CUR_POS, ((*yyvalp).formals), *(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.formal)); }
+#line 1763 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 81:
-/* Line 868 of glr.c  */
-#line 503 "src/libexpr/parser.y"
-    { ((*yyvalp).formals) = new Formals; addFormal(CUR_POS, ((*yyvalp).formals), *(((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.formal)); ((*yyvalp).formals)->ellipsis = false; }
+#line 503 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).formals) = new Formals; addFormal(CUR_POS, ((*yyvalp).formals), *(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.formal)); ((*yyvalp).formals)->ellipsis = false; }
+#line 1769 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 82:
-/* Line 868 of glr.c  */
-#line 505 "src/libexpr/parser.y"
+#line 505 "src/libexpr/parser.y" /* glr.c:783  */
     { ((*yyvalp).formals) = new Formals; ((*yyvalp).formals)->ellipsis = false; }
+#line 1775 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 83:
-/* Line 868 of glr.c  */
-#line 507 "src/libexpr/parser.y"
+#line 507 "src/libexpr/parser.y" /* glr.c:783  */
     { ((*yyvalp).formals) = new Formals; ((*yyvalp).formals)->ellipsis = true; }
+#line 1781 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 84:
-/* Line 868 of glr.c  */
-#line 511 "src/libexpr/parser.y"
-    { ((*yyvalp).formal) = new Formal(data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (1))].yystate.yysemantics.yysval.id)), 0); }
+#line 511 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).formal) = new Formal(data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.id)), 0); }
+#line 1787 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
   case 85:
-/* Line 868 of glr.c  */
-#line 512 "src/libexpr/parser.y"
-    { ((*yyvalp).formal) = new Formal(data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL ((1) - (3))].yystate.yysemantics.yysval.id)), (((yyGLRStackItem const *)yyvsp)[YYFILL ((3) - (3))].yystate.yysemantics.yysval.e)); }
+#line 512 "src/libexpr/parser.y" /* glr.c:783  */
+    { ((*yyvalp).formal) = new Formal(data->symbols.create((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.id)), (((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.e)); }
+#line 1793 "src/libexpr/parser-tab.cc" /* glr.c:783  */
     break;
 
 
-/* Line 868 of glr.c  */
-#line 1832 "src/libexpr/parser-tab.cc"
+#line 1797 "src/libexpr/parser-tab.cc" /* glr.c:783  */
       default: break;
     }
 
@@ -1841,9 +1806,9 @@ yyuserAction (yyRuleNum yyn, int yyrhslen, yyGLRStackItem* yyvsp,
 # undef yyclearin
 # undef YYRECOVERING
 }
-
 
-/*ARGSUSED*/ static void
+
+static void
 yyuserMerge (int yyn, YYSTYPE* yy0, YYSTYPE* yy1)
 {
   YYUSE (yy0);
@@ -1851,7 +1816,7 @@ yyuserMerge (int yyn, YYSTYPE* yy0, YYSTYPE* yy1)
 
   switch (yyn)
     {
-      
+
       default: break;
     }
 }
@@ -1862,7 +1827,6 @@ yyuserMerge (int yyn, YYSTYPE* yy0, YYSTYPE* yy1)
 | Release the memory associated to this symbol.  |
 `-----------------------------------------------*/
 
-/*ARGSUSED*/
 static void
 yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep, YYLTYPE *yylocationp, void * scanner, nix::ParseData * data)
 {
@@ -1870,17 +1834,13 @@ yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep, YYLTYPE *yylocatio
   YYUSE (yylocationp);
   YYUSE (scanner);
   YYUSE (data);
-
   if (!yymsg)
     yymsg = "Deleting";
   YY_SYMBOL_PRINT (yymsg, yytype, yyvaluep, yylocationp);
 
-  switch (yytype)
-    {
-
-      default:
-        break;
-    }
+  YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
+  YYUSE (yytype);
+  YY_IGNORE_MAYBE_UNINITIALIZED_END
 }
 
 /** Number of symbols composing the right hand side of rule #RULE.  */
@@ -1902,12 +1862,10 @@ yydestroyGLRState (char const *yymsg, yyGLRState *yys, void * scanner, nix::Pars
       if (yydebug)
         {
           if (yys->yysemantics.yyfirstVal)
-            YYFPRINTF (stderr, "%s unresolved ", yymsg);
+            YYFPRINTF (stderr, "%s unresolved", yymsg);
           else
-            YYFPRINTF (stderr, "%s incomplete ", yymsg);
-          yy_symbol_print (stderr, yystos[yys->yylrState],
-                           YY_NULL, &yys->yyloc, scanner, data);
-          YYFPRINTF (stderr, "\n");
+            YYFPRINTF (stderr, "%s incomplete", yymsg);
+          YY_SYMBOL_PRINT ("", yystos[yys->yylrState], YY_NULLPTR, &yys->yyloc);
         }
 #endif
 
@@ -1924,7 +1882,7 @@ yydestroyGLRState (char const *yymsg, yyGLRState *yys, void * scanner, nix::Pars
     }
 }
 
-/** Left-hand-side symbol for rule #RULE.  */
+/** Left-hand-side symbol for rule #YYRULE.  */
 static inline yySymbol
 yylhsNonterm (yyRuleNum yyrule)
 {
@@ -1934,7 +1892,7 @@ yylhsNonterm (yyRuleNum yyrule)
 #define yypact_value_is_default(Yystate) \
   (!!((Yystate) == (-123)))
 
-/** True iff LR state STATE has only a default reduction (regardless
+/** True iff LR state YYSTATE has only a default reduction (regardless
  *  of token).  */
 static inline yybool
 yyisDefaultedState (yyStateNum yystate)
@@ -1942,7 +1900,7 @@ yyisDefaultedState (yyStateNum yystate)
   return yypact_value_is_default (yypact[yystate]);
 }
 
-/** The default reduction for STATE, assuming it has one.  */
+/** The default reduction for YYSTATE, assuming it has one.  */
 static inline yyRuleNum
 yydefaultAction (yyStateNum yystate)
 {
@@ -1957,8 +1915,8 @@ yydefaultAction (yyStateNum yystate)
  *    R < 0:  Reduce on rule -R.
  *    R = 0:  Error.
  *    R > 0:  Shift to state R.
- *  Set *CONFLICTS to a pointer into yyconfl to 0-terminated list of
- *  conflicting reductions.
+ *  Set *YYCONFLICTS to a pointer into yyconfl to a 0-terminated list
+ *  of conflicting reductions.
  */
 static inline void
 yygetLRActions (yyStateNum yystate, int yytoken,
@@ -1983,15 +1941,18 @@ yygetLRActions (yyStateNum yystate, int yytoken,
     }
 }
 
+/** Compute post-reduction state.
+ * \param yystate   the current state
+ * \param yysym     the nonterminal to push on the stack
+ */
 static inline yyStateNum
-yyLRgotoState (yyStateNum yystate, yySymbol yylhs)
+yyLRgotoState (yyStateNum yystate, yySymbol yysym)
 {
-  int yyr;
-  yyr = yypgoto[yylhs - YYNTOKENS] + yystate;
+  int yyr = yypgoto[yysym - YYNTOKENS] + yystate;
   if (0 <= yyr && yyr <= YYLAST && yycheck[yyr] == yystate)
     return yytable[yyr];
   else
-    return yydefgoto[yylhs - YYNTOKENS];
+    return yydefgoto[yysym - YYNTOKENS];
 }
 
 static inline yybool
@@ -2008,9 +1969,10 @@ yyisErrorAction (int yyaction)
 
                                 /* GLRStates */
 
-/** Return a fresh GLRStackItem.  Callers should call
- * YY_RESERVE_GLRSTACK afterwards to make sure there is sufficient
- * headroom.  */
+/** Return a fresh GLRStackItem in YYSTACKP.  The item is an LR state
+ *  if YYISSTATE, and otherwise a semantic option.  Callers should call
+ *  YY_RESERVE_GLRSTACK afterwards to make sure there is sufficient
+ *  headroom.  */
 
 static inline yyGLRStackItem*
 yynewGLRStackItem (yyGLRStack* yystackp, yybool yyisState)
@@ -2023,16 +1985,17 @@ yynewGLRStackItem (yyGLRStack* yystackp, yybool yyisState)
 }
 
 /** Add a new semantic action that will execute the action for rule
- *  RULENUM on the semantic values in RHS to the list of
- *  alternative actions for STATE.  Assumes that RHS comes from
- *  stack #K of *STACKP. */
+ *  YYRULE on the semantic values in YYRHS to the list of
+ *  alternative actions for YYSTATE.  Assumes that YYRHS comes from
+ *  stack #YYK of *YYSTACKP. */
 static void
 yyaddDeferredAction (yyGLRStack* yystackp, size_t yyk, yyGLRState* yystate,
-                     yyGLRState* rhs, yyRuleNum yyrule)
+                     yyGLRState* yyrhs, yyRuleNum yyrule)
 {
   yySemanticOption* yynewOption =
     &yynewGLRStackItem (yystackp, yyfalse)->yyoption;
-  yynewOption->yystate = rhs;
+  YYASSERT (!yynewOption->yyisState);
+  yynewOption->yystate = yyrhs;
   yynewOption->yyrule = yyrule;
   if (yystackp->yytops.yylookaheadNeeds[yyk])
     {
@@ -2050,7 +2013,7 @@ yyaddDeferredAction (yyGLRStack* yystackp, size_t yyk, yyGLRState* yystate,
 
                                 /* GLRStacks */
 
-/** Initialize SET to a singleton set containing an empty stack.  */
+/** Initialize YYSET to a singleton set containing an empty stack.  */
 static yybool
 yyinitStateSet (yyGLRStateSet* yyset)
 {
@@ -2059,7 +2022,7 @@ yyinitStateSet (yyGLRStateSet* yyset)
   yyset->yystates = (yyGLRState**) YYMALLOC (16 * sizeof yyset->yystates[0]);
   if (! yyset->yystates)
     return yyfalse;
-  yyset->yystates[0] = YY_NULL;
+  yyset->yystates[0] = YY_NULLPTR;
   yyset->yylookaheadNeeds =
     (yybool*) YYMALLOC (16 * sizeof yyset->yylookaheadNeeds[0]);
   if (! yyset->yylookaheadNeeds)
@@ -2076,8 +2039,8 @@ static void yyfreeStateSet (yyGLRStateSet* yyset)
   YYFREE (yyset->yylookaheadNeeds);
 }
 
-/** Initialize STACK to a single empty stack, with total maximum
- *  capacity for all stacks of SIZE.  */
+/** Initialize *YYSTACKP to a single empty stack, with total maximum
+ *  capacity for all stacks of YYSIZE.  */
 static yybool
 yyinitGLRStack (yyGLRStack* yystackp, size_t yysize)
 {
@@ -2089,8 +2052,8 @@ yyinitGLRStack (yyGLRStack* yystackp, size_t yysize)
   if (!yystackp->yyitems)
     return yyfalse;
   yystackp->yynextFree = yystackp->yyitems;
-  yystackp->yysplitPoint = YY_NULL;
-  yystackp->yylastDeleted = YY_NULL;
+  yystackp->yysplitPoint = YY_NULLPTR;
+  yystackp->yylastDeleted = YY_NULLPTR;
   return yyinitStateSet (&yystackp->yytops);
 }
 
@@ -2099,7 +2062,7 @@ yyinitGLRStack (yyGLRStack* yystackp, size_t yysize)
 # define YYRELOC(YYFROMITEMS,YYTOITEMS,YYX,YYTYPE) \
   &((YYTOITEMS) - ((YYFROMITEMS) - (yyGLRStackItem*) (YYX)))->YYTYPE
 
-/** If STACK is expandable, extend it.  WARNING: Pointers into the
+/** If *YYSTACKP is expandable, extend it.  WARNING: Pointers into the
     stack from outside should be considered invalid after this call.
     We always expand when there are 1 or fewer items left AFTER an
     allocation, so that we can avoid having external pointers exist
@@ -2129,10 +2092,10 @@ yyexpandGLRStack (yyGLRStack* yystackp)
         {
           yyGLRState* yys0 = &yyp0->yystate;
           yyGLRState* yys1 = &yyp1->yystate;
-          if (yys0->yypred != YY_NULL)
+          if (yys0->yypred != YY_NULLPTR)
             yys1->yypred =
               YYRELOC (yyp0, yyp1, yys0->yypred, yystate);
-          if (! yys0->yyresolved && yys0->yysemantics.yyfirstVal != YY_NULL)
+          if (! yys0->yyresolved && yys0->yysemantics.yyfirstVal != YY_NULLPTR)
             yys1->yysemantics.yyfirstVal =
               YYRELOC (yyp0, yyp1, yys0->yysemantics.yyfirstVal, yyoption);
         }
@@ -2140,18 +2103,18 @@ yyexpandGLRStack (yyGLRStack* yystackp)
         {
           yySemanticOption* yyv0 = &yyp0->yyoption;
           yySemanticOption* yyv1 = &yyp1->yyoption;
-          if (yyv0->yystate != YY_NULL)
+          if (yyv0->yystate != YY_NULLPTR)
             yyv1->yystate = YYRELOC (yyp0, yyp1, yyv0->yystate, yystate);
-          if (yyv0->yynext != YY_NULL)
+          if (yyv0->yynext != YY_NULLPTR)
             yyv1->yynext = YYRELOC (yyp0, yyp1, yyv0->yynext, yyoption);
         }
     }
-  if (yystackp->yysplitPoint != YY_NULL)
+  if (yystackp->yysplitPoint != YY_NULLPTR)
     yystackp->yysplitPoint = YYRELOC (yystackp->yyitems, yynewItems,
-                                 yystackp->yysplitPoint, yystate);
+                                      yystackp->yysplitPoint, yystate);
 
   for (yyn = 0; yyn < yystackp->yytops.yysize; yyn += 1)
-    if (yystackp->yytops.yystates[yyn] != YY_NULL)
+    if (yystackp->yytops.yystates[yyn] != YY_NULLPTR)
       yystackp->yytops.yystates[yyn] =
         YYRELOC (yystackp->yyitems, yynewItems,
                  yystackp->yytops.yystates[yyn], yystate);
@@ -2169,37 +2132,37 @@ yyfreeGLRStack (yyGLRStack* yystackp)
   yyfreeStateSet (&yystackp->yytops);
 }
 
-/** Assuming that S is a GLRState somewhere on STACK, update the
- *  splitpoint of STACK, if needed, so that it is at least as deep as
- *  S.  */
+/** Assuming that YYS is a GLRState somewhere on *YYSTACKP, update the
+ *  splitpoint of *YYSTACKP, if needed, so that it is at least as deep as
+ *  YYS.  */
 static inline void
 yyupdateSplit (yyGLRStack* yystackp, yyGLRState* yys)
 {
-  if (yystackp->yysplitPoint != YY_NULL && yystackp->yysplitPoint > yys)
+  if (yystackp->yysplitPoint != YY_NULLPTR && yystackp->yysplitPoint > yys)
     yystackp->yysplitPoint = yys;
 }
 
-/** Invalidate stack #K in STACK.  */
+/** Invalidate stack #YYK in *YYSTACKP.  */
 static inline void
 yymarkStackDeleted (yyGLRStack* yystackp, size_t yyk)
 {
-  if (yystackp->yytops.yystates[yyk] != YY_NULL)
+  if (yystackp->yytops.yystates[yyk] != YY_NULLPTR)
     yystackp->yylastDeleted = yystackp->yytops.yystates[yyk];
-  yystackp->yytops.yystates[yyk] = YY_NULL;
+  yystackp->yytops.yystates[yyk] = YY_NULLPTR;
 }
 
-/** Undelete the last stack that was marked as deleted.  Can only be
-    done once after a deletion, and only when all other stacks have
+/** Undelete the last stack in *YYSTACKP that was marked as deleted.  Can
+    only be done once after a deletion, and only when all other stacks have
     been deleted.  */
 static void
 yyundeleteLastStack (yyGLRStack* yystackp)
 {
-  if (yystackp->yylastDeleted == YY_NULL || yystackp->yytops.yysize != 0)
+  if (yystackp->yylastDeleted == YY_NULLPTR || yystackp->yytops.yysize != 0)
     return;
   yystackp->yytops.yystates[0] = yystackp->yylastDeleted;
   yystackp->yytops.yysize = 1;
   YYDPRINTF ((stderr, "Restoring last deleted stack as stack #0.\n"));
-  yystackp->yylastDeleted = YY_NULL;
+  yystackp->yylastDeleted = YY_NULLPTR;
 }
 
 static inline void
@@ -2209,7 +2172,7 @@ yyremoveDeletes (yyGLRStack* yystackp)
   yyi = yyj = 0;
   while (yyj < yystackp->yytops.yysize)
     {
-      if (yystackp->yytops.yystates[yyi] == YY_NULL)
+      if (yystackp->yytops.yystates[yyi] == YY_NULLPTR)
         {
           if (yyi == yyj)
             {
@@ -2238,8 +2201,9 @@ yyremoveDeletes (yyGLRStack* yystackp)
     }
 }
 
-/** Shift to a new state on stack #K of STACK, corresponding to LR state
- * LRSTATE, at input position POSN, with (resolved) semantic value SVAL.  */
+/** Shift to a new state on stack #YYK of *YYSTACKP, corresponding to LR
+ * state YYLRSTATE, at input position YYPOSN, with (resolved) semantic
+ * value *YYVALP and source location *YYLOCP.  */
 static inline void
 yyglrShift (yyGLRStack* yystackp, size_t yyk, yyStateNum yylrState,
             size_t yyposn,
@@ -2258,31 +2222,72 @@ yyglrShift (yyGLRStack* yystackp, size_t yyk, yyStateNum yylrState,
   YY_RESERVE_GLRSTACK (yystackp);
 }
 
-/** Shift stack #K of YYSTACK, to a new state corresponding to LR
+/** Shift stack #YYK of *YYSTACKP, to a new state corresponding to LR
  *  state YYLRSTATE, at input position YYPOSN, with the (unresolved)
  *  semantic value of YYRHS under the action for YYRULE.  */
 static inline void
 yyglrShiftDefer (yyGLRStack* yystackp, size_t yyk, yyStateNum yylrState,
-                 size_t yyposn, yyGLRState* rhs, yyRuleNum yyrule)
+                 size_t yyposn, yyGLRState* yyrhs, yyRuleNum yyrule)
 {
   yyGLRState* yynewState = &yynewGLRStackItem (yystackp, yytrue)->yystate;
+  YYASSERT (yynewState->yyisState);
 
   yynewState->yylrState = yylrState;
   yynewState->yyposn = yyposn;
   yynewState->yyresolved = yyfalse;
   yynewState->yypred = yystackp->yytops.yystates[yyk];
-  yynewState->yysemantics.yyfirstVal = YY_NULL;
+  yynewState->yysemantics.yyfirstVal = YY_NULLPTR;
   yystackp->yytops.yystates[yyk] = yynewState;
 
   /* Invokes YY_RESERVE_GLRSTACK.  */
-  yyaddDeferredAction (yystackp, yyk, yynewState, rhs, yyrule);
+  yyaddDeferredAction (yystackp, yyk, yynewState, yyrhs, yyrule);
 }
 
-/** Pop the symbols consumed by reduction #RULE from the top of stack
- *  #K of STACK, and perform the appropriate semantic action on their
+#if !YYDEBUG
+# define YY_REDUCE_PRINT(Args)
+#else
+# define YY_REDUCE_PRINT(Args)          \
+do {                                    \
+  if (yydebug)                          \
+    yy_reduce_print Args;               \
+} while (0)
+
+/*----------------------------------------------------------------------.
+| Report that stack #YYK of *YYSTACKP is going to be reduced by YYRULE. |
+`----------------------------------------------------------------------*/
+
+static inline void
+yy_reduce_print (int yynormal, yyGLRStackItem* yyvsp, size_t yyk,
+                 yyRuleNum yyrule, void * scanner, nix::ParseData * data)
+{
+  int yynrhs = yyrhsLength (yyrule);
+  int yylow = 1;
+  int yyi;
+  YYFPRINTF (stderr, "Reducing stack %lu by rule %d (line %lu):\n",
+             (unsigned long int) yyk, yyrule - 1,
+             (unsigned long int) yyrline[yyrule]);
+  if (! yynormal)
+    yyfillin (yyvsp, 1, -yynrhs);
+  /* The symbols being reduced.  */
+  for (yyi = 0; yyi < yynrhs; yyi++)
+    {
+      YYFPRINTF (stderr, "   $%d = ", yyi + 1);
+      yy_symbol_print (stderr,
+                       yystos[yyvsp[yyi - yynrhs + 1].yystate.yylrState],
+                       &yyvsp[yyi - yynrhs + 1].yystate.yysemantics.yysval
+                       , &(((yyGLRStackItem const *)yyvsp)[YYFILL ((yyi + 1) - (yynrhs))].yystate.yyloc)                       , scanner, data);
+      if (!yyvsp[yyi - yynrhs + 1].yystate.yyresolved)
+        YYFPRINTF (stderr, " (unresolved)");
+      YYFPRINTF (stderr, "\n");
+    }
+}
+#endif
+
+/** Pop the symbols consumed by reduction #YYRULE from the top of stack
+ *  #YYK of *YYSTACKP, and perform the appropriate semantic action on their
  *  semantic values.  Assumes that all ambiguities in semantic values
- *  have been previously resolved.  Set *VALP to the resulting value,
- *  and *LOCP to the computed location (if any).  Return value is as
+ *  have been previously resolved.  Set *YYVALP to the resulting value,
+ *  and *YYLOCP to the computed location (if any).  Return value is as
  *  for userAction.  */
 static inline YYRESULTTAG
 yydoAction (yyGLRStack* yystackp, size_t yyk, yyRuleNum yyrule,
@@ -2290,23 +2295,20 @@ yydoAction (yyGLRStack* yystackp, size_t yyk, yyRuleNum yyrule,
 {
   int yynrhs = yyrhsLength (yyrule);
 
-  if (yystackp->yysplitPoint == YY_NULL)
+  if (yystackp->yysplitPoint == YY_NULLPTR)
     {
       /* Standard special case: single stack.  */
-      yyGLRStackItem* rhs = (yyGLRStackItem*) yystackp->yytops.yystates[yyk];
+      yyGLRStackItem* yyrhs = (yyGLRStackItem*) yystackp->yytops.yystates[yyk];
       YYASSERT (yyk == 0);
       yystackp->yynextFree -= yynrhs;
       yystackp->yyspaceLeft += yynrhs;
       yystackp->yytops.yystates[0] = & yystackp->yynextFree[-1].yystate;
-      return yyuserAction (yyrule, yynrhs, rhs, yystackp,
+      YY_REDUCE_PRINT ((1, yyrhs, yyk, yyrule, scanner, data));
+      return yyuserAction (yyrule, yynrhs, yyrhs, yystackp,
                            yyvalp, yylocp, scanner, data);
     }
   else
     {
-      /* At present, doAction is never called in nondeterministic
-       * mode, so this branch is never taken.  It is here in
-       * anticipation of a future feature that will allow immediate
-       * evaluation of selected actions in nondeterministic mode.  */
       int yyi;
       yyGLRState* yys;
       yyGLRStackItem yyrhsVals[YYMAXRHS + YYMAXLEFT + 1];
@@ -2322,62 +2324,21 @@ yydoAction (yyGLRStack* yystackp, size_t yyk, yyRuleNum yyrule,
         }
       yyupdateSplit (yystackp, yys);
       yystackp->yytops.yystates[yyk] = yys;
+      YY_REDUCE_PRINT ((0, yyrhsVals + YYMAXRHS + YYMAXLEFT - 1, yyk, yyrule, scanner, data));
       return yyuserAction (yyrule, yynrhs, yyrhsVals + YYMAXRHS + YYMAXLEFT - 1,
                            yystackp, yyvalp, yylocp, scanner, data);
     }
 }
 
-#if !YYDEBUG
-# define YY_REDUCE_PRINT(Args)
-#else
-# define YY_REDUCE_PRINT(Args)          \
-do {                                    \
-  if (yydebug)                          \
-    yy_reduce_print Args;               \
-} while (YYID (0))
-
-/*----------------------------------------------------------.
-| Report that the RULE is going to be reduced on stack #K.  |
-`----------------------------------------------------------*/
-
-/*ARGSUSED*/ static inline void
-yy_reduce_print (yyGLRStack* yystackp, size_t yyk, yyRuleNum yyrule,
-                 YYSTYPE* yyvalp, YYLTYPE *yylocp, void * scanner, nix::ParseData * data)
-{
-  int yynrhs = yyrhsLength (yyrule);
-  yybool yynormal __attribute__ ((__unused__)) =
-    (yystackp->yysplitPoint == YY_NULL);
-  yyGLRStackItem* yyvsp = (yyGLRStackItem*) yystackp->yytops.yystates[yyk];
-  int yylow = 1;
-  int yyi;
-  YYUSE (yyvalp);
-  YYUSE (yylocp);
-  YYUSE (scanner);
-  YYUSE (data);
-  YYFPRINTF (stderr, "Reducing stack %lu by rule %d (line %lu):\n",
-             (unsigned long int) yyk, yyrule - 1,
-             (unsigned long int) yyrline[yyrule]);
-  /* The symbols being reduced.  */
-  for (yyi = 0; yyi < yynrhs; yyi++)
-    {
-      YYFPRINTF (stderr, "   $%d = ", yyi + 1);
-      yy_symbol_print (stderr, yyrhs[yyprhs[yyrule] + yyi],
-                       &(((yyGLRStackItem const *)yyvsp)[YYFILL ((yyi + 1) - (yynrhs))].yystate.yysemantics.yysval)
-                       , &(((yyGLRStackItem const *)yyvsp)[YYFILL ((yyi + 1) - (yynrhs))].yystate.yyloc)                       , scanner, data);
-      YYFPRINTF (stderr, "\n");
-    }
-}
-#endif
-
-/** Pop items off stack #K of STACK according to grammar rule RULE,
+/** Pop items off stack #YYK of *YYSTACKP according to grammar rule YYRULE,
  *  and push back on the resulting nonterminal symbol.  Perform the
- *  semantic action associated with RULE and store its value with the
- *  newly pushed state, if FORCEEVAL or if STACK is currently
+ *  semantic action associated with YYRULE and store its value with the
+ *  newly pushed state, if YYFORCEEVAL or if *YYSTACKP is currently
  *  unambiguous.  Otherwise, store the deferred semantic action with
  *  the new state.  If the new state would have an identical input
  *  position, LR state, and predecessor to an existing state on the stack,
- *  it is identified with that existing state, eliminating stack #K from
- *  the STACK.  In this case, the (necessarily deferred) semantic value is
+ *  it is identified with that existing state, eliminating stack #YYK from
+ *  *YYSTACKP.  In this case, the semantic value is
  *  added to the options for the existing state's semantic value.
  */
 static inline YYRESULTTAG
@@ -2386,13 +2347,19 @@ yyglrReduce (yyGLRStack* yystackp, size_t yyk, yyRuleNum yyrule,
 {
   size_t yyposn = yystackp->yytops.yystates[yyk]->yyposn;
 
-  if (yyforceEval || yystackp->yysplitPoint == YY_NULL)
+  if (yyforceEval || yystackp->yysplitPoint == YY_NULLPTR)
     {
       YYSTYPE yysval;
       YYLTYPE yyloc;
 
-      YY_REDUCE_PRINT ((yystackp, yyk, yyrule, &yysval, &yyloc, scanner, data));
-      YYCHK (yydoAction (yystackp, yyk, yyrule, &yysval, &yyloc, scanner, data));
+      YYRESULTTAG yyflag = yydoAction (yystackp, yyk, yyrule, &yysval, &yyloc, scanner, data);
+      if (yyflag == yyerr && yystackp->yysplitPoint != YY_NULLPTR)
+        {
+          YYDPRINTF ((stderr, "Parse on stack %lu rejected by rule #%d.\n",
+                     (unsigned long int) yyk, yyrule - 1));
+        }
+      if (yyflag != yyok)
+        return yyflag;
       YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyrule], &yysval, &yyloc);
       yyglrShift (yystackp, yyk,
                   yyLRgotoState (yystackp->yytops.yystates[yyk]->yylrState,
@@ -2415,10 +2382,11 @@ yyglrReduce (yyGLRStack* yystackp, size_t yyk, yyRuleNum yyrule,
       yyupdateSplit (yystackp, yys);
       yynewLRState = yyLRgotoState (yys->yylrState, yylhsNonterm (yyrule));
       YYDPRINTF ((stderr,
-                  "Reduced stack %lu by rule #%d; action deferred.  Now in state %d.\n",
+                  "Reduced stack %lu by rule #%d; action deferred.  "
+                  "Now in state %d.\n",
                   (unsigned long int) yyk, yyrule - 1, yynewLRState));
       for (yyi = 0; yyi < yystackp->yytops.yysize; yyi += 1)
-        if (yyi != yyk && yystackp->yytops.yystates[yyi] != YY_NULL)
+        if (yyi != yyk && yystackp->yytops.yystates[yyi] != YY_NULLPTR)
           {
             yyGLRState *yysplit = yystackp->yysplitPoint;
             yyGLRState *yyp = yystackp->yytops.yystates[yyi];
@@ -2445,7 +2413,7 @@ yyglrReduce (yyGLRStack* yystackp, size_t yyk, yyRuleNum yyrule,
 static size_t
 yysplitStack (yyGLRStack* yystackp, size_t yyk)
 {
-  if (yystackp->yysplitPoint == YY_NULL)
+  if (yystackp->yysplitPoint == YY_NULLPTR)
     {
       YYASSERT (yyk == 0);
       yystackp->yysplitPoint = yystackp->yytops.yystates[yyk];
@@ -2455,7 +2423,7 @@ yysplitStack (yyGLRStack* yystackp, size_t yyk)
       yyGLRState** yynewStates;
       yybool* yynewLookaheadNeeds;
 
-      yynewStates = YY_NULL;
+      yynewStates = YY_NULLPTR;
 
       if (yystackp->yytops.yycapacity
           > (YYSIZEMAX / (2 * sizeof yynewStates[0])))
@@ -2466,7 +2434,7 @@ yysplitStack (yyGLRStack* yystackp, size_t yyk)
         (yyGLRState**) YYREALLOC (yystackp->yytops.yystates,
                                   (yystackp->yytops.yycapacity
                                    * sizeof yynewStates[0]));
-      if (yynewStates == YY_NULL)
+      if (yynewStates == YY_NULLPTR)
         yyMemoryExhausted (yystackp);
       yystackp->yytops.yystates = yynewStates;
 
@@ -2474,7 +2442,7 @@ yysplitStack (yyGLRStack* yystackp, size_t yyk)
         (yybool*) YYREALLOC (yystackp->yytops.yylookaheadNeeds,
                              (yystackp->yytops.yycapacity
                               * sizeof yynewLookaheadNeeds[0]));
-      if (yynewLookaheadNeeds == YY_NULL)
+      if (yynewLookaheadNeeds == YY_NULLPTR)
         yyMemoryExhausted (yystackp);
       yystackp->yytops.yylookaheadNeeds = yynewLookaheadNeeds;
     }
@@ -2486,7 +2454,7 @@ yysplitStack (yyGLRStack* yystackp, size_t yyk)
   return yystackp->yytops.yysize-1;
 }
 
-/** True iff Y0 and Y1 represent identical options at the top level.
+/** True iff YYY0 and YYY1 represent identical options at the top level.
  *  That is, they represent the same rule applied to RHS symbols
  *  that produce the same terminal symbols.  */
 static yybool
@@ -2508,8 +2476,8 @@ yyidenticalOptions (yySemanticOption* yyy0, yySemanticOption* yyy1)
     return yyfalse;
 }
 
-/** Assuming identicalOptions (Y0,Y1), destructively merge the
- *  alternative semantic values for the RHS-symbols of Y1 and Y0.  */
+/** Assuming identicalOptions (YYY0,YYY1), destructively merge the
+ *  alternative semantic values for the RHS-symbols of YYY1 and YYY0.  */
 static void
 yymergeOptionSets (yySemanticOption* yyy0, yySemanticOption* yyy1)
 {
@@ -2536,11 +2504,11 @@ yymergeOptionSets (yySemanticOption* yyy0, yySemanticOption* yyy1)
         {
           yySemanticOption** yyz0p = &yys0->yysemantics.yyfirstVal;
           yySemanticOption* yyz1 = yys1->yysemantics.yyfirstVal;
-          while (YYID (yytrue))
+          while (yytrue)
             {
-              if (yyz1 == *yyz0p || yyz1 == YY_NULL)
+              if (yyz1 == *yyz0p || yyz1 == YY_NULLPTR)
                 break;
-              else if (*yyz0p == YY_NULL)
+              else if (*yyz0p == YY_NULLPTR)
                 {
                   *yyz0p = yyz1;
                   break;
@@ -2588,11 +2556,11 @@ static YYRESULTTAG yyresolveValue (yyGLRState* yys,
                                    yyGLRStack* yystackp, void * scanner, nix::ParseData * data);
 
 
-/** Resolve the previous N states starting at and including state S.  If result
- *  != yyok, some states may have been left unresolved possibly with empty
- *  semantic option chains.  Regardless of whether result = yyok, each state
- *  has been left with consistent data so that yydestroyGLRState can be invoked
- *  if necessary.  */
+/** Resolve the previous YYN states starting at and including state YYS
+ *  on *YYSTACKP. If result != yyok, some states may have been left
+ *  unresolved possibly with empty semantic option chains.  Regardless
+ *  of whether result = yyok, each state has been left with consistent
+ *  data so that yydestroyGLRState can be invoked if necessary.  */
 static YYRESULTTAG
 yyresolveStates (yyGLRState* yys, int yyn,
                  yyGLRStack* yystackp, void * scanner, nix::ParseData * data)
@@ -2607,9 +2575,10 @@ yyresolveStates (yyGLRState* yys, int yyn,
   return yyok;
 }
 
-/** Resolve the states for the RHS of OPT, perform its user action, and return
- *  the semantic value and location.  Regardless of whether result = yyok, all
- *  RHS states have been destroyed (assuming the user action destroys all RHS
+/** Resolve the states for the RHS of YYOPT on *YYSTACKP, perform its
+ *  user action, and return the semantic value and location in *YYVALP
+ *  and *YYLOCP.  Regardless of whether result = yyok, all RHS states
+ *  have been destroyed (assuming the user action destroys all RHS
  *  semantic values if invoked).  */
 static YYRESULTTAG
 yyresolveAction (yySemanticOption* yyopt, yyGLRStack* yystackp,
@@ -2660,7 +2629,7 @@ yyreportTree (yySemanticOption* yyx, int yyindent)
 
   for (yyi = yynrhs, yys = yyx->yystate; 0 < yyi; yyi -= 1, yys = yys->yypred)
     yystates[yyi] = yys;
-  if (yys == YY_NULL)
+  if (yys == YY_NULLPTR)
     {
       yyleftmost_state.yyposn = 0;
       yystates[0] = &yyleftmost_state;
@@ -2683,11 +2652,11 @@ yyreportTree (yySemanticOption* yyx, int yyindent)
         {
           if (yystates[yyi-1]->yyposn+1 > yystates[yyi]->yyposn)
             YYFPRINTF (stderr, "%*s%s <empty>\n", yyindent+2, "",
-                       yytokenName (yyrhs[yyprhs[yyx->yyrule]+yyi-1]));
+                       yytokenName (yystos[yystates[yyi]->yylrState]));
           else
             YYFPRINTF (stderr, "%*s%s <tokens %lu .. %lu>\n", yyindent+2, "",
-                       yytokenName (yyrhs[yyprhs[yyx->yyrule]+yyi-1]),
-                       (unsigned long int) (yystates[yyi - 1]->yyposn + 1),
+                       yytokenName (yystos[yystates[yyi]->yylrState]),
+                       (unsigned long int) (yystates[yyi-1]->yyposn + 1),
                        (unsigned long int) yystates[yyi]->yyposn);
         }
       else
@@ -2696,7 +2665,7 @@ yyreportTree (yySemanticOption* yyx, int yyindent)
 }
 #endif
 
-/*ARGSUSED*/ static YYRESULTTAG
+static YYRESULTTAG
 yyreportAmbiguity (yySemanticOption* yyx0,
                    yySemanticOption* yyx1, YYLTYPE *yylocp, void * scanner, nix::ParseData * data)
 {
@@ -2716,9 +2685,9 @@ yyreportAmbiguity (yySemanticOption* yyx0,
   return yyabort;
 }
 
-/** Starting at and including state S1, resolve the location for each of the
- *  previous N1 states that is unresolved.  The first semantic option of a state
- *  is always chosen.  */
+/** Resolve the locations for each of the YYN1 states in *YYSTACKP,
+ *  ending at YYS1.  Has no effect on previously resolved states.
+ *  The first semantic option of a state is always chosen.  */
 static void
 yyresolveLocations (yyGLRState* yys1, int yyn1,
                     yyGLRStack *yystackp, void * scanner, nix::ParseData * data)
@@ -2731,7 +2700,7 @@ yyresolveLocations (yyGLRState* yys1, int yyn1,
           yyGLRStackItem yyrhsloc[1 + YYMAXRHS];
           int yynrhs;
           yySemanticOption *yyoption = yys1->yysemantics.yyfirstVal;
-          YYASSERT (yyoption != YY_NULL);
+          YYASSERT (yyoption != YY_NULLPTR);
           yynrhs = yyrhsLength (yyoption->yyrule);
           if (yynrhs > 0)
             {
@@ -2772,11 +2741,12 @@ yyresolveLocations (yyGLRState* yys1, int yyn1,
     }
 }
 
-/** Resolve the ambiguity represented in state S, perform the indicated
- *  actions, and set the semantic value of S.  If result != yyok, the chain of
- *  semantic options in S has been cleared instead or it has been left
- *  unmodified except that redundant options may have been removed.  Regardless
- *  of whether result = yyok, S has been left with consistent data so that
+/** Resolve the ambiguity represented in state YYS in *YYSTACKP,
+ *  perform the indicated actions, and set the semantic value of YYS.
+ *  If result != yyok, the chain of semantic options in YYS has been
+ *  cleared instead or it has been left unmodified except that
+ *  redundant options may have been removed.  Regardless of whether
+ *  result = yyok, YYS has been left with consistent data so that
  *  yydestroyGLRState can be invoked if necessary.  */
 static YYRESULTTAG
 yyresolveValue (yyGLRState* yys, yyGLRStack* yystackp, void * scanner, nix::ParseData * data)
@@ -2789,7 +2759,7 @@ yyresolveValue (yyGLRState* yys, yyGLRStack* yystackp, void * scanner, nix::Pars
   YYRESULTTAG yyflag;
   YYLTYPE *yylocp = &yys->yyloc;
 
-  for (yypp = &yyoptionList->yynext; *yypp != YY_NULL; )
+  for (yypp = &yyoptionList->yynext; *yypp != YY_NULLPTR; )
     {
       yySemanticOption* yyp = *yypp;
 
@@ -2831,7 +2801,7 @@ yyresolveValue (yyGLRState* yys, yyGLRStack* yystackp, void * scanner, nix::Pars
       int yyprec = yydprec[yybest->yyrule];
       yyflag = yyresolveAction (yybest, yystackp, &yysval, yylocp, scanner, data);
       if (yyflag == yyok)
-        for (yyp = yybest->yynext; yyp != YY_NULL; yyp = yyp->yynext)
+        for (yyp = yybest->yynext; yyp != YY_NULLPTR; yyp = yyp->yynext)
           {
             if (yyprec == yydprec[yyp->yyrule])
               {
@@ -2858,14 +2828,14 @@ yyresolveValue (yyGLRState* yys, yyGLRStack* yystackp, void * scanner, nix::Pars
       yys->yysemantics.yysval = yysval;
     }
   else
-    yys->yysemantics.yyfirstVal = YY_NULL;
+    yys->yysemantics.yyfirstVal = YY_NULLPTR;
   return yyflag;
 }
 
 static YYRESULTTAG
 yyresolveStack (yyGLRStack* yystackp, void * scanner, nix::ParseData * data)
 {
-  if (yystackp->yysplitPoint != YY_NULL)
+  if (yystackp->yysplitPoint != YY_NULLPTR)
     {
       yyGLRState* yys;
       int yyn;
@@ -2885,10 +2855,10 @@ yycompressStack (yyGLRStack* yystackp)
 {
   yyGLRState* yyp, *yyq, *yyr;
 
-  if (yystackp->yytops.yysize != 1 || yystackp->yysplitPoint == YY_NULL)
+  if (yystackp->yytops.yysize != 1 || yystackp->yysplitPoint == YY_NULLPTR)
     return;
 
-  for (yyp = yystackp->yytops.yystates[0], yyq = yyp->yypred, yyr = YY_NULL;
+  for (yyp = yystackp->yytops.yystates[0], yyq = yyp->yypred, yyr = YY_NULLPTR;
        yyp != yystackp->yysplitPoint;
        yyr = yyp, yyp = yyq, yyq = yyp->yypred)
     yyp->yypred = yyr;
@@ -2896,10 +2866,10 @@ yycompressStack (yyGLRStack* yystackp)
   yystackp->yyspaceLeft += yystackp->yynextFree - yystackp->yyitems;
   yystackp->yynextFree = ((yyGLRStackItem*) yystackp->yysplitPoint) + 1;
   yystackp->yyspaceLeft -= yystackp->yynextFree - yystackp->yyitems;
-  yystackp->yysplitPoint = YY_NULL;
-  yystackp->yylastDeleted = YY_NULL;
+  yystackp->yysplitPoint = YY_NULLPTR;
+  yystackp->yylastDeleted = YY_NULLPTR;
 
-  while (yyr != YY_NULL)
+  while (yyr != YY_NULLPTR)
     {
       yystackp->yynextFree->yystate = *yyr;
       yyr = yyr->yypred;
@@ -2914,11 +2884,7 @@ static YYRESULTTAG
 yyprocessOneStack (yyGLRStack* yystackp, size_t yyk,
                    size_t yyposn, YYLTYPE *yylocp, void * scanner, nix::ParseData * data)
 {
-  int yyaction;
-  const short int* yyconflicts;
-  yyRuleNum yyrule;
-
-  while (yystackp->yytops.yystates[yyk] != YY_NULL)
+  while (yystackp->yytops.yystates[yyk] != YY_NULLPTR)
     {
       yyStateNum yystate = yystackp->yytops.yystates[yyk]->yylrState;
       YYDPRINTF ((stderr, "Stack %lu Entering state %d\n",
@@ -2928,7 +2894,8 @@ yyprocessOneStack (yyGLRStack* yystackp, size_t yyk,
 
       if (yyisDefaultedState (yystate))
         {
-          yyrule = yydefaultAction (yystate);
+          YYRESULTTAG yyflag;
+          yyRuleNum yyrule = yydefaultAction (yystate);
           if (yyrule == 0)
             {
               YYDPRINTF ((stderr, "Stack %lu dies.\n",
@@ -2936,16 +2903,30 @@ yyprocessOneStack (yyGLRStack* yystackp, size_t yyk,
               yymarkStackDeleted (yystackp, yyk);
               return yyok;
             }
-          YYCHK (yyglrReduce (yystackp, yyk, yyrule, yyfalse, scanner, data));
+          yyflag = yyglrReduce (yystackp, yyk, yyrule, yyimmediate[yyrule], scanner, data);
+          if (yyflag == yyerr)
+            {
+              YYDPRINTF ((stderr,
+                          "Stack %lu dies "
+                          "(predicate failure or explicit user error).\n",
+                          (unsigned long int) yyk));
+              yymarkStackDeleted (yystackp, yyk);
+              return yyok;
+            }
+          if (yyflag != yyok)
+            return yyflag;
         }
       else
         {
           yySymbol yytoken;
+          int yyaction;
+          const short int* yyconflicts;
+
           yystackp->yytops.yylookaheadNeeds[yyk] = yytrue;
           if (yychar == YYEMPTY)
             {
               YYDPRINTF ((stderr, "Reading a token: "));
-              yychar = YYLEX;
+              yychar = yylex (&yylval, &yylloc, scanner, data);
             }
 
           if (yychar <= YYEOF)
@@ -2963,14 +2944,25 @@ yyprocessOneStack (yyGLRStack* yystackp, size_t yyk,
 
           while (*yyconflicts != 0)
             {
+              YYRESULTTAG yyflag;
               size_t yynewStack = yysplitStack (yystackp, yyk);
               YYDPRINTF ((stderr, "Splitting off stack %lu from %lu.\n",
                           (unsigned long int) yynewStack,
                           (unsigned long int) yyk));
-              YYCHK (yyglrReduce (yystackp, yynewStack,
-                                  *yyconflicts, yyfalse, scanner, data));
-              YYCHK (yyprocessOneStack (yystackp, yynewStack,
-                                        yyposn, yylocp, scanner, data));
+              yyflag = yyglrReduce (yystackp, yynewStack,
+                                    *yyconflicts,
+                                    yyimmediate[*yyconflicts], scanner, data);
+              if (yyflag == yyok)
+                YYCHK (yyprocessOneStack (yystackp, yynewStack,
+                                          yyposn, yylocp, scanner, data));
+              else if (yyflag == yyerr)
+                {
+                  YYDPRINTF ((stderr, "Stack %lu dies.\n",
+                              (unsigned long int) yynewStack));
+                  yymarkStackDeleted (yystackp, yynewStack);
+                }
+              else
+                return yyflag;
               yyconflicts += 1;
             }
 
@@ -2984,14 +2976,27 @@ yyprocessOneStack (yyGLRStack* yystackp, size_t yyk,
               break;
             }
           else
-            YYCHK (yyglrReduce (yystackp, yyk, -yyaction,
-                                yyfalse, scanner, data));
+            {
+              YYRESULTTAG yyflag = yyglrReduce (yystackp, yyk, -yyaction,
+                                                yyimmediate[-yyaction], scanner, data);
+              if (yyflag == yyerr)
+                {
+                  YYDPRINTF ((stderr,
+                              "Stack %lu dies "
+                              "(predicate failure or explicit user error).\n",
+                              (unsigned long int) yyk));
+                  yymarkStackDeleted (yystackp, yyk);
+                  break;
+                }
+              else if (yyflag != yyok)
+                return yyflag;
+            }
         }
     }
   return yyok;
 }
 
-/*ARGSUSED*/ static void
+static void
 yyreportSyntaxError (yyGLRStack* yystackp, void * scanner, nix::ParseData * data)
 {
   if (yystackp->yyerrState != 0)
@@ -3001,13 +3006,13 @@ yyreportSyntaxError (yyGLRStack* yystackp, void * scanner, nix::ParseData * data
 #else
   {
   yySymbol yytoken = yychar == YYEMPTY ? YYEMPTY : YYTRANSLATE (yychar);
-  size_t yysize0 = yytnamerr (YY_NULL, yytokenName (yytoken));
+  size_t yysize0 = yytnamerr (YY_NULLPTR, yytokenName (yytoken));
   size_t yysize = yysize0;
   yybool yysize_overflow = yyfalse;
-  char* yymsg = YY_NULL;
+  char* yymsg = YY_NULLPTR;
   enum { YYERROR_VERBOSE_ARGS_MAXIMUM = 5 };
   /* Internationalized format string. */
-  const char *yyformat = YY_NULL;
+  const char *yyformat = YY_NULLPTR;
   /* Arguments of yyformat. */
   char const *yyarg[YYERROR_VERBOSE_ARGS_MAXIMUM];
   /* Number of reported tokens (one for the "unexpected", one per
@@ -3063,7 +3068,7 @@ yyreportSyntaxError (yyGLRStack* yystackp, void * scanner, nix::ParseData * data
                   }
                 yyarg[yycount++] = yytokenName (yyx);
                 {
-                  size_t yysz = yysize + yytnamerr (YY_NULL, yytokenName (yyx));
+                  size_t yysz = yysize + yytnamerr (YY_NULLPTR, yytokenName (yyx));
                   yysize_overflow |= yysz < yysize;
                   yysize = yysz;
                 }
@@ -3128,7 +3133,7 @@ yyreportSyntaxError (yyGLRStack* yystackp, void * scanner, nix::ParseData * data
 /* Recover from a syntax error on *YYSTACKP, assuming that *YYSTACKP->YYTOKENP,
    yylval, and yylloc are the syntactic category, semantic value, and location
    of the lookahead.  */
-/*ARGSUSED*/ static void
+static void
 yyrecoverSyntaxError (yyGLRStack* yystackp, void * scanner, nix::ParseData * data)
 {
   size_t yyk;
@@ -3137,11 +3142,11 @@ yyrecoverSyntaxError (yyGLRStack* yystackp, void * scanner, nix::ParseData * dat
   if (yystackp->yyerrState == 3)
     /* We just shifted the error token and (perhaps) took some
        reductions.  Skip tokens until we can proceed.  */
-    while (YYID (yytrue))
+    while (yytrue)
       {
         yySymbol yytoken;
         if (yychar == YYEOF)
-          yyFail (yystackp, &yylloc, scanner, data, YY_NULL);
+          yyFail (yystackp, &yylloc, scanner, data, YY_NULLPTR);
         if (yychar != YYEMPTY)
           {
             /* We throw away the lookahead, but the error range
@@ -3156,7 +3161,7 @@ yyrecoverSyntaxError (yyGLRStack* yystackp, void * scanner, nix::ParseData * dat
                         yytoken, &yylval, &yylloc, scanner, data);
           }
         YYDPRINTF ((stderr, "Reading a token: "));
-        yychar = YYLEX;
+        yychar = yylex (&yylval, &yylloc, scanner, data);
         if (yychar <= YYEOF)
           {
             yychar = yytoken = YYEOF;
@@ -3182,10 +3187,10 @@ yyrecoverSyntaxError (yyGLRStack* yystackp, void * scanner, nix::ParseData * dat
 
   /* Reduce to one stack.  */
   for (yyk = 0; yyk < yystackp->yytops.yysize; yyk += 1)
-    if (yystackp->yytops.yystates[yyk] != YY_NULL)
+    if (yystackp->yytops.yystates[yyk] != YY_NULLPTR)
       break;
   if (yyk >= yystackp->yytops.yysize)
-    yyFail (yystackp, &yylloc, scanner, data, YY_NULL);
+    yyFail (yystackp, &yylloc, scanner, data, YY_NULLPTR);
   for (yyk += 1; yyk < yystackp->yytops.yysize; yyk += 1)
     yymarkStackDeleted (yystackp, yyk);
   yyremoveDeletes (yystackp);
@@ -3193,7 +3198,7 @@ yyrecoverSyntaxError (yyGLRStack* yystackp, void * scanner, nix::ParseData * dat
 
   /* Now pop stack until we find a state that shifts the error token.  */
   yystackp->yyerrState = 3;
-  while (yystackp->yytops.yystates[0] != YY_NULL)
+  while (yystackp->yytops.yystates[0] != YY_NULLPTR)
     {
       yyGLRState *yys = yystackp->yytops.yystates[0];
       yyj = yypact[yys->yylrState];
@@ -3217,14 +3222,14 @@ yyrecoverSyntaxError (yyGLRStack* yystackp, void * scanner, nix::ParseData * dat
             }
         }
       yystackp->yyerror_range[1].yystate.yyloc = yys->yyloc;
-      if (yys->yypred != YY_NULL)
+      if (yys->yypred != YY_NULLPTR)
         yydestroyGLRState ("Error: popping", yys, scanner, data);
       yystackp->yytops.yystates[0] = yys->yypred;
       yystackp->yynextFree -= 1;
       yystackp->yyspaceLeft += 1;
     }
-  if (yystackp->yytops.yystates[0] == YY_NULL)
-    yyFail (yystackp, &yylloc, scanner, data, YY_NULL);
+  if (yystackp->yytops.yystates[0] == YY_NULLPTR)
+    yyFail (yystackp, &yylloc, scanner, data, YY_NULLPTR);
 }
 
 #define YYCHK1(YYE)                                                          \
@@ -3241,8 +3246,7 @@ yyrecoverSyntaxError (yyGLRStack* yystackp, void * scanner, nix::ParseData * dat
     default:                                                                 \
       goto yybuglab;                                                         \
     }                                                                        \
-  } while (YYID (0))
-
+  } while (0)
 
 /*----------.
 | yyparse.  |
@@ -3274,13 +3278,13 @@ yyparse (void * scanner, nix::ParseData * data)
   yyglrShift (&yystack, 0, 0, 0, &yylval, &yylloc);
   yyposn = 0;
 
-  while (YYID (yytrue))
+  while (yytrue)
     {
       /* For efficiency, we have two loops, the first of which is
          specialized to deterministic operation (single stack, no
          potential ambiguity).  */
       /* Standard mode */
-      while (YYID (yytrue))
+      while (yytrue)
         {
           yyRuleNum yyrule;
           int yyaction;
@@ -3307,7 +3311,7 @@ yyparse (void * scanner, nix::ParseData * data)
               if (yychar == YYEMPTY)
                 {
                   YYDPRINTF ((stderr, "Reading a token: "));
-                  yychar = YYLEX;
+                  yychar = yylex (&yylval, &yylloc, scanner, data);
                 }
 
               if (yychar <= YYEOF)
@@ -3344,7 +3348,7 @@ yyparse (void * scanner, nix::ParseData * data)
             }
         }
 
-      while (YYID (yytrue))
+      while (yytrue)
         {
           yySymbol yytoken_to_shift;
           size_t yys;
@@ -3464,7 +3468,7 @@ yyparse (void * scanner, nix::ParseData * data)
                   {
                     yyGLRState *yys = yystates[yyk];
                  yystack.yyerror_range[1].yystate.yyloc = yys->yyloc;
-                  if (yys->yypred != YY_NULL)
+                  if (yys->yypred != YY_NULLPTR)
                       yydestroyGLRState ("Cleanup: popping", yys, scanner, data);
                     yystates[yyk] = yys->yypred;
                     yystack.yynextFree -= 1;
@@ -3476,16 +3480,11 @@ yyparse (void * scanner, nix::ParseData * data)
       yyfreeGLRStack (&yystack);
     }
 
-  /* Make sure YYID is used.  */
-  return YYID (yyresult);
+  return yyresult;
 }
 
 /* DEBUGGING ONLY */
 #if YYDEBUG
-static void yypstack (yyGLRStack* yystackp, size_t yyk)
-  __attribute__ ((__unused__));
-static void yypdumpstack (yyGLRStack* yystackp) __attribute__ ((__unused__));
-
 static void
 yy_yypstack (yyGLRState* yys)
 {
@@ -3501,7 +3500,7 @@ yy_yypstack (yyGLRState* yys)
 static void
 yypstates (yyGLRState* yyst)
 {
-  if (yyst == YY_NULL)
+  if (yyst == YY_NULLPTR)
     YYFPRINTF (stderr, "<null>");
   else
     yy_yypstack (yyst);
@@ -3515,7 +3514,7 @@ yypstack (yyGLRStack* yystackp, size_t yyk)
 }
 
 #define YYINDEX(YYX)                                                         \
-    ((YYX) == YY_NULL ? -1 : (yyGLRStackItem*) (YYX) - yystackp->yyitems)
+    ((YYX) == YY_NULLPTR ? -1 : (yyGLRStackItem*) (YYX) - yystackp->yyitems)
 
 
 static void
@@ -3529,6 +3528,8 @@ yypdumpstack (yyGLRStack* yystackp)
                  (unsigned long int) (yyp - yystackp->yyitems));
       if (*(yybool *) yyp)
         {
+          YYASSERT (yyp->yystate.yyisState);
+          YYASSERT (yyp->yyoption.yyisState);
           YYFPRINTF (stderr, "Res: %d, LR State: %d, posn: %lu, pred: %ld",
                      yyp->yystate.yyresolved, yyp->yystate.yylrState,
                      (unsigned long int) yyp->yystate.yyposn,
@@ -3540,6 +3541,8 @@ yypdumpstack (yyGLRStack* yystackp)
         }
       else
         {
+          YYASSERT (!yyp->yystate.yyisState);
+          YYASSERT (!yyp->yyoption.yyisState);
           YYFPRINTF (stderr, "Option. rule: %d, state: %ld, next: %ld",
                      yyp->yyoption.yyrule - 1,
                      (long int) YYINDEX (yyp->yyoption.yystate),
@@ -3554,8 +3557,15 @@ yypdumpstack (yyGLRStack* yystackp)
   YYFPRINTF (stderr, "\n");
 }
 #endif
-/* Line 2575 of glr.c  */
-#line 515 "src/libexpr/parser.y"
+
+#undef yylval
+#undef yychar
+#undef yynerrs
+#undef yylloc
+
+
+
+#line 515 "src/libexpr/parser.y" /* glr.c:2551  */
 
 
 
